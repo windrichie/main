@@ -37,10 +37,6 @@ import seedu.address.ui.UiManager;
 public class MainApp extends Application {
 
     public static final Version VERSION = new Version(0, 6, 0, true);
-
-    public static final int testBugFix = 0;
-    public static final String tutorial = "10. Create a new branch called add-countries, switch to it, and add some commits to it";
-    
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
     protected Ui ui;
