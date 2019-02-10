@@ -38,9 +38,10 @@ public class MainApp extends Application {
 
     public static final Version VERSION = new Version(0, 6, 0, true);
 
-    private static final Logger logger = LogsCenter.getLogger(MainApp.class);
-
     protected int testBugFix = 0;
+    protected String tutorial = "8. Switch to the master branch and add one more commit.";
+    
+    private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
     protected Ui ui;
     protected Logic logic;
