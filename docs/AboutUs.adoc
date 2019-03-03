@@ -27,3 +27,12 @@ Role: Team Lead +
 Responsibilities: UI
 
 '''
+
+=== Shizhe Yang
+image::shizhe-nus.jpg[width="150", align="left"]
+{empty}[http://github.com/Shizhe-NUS[github]] [<<Shizhe Yang#, portfolio>>]
+
+Role: Developer +
+Responsibilities: Data
+
+'''
