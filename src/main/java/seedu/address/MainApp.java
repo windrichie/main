@@ -1,5 +1,4 @@
 package seedu.address;
-import java.io.*
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -38,7 +37,6 @@ import seedu.address.ui.UiManager;
 public class MainApp extends Application {
 
     public static final Version VERSION = new Version(0, 6, 0, true);
-
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
     protected Ui ui;
