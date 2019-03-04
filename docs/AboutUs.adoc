@@ -4,10 +4,12 @@
 :imagesDir: images
 :stylesDir: stylesheets
 
-AddressBook - Level 4 was developed by the https://se-edu.github.io/docs/Team.html[se-edu] team. +
-_{The dummy content given below serves as a placeholder to be used by future forks of the project.}_ +
+Efficient Learning Scheduler was developed by a team of 4 NUS undergraduates. +
 {empty} +
-We are a team based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore].
+We are a team based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore]. +
+{empty} +
+We believe that our Efficient Learning Scheduler can benefit all NUS Computing students as much as it has benefited all of us.
++ Below are the details of our awesome developers.
 
 == Project Team
 
@@ -29,7 +31,7 @@ Responsibilities: UI
 '''
 
 === Shizhe Yang
-image::shizhe-nus.jpg[width="150", align="left"]
+image::shizhe-nus.png[width="150", align="left"]
 {empty}[http://github.com/Shizhe-NUS[github]] [<<Shizhe Yang#, portfolio>>]
 
 Role: Developer +
@@ -38,7 +40,7 @@ Responsibilities: Data
 '''
 
 === Windrich
-image::windrichie.jpg[width="150", align="left"]
+image::windrichie.png[width="150", align="left"]
 {empty}[http://github.com/windrichie[github]] [<<windrich#, portfolio>>]
 
 Role: Developer +
