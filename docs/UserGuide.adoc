@@ -67,7 +67,6 @@ Example: add m/CS2113 c/4 t/Wednesday,12-14 t/Tuesday,11-12
 A person can have any number of tags (including 0)
 
 
-
 == Generating a learning schedule: 'generate'
 
 Generates a learning schedule based on the modules in the database. A calendar week view will appear in the GUI as seen above in Section 2.
@@ -149,6 +148,7 @@ The `redo` command fails as there are no `undo` commands executed previously.
 === Clearing all entries : `clear`
 
 Clears all entries from the address book. +
+Alias command: 'c' +
 Format: `clear`
 
 
