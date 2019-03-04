@@ -1,4 +1,4 @@
-﻿= Efficient Learning - Developer Guide
+﻿= Efficient Learning Scheduler- Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -848,21 +848,22 @@ _{More to be added}_
 (For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
 
 [discrete]
-=== Use case: Delete person
+=== Use case: Generate a time table
 
 *MSS*
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to generate a schedule
+2.  App shows a list of available modules
+3.  User requests to add specific module to the time table
+4.  App generates the time table for the users
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 2a. The list is empty.
+* 2a. Efficient Learning Scheduler can’t pull module data from CORS
+  2a1. Efficient Learning Scheduler shows an error message.
 +
 Use case ends.
 
@@ -879,8 +880,8 @@ _{More to be added}_
 == Non Functional Requirements
 
 .  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `9` or higher installed.
-.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  Able to accommodate 100 persons without slowing the performance for typical usage
+.  Able to suit the needs of a NUS student with fast typing speed.
 
 _{More to be added}_
 
@@ -895,6 +896,17 @@ A contact detail that is not meant to be shared with others
 
 [[ALSET]]
 ALSET aims to become a leading hub for learning science and education technology research in Asia, and a provider of impactful programming to support lifelong learning. For more info, visit http://nus.edu.sg/alset/index.html
+
+[[Value proposition:]]
+Help NUS students learn in the most efficient way by helping them generate an efficient studying schedule
+
+[[Problem Scope]]
+
+[[Work Patterns]]
+Work Alone
+
+[[Target Users]]
+NUS students who prefer typing to create a schedule.
 
 [appendix]
 == Product Survey
