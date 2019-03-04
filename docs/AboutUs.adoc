@@ -21,7 +21,7 @@ Role: to be assigned later
 
 === Jesulayomi Kupoluyi
 image::jkupoluyi.png[width="150", align="left"]
-{empty}[http://github.com/jkupoluyi[github]] [<<Layomi#, portfolio>>]
+{empty}[http://github.com/Jkupoluyi[github]] [<<Layomi#, portfolio>>]
 
 Role: To Be Determined
 Responsibilities: Loading..
