@@ -9,7 +9,7 @@ Efficient Learning Scheduler was developed by a team of 4 NUS undergraduates. +
 We are a team based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore]. +
 {empty} +
 We believe that our Efficient Learning Scheduler can benefit all NUS Computing students as much as it has benefited all of us.
-+ Below are the details of our awesome developers.
+Below are the details of our awesome developers.
 
 == Project Team
 
