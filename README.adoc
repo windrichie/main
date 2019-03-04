@@ -1,9 +1,11 @@
 = Efficient Learning Scheduler
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 
+master
 https://travis-ci.org/CS2113-AY1819S2-T11-1/main[image:https://travis-ci.org/CS2113-AY1819S2-T11-1/main.svg?branch=master[Build Status]]
 https://ci.appveyor.com/project/windrichie/main[image:https://ci.appveyor.com/api/projects/status/g72i5rm6vrxdb40g?svg=true[Build status]]
 https://coveralls.io/github/windrichie/main?branch=master[image:https://coveralls.io/repos/github/windrichie/main/badge.svg?branch=master[Coverage Status]]
+
 
 ifdef::env-github[]
 image::docs/images/Ui.png[width="600"]
@@ -35,5 +37,6 @@ endif::[]
 * Some parts of this sample application were inspired by the excellent http://code.makery.ch/library/javafx-8-tutorial/[Java FX tutorial] by
 _Marco Jakob_.
 * Libraries used: https://github.com/TestFX/TestFX[TextFX], https://github.com/FasterXML/jackson[Jackson], https://github.com/google/guava[Guava], https://github.com/junit-team/junit5[JUnit5]
+* AddressBook-Level4 project created by SE-EDU initiative at https://github.com/se-edu/
 
 == Licence : link:LICENSE[MIT]

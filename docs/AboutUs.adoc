@@ -14,7 +14,7 @@ Below are the details of our awesome developers.
 == Project Team
 
 === Samuel Ong
-image::sam.png[width="150", align="left"]
+image::sameow.png[width="150", align="left"]
 {empty} [https://github.com/Sameow[github]] [<<sam#, portfolio>>]
 
 Role: to be assigned later
@@ -22,11 +22,11 @@ Role: to be assigned later
 '''
 
 === Jesulayomi Kupoluyi
-image::JesulayomiKupoluyi.png[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]] [<<johndoe#, portfolio>>]
+image::jkupoluyi.png[width="150", align="left"]
+{empty}[http://github.com/Jkupoluyi[github]] [<<Layomi#, portfolio>>]
 
-Role: Team Lead +
-Responsibilities: UI
+Role: To Be Determined
+Responsibilities: Loading..
 
 '''
 
