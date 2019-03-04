@@ -1,4 +1,4 @@
-= AddressBook Level 4 - Developer Guide
+﻿= Efficient Learning - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -13,9 +13,9 @@ ifdef::env-github[]
 :warning-caption: :warning:
 :experimental:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level4/tree/master
+:repoURL: https://github.com/CS2113-AY1819S2-T11-1/main
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `CS2113-AY1819S2-T11-1`      Since: `Jun 2019`      Licence: `MIT`
 
 == Setting up
 
@@ -892,6 +892,9 @@ Windows, Linux, Unix, OS-X
 
 [[private-contact-detail]] Private contact detail::
 A contact detail that is not meant to be shared with others
+
+[[ALSET]]
+ALSET aims to become a leading hub for learning science and education technology research in Asia, and a provider of impactful programming to support lifelong learning. For more info, visit http://nus.edu.sg/alset/index.html
 
 [appendix]
 == Product Survey
