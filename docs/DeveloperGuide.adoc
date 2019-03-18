@@ -242,19 +242,19 @@ These operations are exposed in the Model interface as Model#getAvailability.
 
 Given below is an example usage scenario and how the Check availability behaves at each step.
 
-Step 1. The user launches the application for the first time.
+* **Step 1.** The user launches the application for the first time.
 
-Step 2. The user executes creates a schedule, inputting his modules and CCA’s.
+* **Step 2.** The user executes creates a schedule, inputting his modules and CCA’s.
 
-Step 3. The Efficient Learning Scheduler generates a schedule for said student.
+* **Step 3.** The Efficient Learning Scheduler generates a schedule for said student.
 
-Step 4. The Efficient Learning Scheduler generates a list of free time slots for the student.
+* **Step 4.** The Efficient Learning Scheduler generates a list of free time slots for the student.
 
-Step 5. The student wants to find available meeting times with another student, in accordance to the Efficient Study Scheduler.
+* **Step 5.** The student wants to find available meeting times with another student, in accordance to the Efficient Study Scheduler.
 
-Step 6. The compare method compares the free slots available between the two students, and compounds the two lists into a single list of times.
+* **Step 6.** The compare method compares the free slots available between the two students, and compounds the two lists into a single list of times.
 
-Step 7. The list of available times is displayed to the user.
+* **Step 7.** The list of available times is displayed to the user.
 
 image::CheckAvailability.png[width="800"]
 
