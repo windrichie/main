@@ -263,7 +263,7 @@ image::CheckAvailability.png[width="800"]
 ===== Aspect: How check availability executes
 
 * **Alternative 1 (current choice):** Saves a list of empty time slots for each user.
-** Pros: Easy to implement.
+** Pros: It is Easy to implement.
 ** Cons: May have performance issues in terms of memory usage.
 * **Alternative 2:** Compares the time table of two people after it’s generated, then finds available slots.
 ** Pros: Will use less memory.
