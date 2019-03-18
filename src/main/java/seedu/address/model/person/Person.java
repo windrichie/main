@@ -54,7 +54,9 @@ public class Person {
         return address;
     }
 
-    public Module getModule(){ return module;}
+    public Module getModule() {
+        return module;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -98,8 +100,7 @@ public class Person {
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
                 && otherPerson.getModule().equals(getModule())
-                && otherPerson.getTags().equals(getTags())
-                ;
+                && otherPerson.getTags().equals(getTags());
     }
 
     @Override
