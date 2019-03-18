@@ -21,6 +21,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Module;
 import seedu.address.model.person.Phone;
 
 public class PersonListPanelTest extends GuiUnitTest {
@@ -83,7 +84,8 @@ public class PersonListPanelTest extends GuiUnitTest {
             Phone phone = new Phone("000");
             Email email = new Email("a@aa");
             Address address = new Address("a");
-            Person person = new Person(name, phone, email, address, Collections.emptySet());
+            Module module = new Module("CS2113");
+            Person person = new Person(name, phone, email, address, module, Collections.emptySet());
             backingList.add(person);
         }
         return backingList;

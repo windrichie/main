@@ -35,9 +35,12 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label address;
     @FXML
+    private Label module;
+    @FXML
     private Label email;
     @FXML
     private FlowPane tags;
+
 
     public PersonCard(Person person, int displayedIndex) {
         super(FXML);
