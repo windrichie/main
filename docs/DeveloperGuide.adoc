@@ -890,11 +890,11 @@ _{More to be added}_
 
 [appendix]
 == explanation of enhancement
-*1.By adding the timetable class, users can search for the module they want, and UI will generate
-the timetable for the specific module 
- 1a.Module class- extract data from ALSET database, Module Class will be the subclass of TimeSlot
- 2a.TimeSlot Class - contain Module class
- 3a.TimeTable Class-contain all the TimeSlots,generate the timeTable
+* 1.By adding the timetable class, users can search for the module they want, and UI will generate
+the timetable for the specific module
+** 1a.Module class- extract data from ALSET database, Module Class will be the subclass of TimeSlot
+** 2a.TimeSlot Class - contain Module class
+** 3a.TimeTable Class-contain all the TimeSlots,generate the timeTable
 
 [appendix]
 == Glossary
