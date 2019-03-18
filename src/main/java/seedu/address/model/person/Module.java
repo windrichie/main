@@ -3,6 +3,10 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * New Module class
+ */
+
 public class Module{
 
     public static final String MESSAGE_CONSTRAINTS =
