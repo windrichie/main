@@ -19,7 +19,6 @@ public class Module {
      *
      * @param module A valid phone number.
      */
-    
     public Module(String module) {
         requireNonNull(module);
         checkArgument(isValidModule(module), MESSAGE_CONSTRAINTS);
@@ -29,7 +28,6 @@ public class Module {
     /**
      * Returns true if a given string is a valid phone number.
      */
-    
     public static boolean isValidModule(String test) {
         return test.matches(VALIDATION_REGEX);
     }
