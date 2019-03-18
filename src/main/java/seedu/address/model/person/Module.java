@@ -7,7 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * New Module class
  */
 
-public class Module{
+public class Module {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Module should contain a 2-4 letter department code followed by a four digit course code";
@@ -19,6 +19,7 @@ public class Module{
      *
      * @param module A valid phone number.
      */
+    
     public Module(String module) {
         requireNonNull(module);
         checkArgument(isValidModule(module), MESSAGE_CONSTRAINTS);
@@ -28,6 +29,7 @@ public class Module{
     /**
      * Returns true if a given string is a valid phone number.
      */
+    
     public static boolean isValidModule(String test) {
         return test.matches(VALIDATION_REGEX);
     }
