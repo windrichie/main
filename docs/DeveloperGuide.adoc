@@ -264,9 +264,6 @@ We are using java.util.logging package for logging. The LogsCenter class is used
 ==== Configuration
 Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: config.json).
 
-// tag::undoredo[]
-=== Undo/Redo feature
-
 //tag::checkAvailability[]
 === Check Availability between Students Feature
 ==== Current Implementation
