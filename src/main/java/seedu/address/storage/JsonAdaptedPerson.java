@@ -106,10 +106,10 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
         if (module == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Module.class.getSimpleName()));
         }
         if (!Module.isValidModule(module)) {
-            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Module.MESSAGE_CONSTRAINTS);
         }
         final Module modelModule = new Module(module);
 
