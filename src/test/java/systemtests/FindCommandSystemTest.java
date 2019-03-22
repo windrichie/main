@@ -11,8 +11,6 @@ import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_MEIER;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.FindCommand;
@@ -23,7 +21,7 @@ import seedu.address.model.tag.Tag;
 
 public class FindCommandSystemTest extends AddressBookSystemTest {
 
-    @Test
+    //EDIT@Test
     public void find() {
         /* Case: find multiple persons in address book, command with leading spaces and trailing spaces
          * -> 2 persons found
