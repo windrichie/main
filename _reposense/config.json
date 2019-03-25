@@ -1,0 +1,18 @@
+{
+  "ignoreGlobList": [],
+  "formats": [],
+  "ignoreCommitList": [],
+  "authors":
+  [
+    {
+      "githubId": "Sameow",
+      "emails": ["sameow.ong@gmail.com"],
+      "displayName": "Samuel Ong",
+      "authorNames": ["sameowong", "Sameow"],
+      "ignoreGlobList": []
+    },
+    {
+      "githubId": "bob"
+    }
+  ]
+}
