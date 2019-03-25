@@ -67,10 +67,11 @@ Example: add m/CS2113 c/4 t/Wednesday,12-14 t/Tuesday,11-12
 A person can have any number of tags (including 0)
 
 
-=== Generating a learning schedule: 'generate'
+=== Generating a learning schedule: 'generate' `[coming in v2.0]`
 
 Generates a learning schedule based on the modules in the database. A calendar week view will appear in the GUI as seen above in Section 2.
-Format: generate
+User would be able to generate a timetable based on how long he/she can focus in 1 period.
+Format: generate -fp FOCUS_PERIOD
 
 ==== Viewing learning schedule for a specific day: 'dayview'
 

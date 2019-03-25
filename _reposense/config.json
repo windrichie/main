@@ -1,18 +1,26 @@
 {
-  "ignoreGlobList": [],
-  "formats": [],
-  "ignoreCommitList": [],
   "authors":
   [
     {
       "githubId": "Sameow",
       "emails": ["sameow.ong@gmail.com"],
       "displayName": "Samuel Ong",
-      "authorNames": ["sameowong", "Sameow"],
-      "ignoreGlobList": []
+      "authorNames": ["sameowong", "Sameow"]
     },
     {
-      "githubId": "bob"
+      "githubId": "windrichie",
+      "emails": ["windrichie@gmail.com"],
+      "displayName": "Windrich"
+    },
+    {
+      "githubId": "Shizhe-NUS",
+      "emails": ["e0386325@u.nus.edu"],
+      "displayName": "Shizhe"
+    },
+    {
+      "githubId": "JKupoluyi",
+      "emails": ["Jok10@case.edu"],
+      "displayName": "JKupoluyi"
     }
   ]
 }
