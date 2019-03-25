@@ -246,6 +246,7 @@ The scheduling is facilitated by interleaver.
 
 These operations are exposed in the Model interface.
 Given below is a sequence diagram:
+
 image::interleavingActivityDiagram.png[width="800"]
 
 ==== Design Considerations
