@@ -94,7 +94,7 @@ public class LogicManagerTest {
         expectedModel.commitAddressBook();
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
         /*----assertCommandBehavior(CommandException.class, addCommand, expectedMessage, expectedModel); */
-//EDIT        assertHistoryCorrect(addCommand);
+        //EDIT        assertHistoryCorrect(addCommand);
     }
 
     @Test
