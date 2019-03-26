@@ -45,8 +45,9 @@ import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
 
 public class AddCommandSystemTest extends AddressBookSystemTest {
-
-    //edit @Test
+    /**
+     * This method currently does nothing. //@Test is commented out.
+     */
     public void add() {
         Model model = getModel();
 
