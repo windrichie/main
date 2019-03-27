@@ -1,22 +1,53 @@
 package seedu.address.model.person;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 /**
- * Represents a Module in the address book.
- * Guarantees: details are present and not null, field values are validated, immutable.
+ * New Module class
  */
 
+
 public class Module {
-    private TimeSlot timeslot;
 
+    public static final String MESSAGE_CONSTRAINTS =
+            "Module should contain a 2-4 letter department code followed by a four digit course code";
+    public static final String VALIDATION_REGEX = "\\w{2,4}\\d{4}";
+    public final String value;
 
-    public TimeSlot getTimeslot() {
-        return this.timeslot;
+    /**
+     * Constructs a {@code Module}.
+     *
+     * @param module A valid phone number.
+     */
+    public Module(String module) {
+        requireNonNull(module);
+        checkArgument(isValidModule(module), MESSAGE_CONSTRAINTS);
+        value = module;
     }
 
-    public void setTimeSlot(TimeSlot timeslot) {
-        this.timeslot = timeslot;
+    /**
+     * Returns true if a given string is a valid phone number.
+     */
+    public static boolean isValidModule(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
+    @Override
+    public String toString() {
+        return value;
+    }
 
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof Module // instanceof handles nulls
+                && value.equals(((Module) other).value)); // state check
+    }
+
+    @Override
+    public int hashCode() {
+        return value.hashCode();
+    }
 
 }
