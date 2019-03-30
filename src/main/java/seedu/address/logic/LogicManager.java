@@ -30,6 +30,7 @@ public class LogicManager implements Logic {
     private final CommandHistory history;
     private final AddressBookParser addressBookParser;
     private boolean addressBookModified;
+    private boolean eventCalendarModified;
 
     public LogicManager(Model model, Storage storage) {
         this.model = model;
@@ -39,6 +40,7 @@ public class LogicManager implements Logic {
 
         // Set addressBookModified to true whenever the models' address book is modified.
         model.getAddressBook().addListener(observable -> addressBookModified = true);
+        model.getEventCalendar().addListener(observable -> eventCalendarModified = true);
     }
 
     @Override
@@ -58,6 +60,15 @@ public class LogicManager implements Logic {
             logger.info("Address book modified, saving to file.");
             try {
                 storage.saveAddressBook(model.getAddressBook());
+            } catch (IOException ioe) {
+                throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
+            }
+        }
+
+        if (eventCalendarModified) {
+            logger.info("Event Calendar modified, saving to file.");
+            try {
+                storage.saveEventCalendar(model.getEventCalendar());
             } catch (IOException ioe) {
                 throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
             }
@@ -104,5 +115,10 @@ public class LogicManager implements Logic {
     @Override
     public void setSelectedPerson(Person person) {
         model.setSelectedPerson(person);
+    }
+
+    @Override
+    public Path getEventCalendarFilePath() {
+        return model.getEventCalendarFilePath();
     }
 }
