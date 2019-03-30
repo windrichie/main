@@ -146,6 +146,7 @@ public class ParserUtil {
         return tagSet;
     }
 
+    //@@author windrichie
     // Parsers for EVENTS
     /**
      * Parses a {@code String title} into a {@code Title}.

@@ -22,7 +22,7 @@ import seedu.address.model.event.Time;
 import seedu.address.model.event.Title;
 import seedu.address.model.event.Venue;
 
-
+//@@author windrichie
 /**
  * Parses input arguments and creates a new AddCommand object
  */

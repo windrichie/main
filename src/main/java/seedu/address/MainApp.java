@@ -17,10 +17,10 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.AddressBook;
 import seedu.address.model.EventCalendar;
-import seedu.address.model.ReadOnlyEventCalendar;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyEventCalendar;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
@@ -82,6 +82,7 @@ public class MainApp extends Application {
         ReadOnlyAddressBook initialData;
         Optional<ReadOnlyEventCalendar> eventCalendarOptional;
         ReadOnlyEventCalendar initialEventCalendar;
+
         try {
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
@@ -96,6 +97,7 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         }
 
+        //@@author windrichie
         try {
             eventCalendarOptional = storage.readEventCalendar();
             if (!eventCalendarOptional.isPresent()) {
@@ -116,6 +118,7 @@ public class MainApp extends Application {
         return new ModelManager(initialData, userPrefs, initialEventCalendar);
     }
 
+    //@@author
     private void initLogging(Config config) {
         LogsCenter.init(config);
     }

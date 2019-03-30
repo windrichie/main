@@ -4,6 +4,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
+//@@author windrichie
 /**
  * Represents an Event in the event calendar.
  * Guarantees: details are present and not null, field values are validated, immutable.

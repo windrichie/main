@@ -10,6 +10,7 @@ import seedu.address.commons.util.InvalidationListenerManager;
 import seedu.address.model.event.Event;
 import seedu.address.model.event.UniqueEventList;
 
+//@@author windrichie
 /**
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)

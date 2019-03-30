@@ -253,6 +253,7 @@ public class ModelManager implements Model {
                 && Objects.equals(selectedPerson.get(), other.selectedPerson.get());
     }
 
+    //@@author windrichie
     // =============Event Calendar=====================================================
 
     @Override
@@ -264,7 +265,7 @@ public class ModelManager implements Model {
     @Override
     public void addEvent(Event event) {
         eventCalendar.addEvent(event);
-    //        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        //updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     @Override

@@ -14,8 +14,9 @@ import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.ReadOnlyEventCalendar;
 
+//@@author windrichie
 /**
- * A class to access AddressBook data stored as a json file on the hard disk.
+ * A class to access EventCalendar data stored as a json file on the hard disk.
  */
 public class JsonEventCalendarStorage implements EventCalendarStorage {
 
