@@ -1,10 +1,10 @@
-package seedu.address.model.school;
+package seedu.address.model.event;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents an Event's dress code in the school calendar of events.
+ * Represents an Event's dress code in the event calendar of events.
  * Guarantees: immutable; is valid as declared in {@link #isValidDressCode(String)}
  */
 public class DressCode {
