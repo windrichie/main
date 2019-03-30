@@ -2,19 +2,19 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.event.*;
-import seedu.address.model.person.*;
-import seedu.address.model.tag.Tag;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.event.Date;
+import seedu.address.model.event.Description;
+import seedu.address.model.event.DressCode;
+import seedu.address.model.event.Event;
+import seedu.address.model.event.TargetAudience;
+import seedu.address.model.event.Time;
+import seedu.address.model.event.Title;
+import seedu.address.model.event.Venue;
 
 /**
- * Jackson-friendly version of {@link Person}.
+ * Jackson-friendly version of {@link Event}.
  */
 class JsonAdaptedEvent {
 
@@ -95,7 +95,7 @@ class JsonAdaptedEvent {
 
         String[] times = time.split("-");
 
-        if (times.length != 2){
+        if (times.length != 2) {
             throw new IllegalValueException(Time.MESSAGE_END_TIME_MISSING);
         }
         String startTime = times[0];
@@ -116,7 +116,8 @@ class JsonAdaptedEvent {
         final Description modelDesc = new Description(desc);
 
         if (code == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, DressCode.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    DressCode.class.getSimpleName()));
         }
         if (!DressCode.isValidDressCode(code)) {
             throw new IllegalValueException(DressCode.MESSAGE_CONSTRAINTS);
@@ -124,7 +125,8 @@ class JsonAdaptedEvent {
         final DressCode modelCode = new DressCode(code);
 
         if (audience == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, TargetAudience.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    TargetAudience.class.getSimpleName()));
         }
         if (!TargetAudience.isValidTargetAudience(audience)) {
             throw new IllegalValueException(TargetAudience.MESSAGE_CONSTRAINTS);

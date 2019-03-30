@@ -1,13 +1,27 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.AddEventCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.event.*;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DRESSCODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TARGETAUDIENCE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_VENUE;
 
 import java.util.stream.Stream;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import seedu.address.logic.commands.AddEventCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.event.Date;
+import seedu.address.model.event.Description;
+import seedu.address.model.event.DressCode;
+import seedu.address.model.event.Event;
+import seedu.address.model.event.TargetAudience;
+import seedu.address.model.event.Time;
+import seedu.address.model.event.Title;
+import seedu.address.model.event.Venue;
+
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -36,13 +50,13 @@ public class AddEventCommandParser implements Parser<AddEventCommand> {
         TargetAudience audience = new TargetAudience("");
         DressCode code = new DressCode("");
         Description desc = new Description("");
-        if (argMultimap.getValue(PREFIX_TARGETAUDIENCE).isPresent()){  // check if user inputs any target audience
+        if (argMultimap.getValue(PREFIX_TARGETAUDIENCE).isPresent()) { // check if user inputs any target audience
             audience = ParserUtil.parseTargetAudience(argMultimap.getValue(PREFIX_TARGETAUDIENCE).get());
         }
-        if (argMultimap.getValue(PREFIX_DRESSCODE).isPresent()){  // check if user inputs any dress code
+        if (argMultimap.getValue(PREFIX_DRESSCODE).isPresent()) { // check if user inputs any dress code
             code = ParserUtil.parseDressCode(argMultimap.getValue(PREFIX_DRESSCODE).get());
         }
-        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()){  // check if user inputs any description
+        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) { // check if user inputs any description
             desc = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
         }
 

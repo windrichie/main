@@ -1,9 +1,13 @@
 package seedu.address.model.event;
 
-import java.util.Objects;
-
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Objects;
+
+/**
+ * Represents an Event in the event calendar.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class Event {
 
     private final Title title;
@@ -17,7 +21,8 @@ public class Event {
     /**
      * Every field must be present and not null.
      */
-    public Event(Title title, Venue venue, Date date, Time time, Description desc, DressCode code, TargetAudience audience) {
+    public Event(Title title, Venue venue, Date date, Time time, Description desc, DressCode code,
+                 TargetAudience audience) {
         requireAllNonNull(title, venue, date, time, desc, code, audience);
         this.title = title;
         this.venue = venue;

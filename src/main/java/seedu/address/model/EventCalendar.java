@@ -1,19 +1,14 @@
 package seedu.address.model;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+
 import javafx.beans.InvalidationListener;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.InvalidationListenerManager;
 import seedu.address.model.event.Event;
 import seedu.address.model.event.UniqueEventList;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.tag.Tag;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Wraps all data at the address-book level
@@ -21,7 +16,6 @@ import static java.util.Objects.requireNonNull;
  */
 public class EventCalendar implements ReadOnlyEventCalendar {
 
-//    private final UniquePersonList persons;
     private final UniqueEventList events;
     private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
 
@@ -91,21 +85,21 @@ public class EventCalendar implements ReadOnlyEventCalendar {
      * {@code target} must exist in the address book.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
      */
-//    public void setPerson(Person target, Person editedPerson) {
-//        requireNonNull(editedPerson);
-//
-//        persons.setPerson(target, editedPerson);
-//        indicateModified();
-//    }
+    //    public void setPerson(Person target, Person editedPerson) {
+    //        requireNonNull(editedPerson);
+    //
+    //        persons.setPerson(target, editedPerson);
+    //        indicateModified();
+    //    }
 
     /**
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
      */
-//    public void removePerson(Person key) {
-//        persons.remove(key);
-//        indicateModified();
-//    }
+    //    public void removePerson(Person key) {
+    //        persons.remove(key);
+    //        indicateModified();
+    //    }
 
     @Override
     public void addListener(InvalidationListener listener) {
