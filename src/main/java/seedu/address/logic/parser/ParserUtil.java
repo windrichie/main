@@ -162,10 +162,14 @@ public class ParserUtil {
      */
     public static Time parseTime(String time) throws ParseException {
         requireNonNull(time);
-        String trimmedDate = time.trim();
-        String trimmedStartTime = trimmedDate.split("-")[0];
-        String trimmedEndTime = trimmedDate.split("-")[1];
-        if ((!Time.isValidTime(trimmedStartTime)) || (Time.isValidTime(trimmedEndTime))) {
+        String trimmedTime = time.trim();
+        String[] times = trimmedTime.split("-");
+        if (times.length != 2) {
+            throw new ParseException(Time.MESSAGE_END_TIME_MISSING);
+        }
+        String trimmedStartTime = times[0];
+        String trimmedEndTime = times[1];
+        if ((!Time.isValidTime(trimmedStartTime)) || (!Time.isValidTime(trimmedEndTime))) {
             throw new ParseException(Time.MESSAGE_CONSTRAINTS);
         }
         return new Time(trimmedStartTime, trimmedEndTime);
