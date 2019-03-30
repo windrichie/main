@@ -47,6 +47,10 @@ public class Time {
         return endTime;
     }
 
+    public String startEndTimeToString() {
+        return startTime + "-" + endTime;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

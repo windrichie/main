@@ -89,6 +89,17 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
+    @Override
+    public Path getEventCalendarFilePath() {
+        return userPrefs.getEventCalendarFilePath();
+    }
+
+    @Override
+    public void setEventCalendarFilePath(Path eventCalendarFilePath) {
+        requireNonNull(eventCalendarFilePath);
+        userPrefs.setEventCalendarFilePath(eventCalendarFilePath);
+    }
+
     //=========== AddressBook ================================================================================
 
     @Override
@@ -254,6 +265,11 @@ public class ModelManager implements Model {
     public void addEvent(Event event) {
         eventCalendar.addEvent(event);
 //        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    }
+
+    @Override
+    public ReadOnlyEventCalendar getEventCalendar() {
+        return eventCalendar;
     }
 
 }

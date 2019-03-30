@@ -33,9 +33,18 @@ public class AddEventCommandParser implements Parser<AddEventCommand> {
         Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
         Time time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_TIME).get());
         Venue venue = ParserUtil.parseVenue(argMultimap.getValue(PREFIX_VENUE).get());
-        TargetAudience audience = ParserUtil.parseTargetAudience(argMultimap.getValue(PREFIX_TARGETAUDIENCE).get());
-        DressCode code = ParserUtil.parseDressCode(argMultimap.getValue(PREFIX_DRESSCODE).get());
-        Description desc = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+        TargetAudience audience = new TargetAudience("");
+        DressCode code = new DressCode("");
+        Description desc = new Description("");
+        if (argMultimap.getValue(PREFIX_TARGETAUDIENCE).isPresent()){  // check if user inputs any target audience
+            audience = ParserUtil.parseTargetAudience(argMultimap.getValue(PREFIX_TARGETAUDIENCE).get());
+        }
+        if (argMultimap.getValue(PREFIX_DRESSCODE).isPresent()){  // check if user inputs any dress code
+            code = ParserUtil.parseDressCode(argMultimap.getValue(PREFIX_DRESSCODE).get());
+        }
+        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()){  // check if user inputs any description
+            desc = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+        }
 
         Event event = new Event(title, venue, date, time, desc, code, audience);
 

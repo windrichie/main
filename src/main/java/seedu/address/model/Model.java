@@ -144,4 +144,17 @@ public interface Model {
      */
     void addEvent(Event event);
 
+    /**
+     * Returns the user prefs' event calendar file path.
+     */
+    Path getEventCalendarFilePath();
+
+    /**
+     * Sets the user prefs' event calendar file path.
+     */
+    void setEventCalendarFilePath(Path eventCalendarFilePath);
+
+    /** Returns the Event Calendar */
+    ReadOnlyEventCalendar getEventCalendar();
+
 }

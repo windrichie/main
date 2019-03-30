@@ -1,62 +1,61 @@
 package seedu.address.storage;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.event.*;
+import seedu.address.model.person.*;
+import seedu.address.model.tag.Tag;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
-
 /**
  * Jackson-friendly version of {@link Person}.
  */
-class JsonAdaptedPerson {
+class JsonAdaptedEvent {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
+    private static final String MISSING_FIELD_MESSAGE_FORMAT = "Event's %s field is missing!";
 
-    private final String name;
-    private final String phone;
-    private final String email;
-    private final String address;
-    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final String title;
+    private final String venue;
+    private final String date;
+    private final String time;
+    private final String desc;
+    private final String code;
+    private final String audience;
 
     /**
-     * Constructs a {@code JsonAdaptedPerson} with the given person details.
+     * Constructs a {@code JsonAdaptedEvent} with the given event details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        if (tagged != null) {
-            this.tagged.addAll(tagged);
-        }
+    public JsonAdaptedEvent(@JsonProperty("title") String title, @JsonProperty("venue") String venue,
+                            @JsonProperty("date") String date, @JsonProperty("time") String time,
+                            @JsonProperty("desc") String desc, @JsonProperty("code") String code,
+                            @JsonProperty("audience") String audience) {
+        this.title = title;
+        this.venue = venue;
+        this.date = date;
+        this.time = time;
+        this.desc = desc;
+        this.code = code;
+        this.audience = audience;
     }
 
     /**
-     * Converts a given {@code Person} into this class for Jackson use.
+     * Converts a given {@code Event} into this class for Jackson use.
      */
-    public JsonAdaptedPerson(Person source) {
-        name = source.getName().fullName;
-        phone = source.getPhone().value;
-        email = source.getEmail().value;
-        address = source.getAddress().value;
-        tagged.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
-                .collect(Collectors.toList()));
+    public JsonAdaptedEvent(Event source) {
+        title = source.getTitle().toString();
+        venue = source.getVenue().toString();
+        date = source.getDate().toString();
+        time = source.getTime().startEndTimeToString();
+        desc = source.getDesc().toString();
+        code = source.getCode().toString();
+        audience = source.getAudience().toString();
     }
 
     /**
@@ -64,46 +63,75 @@ class JsonAdaptedPerson {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted person.
      */
-    public Person toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tagged) {
-            personTags.add(tag.toModelType());
+    public Event toModelType() throws IllegalValueException {
+
+        if (title == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
+        }
+        if (!Title.isValidTitle(title)) {
+            throw new IllegalValueException(Title.MESSAGE_CONSTRAINTS);
+        }
+        final Title modelTitle = new Title(title);
+
+        if (venue == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Venue.class.getSimpleName()));
+        }
+        if (!Venue.isValidVenue(venue)) {
+            throw new IllegalValueException(Venue.MESSAGE_CONSTRAINTS);
+        }
+        final Venue modelVenue = new Venue(venue);
+
+        if (date == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Date.class.getSimpleName()));
+        }
+        if (!Date.isValidDate(date)) {
+            throw new IllegalValueException(Date.MESSAGE_CONSTRAINTS);
+        }
+        final Date modelDate = new Date(date);
+
+        if (time == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Time.class.getSimpleName()));
         }
 
-        if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
-        }
-        if (!Name.isValidName(name)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
-        }
-        final Name modelName = new Name(name);
+        String[] times = time.split("-");
 
-        if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+        if (times.length != 2){
+            throw new IllegalValueException(Time.MESSAGE_END_TIME_MISSING);
         }
-        if (!Phone.isValidPhone(phone)) {
-            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
-        }
-        final Phone modelPhone = new Phone(phone);
+        String startTime = times[0];
+        String endTime = times[1];
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+        if ((!Time.isValidTime(startTime)) || (!Time.isValidTime(endTime))) {
+            throw new IllegalValueException(Time.MESSAGE_CONSTRAINTS);
         }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
-        }
-        final Email modelEmail = new Email(email);
+        final Time modelTime = new Time(startTime, endTime);
 
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
+        if (desc == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Description.class.getSimpleName()));
         }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+        if (!Description.isValidDescription(desc)) {
+            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
         }
-        final Address modelAddress = new Address(address);
+        final Description modelDesc = new Description(desc);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        if (code == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, DressCode.class.getSimpleName()));
+        }
+        if (!DressCode.isValidDressCode(code)) {
+            throw new IllegalValueException(DressCode.MESSAGE_CONSTRAINTS);
+        }
+        final DressCode modelCode = new DressCode(code);
+
+        if (audience == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, TargetAudience.class.getSimpleName()));
+        }
+        if (!TargetAudience.isValidTargetAudience(audience)) {
+            throw new IllegalValueException(TargetAudience.MESSAGE_CONSTRAINTS);
+        }
+        final TargetAudience modelAudience = new TargetAudience(audience);
+
+        return new Event(modelTitle, modelVenue, modelDate, modelTime, modelDesc, modelCode, modelAudience);
     }
 
 }

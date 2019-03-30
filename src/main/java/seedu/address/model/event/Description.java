@@ -10,15 +10,15 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Description {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Description should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Description should only contain alphanumeric characters and spaces, and it can be blank.";
 
     /*
      * The first character of the venue must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[\\p{Graph}][\\p{Graph} ]*";
+    public static final String VALIDATION_REGEX = "^$|^[\\p{Graph} ]+$";
 
-    private final String fullDescription;
+    public final String fullDescription;
 
     /**
      * Constructs a {@code Description}.
