@@ -20,6 +20,7 @@ public class Person {
     private final Phone phone;
     private final Email email;
     private final Module module;
+    private final TimeSlot timeSlot;
 
     // Data fields
     private final Address address;

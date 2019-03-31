@@ -7,6 +7,9 @@ package seedu.address.model.person;
 
 public class TimeSlot {
 
+    public static final int TIMES = 24;
+    public static final int DAYS = 7;
     private Module module;
     private Slot slot;
+    private int[][] TimeBusy =  new int[DAYS][TIMES];
 }
