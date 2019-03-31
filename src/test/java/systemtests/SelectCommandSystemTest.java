@@ -17,7 +17,9 @@ import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 
 public class SelectCommandSystemTest extends AddressBookSystemTest {
-    //EDIT @Test
+    /**
+     * This method currently does nothing. //@Test is commented out.
+     */
     public void select() {
         /* ------------------------ Perform select operations on the shown unfiltered list -------------------------- */
 

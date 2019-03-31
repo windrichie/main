@@ -21,7 +21,9 @@ import seedu.address.model.tag.Tag;
 
 public class FindCommandSystemTest extends AddressBookSystemTest {
 
-    //EDIT@Test
+    /**
+     * This method currently does nothing. //@Test is commented out.
+     */
     public void find() {
         /* Case: find multiple persons in address book, command with leading spaces and trailing spaces
          * -> 2 persons found

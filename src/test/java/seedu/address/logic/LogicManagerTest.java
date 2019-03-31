@@ -30,6 +30,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonEventCalendarStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.PersonBuilder;
@@ -51,7 +52,9 @@ public class LogicManagerTest {
     public void setUp() throws Exception {
         JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(temporaryFolder.newFile().toPath());
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.newFile().toPath());
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        JsonEventCalendarStorage eventCalendarStorage =
+                new JsonEventCalendarStorage(temporaryFolder.newFile().toPath());
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, eventCalendarStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -82,7 +85,9 @@ public class LogicManagerTest {
         JsonAddressBookStorage addressBookStorage =
                 new JsonAddressBookIoExceptionThrowingStub(temporaryFolder.newFile().toPath());
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.newFile().toPath());
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        JsonEventCalendarStorage eventCalendarStorage =
+                new JsonEventCalendarStorage(temporaryFolder.newFile().toPath());
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, eventCalendarStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
@@ -94,7 +99,7 @@ public class LogicManagerTest {
         expectedModel.commitAddressBook();
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
         /*----assertCommandBehavior(CommandException.class, addCommand, expectedMessage, expectedModel); */
-        //EDIT assertHistoryCorrect(addCommand);
+        //EDIT        assertHistoryCorrect(addCommand);
     }
 
     @Test
@@ -133,7 +138,7 @@ public class LogicManagerTest {
      * @see #assertCommandBehavior(Class, String, String, Model)
      */
     private void assertCommandFailure(String inputCommand, Class<?> expectedException, String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getEventCalendar());
         assertCommandBehavior(expectedException, inputCommand, expectedMessage, expectedModel);
     }
 

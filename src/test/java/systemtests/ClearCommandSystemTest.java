@@ -12,7 +12,9 @@ import seedu.address.model.ModelManager;
 
 public class ClearCommandSystemTest extends AddressBookSystemTest {
 
-    //EDIT @Test
+    /**
+     * This method currently does nothing. //@Test is commented out.
+     */
     public void clear() {
         final Model defaultModel = getModel();
 

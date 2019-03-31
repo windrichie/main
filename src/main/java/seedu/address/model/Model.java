@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.beans.property.ReadOnlyProperty;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.event.Event;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 
@@ -131,4 +132,29 @@ public interface Model {
      * Sets the selected person in the filtered person list.
      */
     void setSelectedPerson(Person person);
+
+    /**
+     * Returns true if an event with the same identity as {@code event} exists in the event calendar.
+     */
+    boolean hasEvent(Event event);
+
+    /**
+     * Adds the given event.
+     * {@code event} must not already exist in the event calendar.
+     */
+    void addEvent(Event event);
+
+    /**
+     * Returns the user prefs' event calendar file path.
+     */
+    Path getEventCalendarFilePath();
+
+    /**
+     * Sets the user prefs' event calendar file path.
+     */
+    void setEventCalendarFilePath(Path eventCalendarFilePath);
+
+    /** Returns the Event Calendar */
+    ReadOnlyEventCalendar getEventCalendar();
+
 }
