@@ -9,6 +9,13 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.event.Date;
+import seedu.address.model.event.Description;
+import seedu.address.model.event.DressCode;
+import seedu.address.model.event.TargetAudience;
+import seedu.address.model.event.Time;
+import seedu.address.model.event.Title;
+import seedu.address.model.event.Venue;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Module;
@@ -138,4 +145,118 @@ public class ParserUtil {
         }
         return tagSet;
     }
+
+    //@@author windrichie
+    // Parsers for EVENTS
+    /**
+     * Parses a {@code String title} into a {@code Title}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code title} is invalid.
+     */
+    public static Title parseTitle(String title) throws ParseException {
+        requireNonNull(title);
+        String trimmedTitle = title.trim();
+        if (!Title.isValidTitle(trimmedTitle)) {
+            throw new ParseException(Title.MESSAGE_CONSTRAINTS);
+        }
+        return new Title(trimmedTitle);
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code Date}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code title} is invalid.
+     */
+    public static Date parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!Date.isValidDate(trimmedDate)) {
+            throw new ParseException(Date.MESSAGE_CONSTRAINTS);
+        }
+        return new Date(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code String time} into a {@code Time}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code time} is invalid.
+     */
+    public static Time parseTime(String time) throws ParseException {
+        requireNonNull(time);
+        String trimmedTime = time.trim();
+        String[] times = trimmedTime.split("-");
+        if (times.length != 2) {
+            throw new ParseException(Time.MESSAGE_END_TIME_MISSING);
+        }
+        String trimmedStartTime = times[0];
+        String trimmedEndTime = times[1];
+        if ((!Time.isValidTime(trimmedStartTime)) || (!Time.isValidTime(trimmedEndTime))) {
+            throw new ParseException(Time.MESSAGE_CONSTRAINTS);
+        }
+        return new Time(trimmedStartTime, trimmedEndTime);
+    }
+
+    /**
+     * Parses a {@code String venue} into a {@code Venue}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code venue} is invalid.
+     */
+    public static Venue parseVenue(String venue) throws ParseException {
+        requireNonNull(venue);
+        String trimmedVenue = venue.trim();
+        if (!Venue.isValidVenue(trimmedVenue)) {
+            throw new ParseException(Venue.MESSAGE_CONSTRAINTS);
+        }
+        return new Venue(trimmedVenue);
+    }
+
+    /**
+     * Parses a {@code String audience} into a {@code TargetAudience}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code audience} is invalid.
+     */
+    public static TargetAudience parseTargetAudience(String audience) throws ParseException {
+        requireNonNull(audience);
+        String trimmedTargetAudience = audience.trim();
+        if (!TargetAudience.isValidTargetAudience(trimmedTargetAudience)) {
+            throw new ParseException(TargetAudience.MESSAGE_CONSTRAINTS);
+        }
+        return new TargetAudience(trimmedTargetAudience);
+    }
+
+    /**
+     * Parses a {@code String code} into a {@code DressCode}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code code} is invalid.
+     */
+    public static DressCode parseDressCode(String code) throws ParseException {
+        requireNonNull(code);
+        String trimmedDressCode = code.trim();
+        if (!DressCode.isValidDressCode(trimmedDressCode)) {
+            throw new ParseException(DressCode.MESSAGE_CONSTRAINTS);
+        }
+        return new DressCode(trimmedDressCode);
+    }
+
+    /**
+     * Parses a {@code String desc} into a {@code Description}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code desc} is invalid.
+     */
+    public static Description parseDescription(String desc) throws ParseException {
+        requireNonNull(desc);
+        String trimmedDescription = desc.trim();
+        if (!Description.isValidDescription(trimmedDescription)) {
+            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
+        }
+        return new Description(trimmedDescription);
+    }
+
 }

@@ -310,9 +310,9 @@ image::CheckAvailability.png[width="800"]
 ** Pros: Everything is stored in a single data structure.
 ** Cons: HashMap might become convoluted.
 
-=======
-Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: `config.json`).\
+===== Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: `config.json`).
 
+//tag::checkAvailabilityEvents[]
 === Check Availability for Events feature
 
 ==== Current Implementation
