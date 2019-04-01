@@ -18,7 +18,7 @@ public class InterleaveCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-      /*  if (!model.canRedoAddressBook()) {
+        /*  if (!model.canRedoAddressBook()) {
             throw new CommandException(MESSAGE_FAILURE);
         }*/
 
