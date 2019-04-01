@@ -63,7 +63,7 @@ public class AddEventCommand extends Command {
 
         model.addEvent(toAdd);
         // model.commitAddressBook();
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), false, false, 1);
     }
 
     @Override
