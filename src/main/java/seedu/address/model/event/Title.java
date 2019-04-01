@@ -11,13 +11,15 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Title {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Title should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Title should only contain alphanumeric characters, punctuations and spaces, "
+            + "and it should not be blank";
 
     /*
      * The first character of the title must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    // Graph refers to alphanumeric and punctuations = [\p{Alnum}\p{Punct}]
+    public static final String VALIDATION_REGEX = "[\\p{Graph}][\\p{Graph} ]*";
 
     public final String fullTitle;
 

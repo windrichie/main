@@ -11,7 +11,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Date {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Date should be in DD-MM-YYYY format with leap years with leap years validated";
+            "Date should be in standard DD-MM-YYYY format. Eg. 1-30 for certain months, 1-31 for other months,"
+                    + " 1-29 in February in leap years.";
     //@@author windrichie-reused
     // regex expression taken from: http://regexlib.com/REDetails.aspx?regexp_id=151
     public static final String VALIDATION_REGEX = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)"
