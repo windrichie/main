@@ -76,4 +76,19 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of events */
     ObservableList<Event> getFilteredEventList();
 
+    /**
+     * Selected event in the filtered event list.
+     * null if no event is selected.
+     *
+     * @see seedu.address.model.Model#selectedEventProperty()
+     */
+    ReadOnlyProperty<Event> selectedEventProperty();
+
+    /**
+     * Sets the selected event in the filtered event list.
+     *
+     * @see seedu.address.model.Model#setSelectedEvent(Event)
+     */
+    void setSelectedEvent(Event event);
+
 }
