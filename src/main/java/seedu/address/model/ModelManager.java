@@ -32,6 +32,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final SimpleObjectProperty<Person> selectedPerson = new SimpleObjectProperty<>();
+    private final FilteredList<Event> filteredEvents;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -48,6 +49,8 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
         filteredPersons.addListener(this::ensureSelectedPersonIsValid);
         this.eventCalendar = new EventCalendar(eventCalendar);
+        filteredEvents = new FilteredList<>(eventCalendar.getEventList());
+        // filteredEvents.addListener(this::ensureSelectedPersonIsValid);
     }
 
     public ModelManager() {
@@ -272,5 +275,21 @@ public class ModelManager implements Model {
     public ReadOnlyEventCalendar getEventCalendar() {
         return eventCalendar;
     }
+
+    @Override
+    public void updateFilteredEventList(Predicate<Event> predicate) {
+        requireNonNull(predicate);
+        filteredEvents.setPredicate(predicate);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Event} backed by the internal list of
+     * {@code eventCalendar}
+     */
+    @Override
+    public ObservableList<Event> getFilteredEventList() {
+        return filteredEvents;
+    }
+
 
 }
