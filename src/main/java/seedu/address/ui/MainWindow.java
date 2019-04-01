@@ -119,7 +119,8 @@ public class MainWindow extends UiPart<Stage> {
                 logic::setSelectedPerson);
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        eventListPanel = new EventListPanel(logic.getFilteredEventList());
+        eventListPanel = new EventListPanel(logic.getFilteredEventList(), logic.selectedEventProperty(),
+                logic::setSelectedEvent);
         eventListPanel.getRoot().setVisible(false);
         personListPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
 

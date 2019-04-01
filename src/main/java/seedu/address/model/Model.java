@@ -171,4 +171,16 @@ public interface Model {
 
     /** Generate a timetable based on the concept of interleaving */
     void interleave();
+
+    /**
+     * Selected event in the filtered event list.
+     * null if no event is selected.
+     */
+    ReadOnlyProperty<Event> selectedEventProperty();
+
+    /**
+     * Sets the selected event in the filtered event list.
+     */
+    void setSelectedEvent(Event event);
+
 }

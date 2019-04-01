@@ -82,25 +82,25 @@ public class EventCalendar implements ReadOnlyEventCalendar {
     }
 
     /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * Replaces the given event {@code target} in the list with {@code editedEvent}.
+     * {@code target} must exist in the event calendar.
+     * The event identity of {@code editedEvent} must not be the same as another existing event in the event calendar.
      */
-    //    public void setPerson(Person target, Person editedPerson) {
-    //        requireNonNull(editedPerson);
-    //
-    //        persons.setPerson(target, editedPerson);
-    //        indicateModified();
-    //    }
+    public void setPerson(Event target, Event editedEvent) {
+        requireNonNull(editedEvent);
+
+        events.setEvent(target, editedEvent);
+        indicateModified();
+    }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
+     * Removes {@code key} from this {@code EventCalendar}.
+     * {@code key} must exist in the event calendar.
      */
-    //    public void removePerson(Person key) {
-    //        persons.remove(key);
-    //        indicateModified();
-    //    }
+    public void removeEvent(Event key) {
+        events.remove(key);
+        indicateModified();
+    }
 
     @Override
     public void addListener(InvalidationListener listener) {
