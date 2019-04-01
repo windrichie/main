@@ -20,7 +20,7 @@ public class Person {
     private final Phone phone;
     private final Email email;
     private final Module module;
-    private final TimeSlot timeSlot;
+    private final TimeTable timeTable;
 
     // Data fields
     private final Address address;
@@ -29,6 +29,17 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
+    public Person(Name name, Phone phone, Email email, Address address, Module module, Set<Tag> tags, TimeTable timeTable) {
+        requireAllNonNull(name, phone, email, address, tags);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.module = module;
+        this.tags.addAll(tags);
+        this.timeTable = timeTable;
+    }
+
     public Person(Name name, Phone phone, Email email, Address address, Module module, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
@@ -37,6 +48,7 @@ public class Person {
         this.address = address;
         this.module = module;
         this.tags.addAll(tags);
+        this.timeTable = null;
     }
 
     public Name getName() {
@@ -58,6 +70,11 @@ public class Person {
     public Module getModule() {
         return module;
     }
+
+    public TimeTable getTimeTable() {
+        return timeTable;
+    }
+
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}

@@ -7,6 +7,20 @@ package seedu.address.model.person;
 
 public class TimeTable {
 
+    private final int NUM_DAYS = 7;
+    private final int NUM_HOURS = 24;
+    private Activity[][] timeTable = new Activity[NUM_DAYS][NUM_HOURS];
+
+    public Activity[][] getTimeTable(){
+        return this.timeTable;
+    }
+
+    public void add (Activity activity, int day, int hour){
+        if(timeTable[day][hour] == null) {
+            timeTable[day][hour] = activity;
+        }
+    }
+
 
 
 }

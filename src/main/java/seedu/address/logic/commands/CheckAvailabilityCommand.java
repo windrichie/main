@@ -1,24 +1,18 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Module;
+import seedu.address.model.person.Activity;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.person.Slot;
-import seedu.address.model.person.TimeSlot;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.person.TimeTable;
 
 public class CheckAvailabilityCommand extends Command {
 
@@ -36,10 +30,10 @@ public class CheckAvailabilityCommand extends Command {
 
     private final Index personOneIndex;
     private final Index personTwoIndex;
+
     /**
      * Creates a CheckAvailabilityCommand to check the avalabilities betwene person1 and person 2 {@code Person}
      */
-
     public CheckAvailabilityCommand(Index personOneIndex, Index personTwoIndex) {
         this.personOneIndex = personOneIndex;
         this.personTwoIndex = personTwoIndex;
@@ -59,9 +53,8 @@ public class CheckAvailabilityCommand extends Command {
         Person personOne = lastShownList.get(personOneIndex.getZeroBased());
         Person personTwo = lastShownList.get(personTwoIndex.getZeroBased());
 
-        TimeSlot availableTimes = getAvailabilities(personOne, personTwo);
+        ArrayList<String> availableTimes = getAvailabilities(personOne, personTwo);
 
-        //model.setPerson(personToEdit, editedPerson);
         return new CommandResult(String.format(MESSAGE_SUCCESS, availableTimes));
     }
 
@@ -69,16 +62,22 @@ public class CheckAvailabilityCommand extends Command {
      * Creates and returns a {@code TimeSlot} with the details of availabilities between {@code personOne}
      * and {@code personTwo}
      */
-    private static TimeSlot getAvailabilities(Person personOne, Person personTwo) {
+    private static ArrayList<String> getAvailabilities(Person personOne, Person personTwo) {
 
-        Slot slotOne = personOne.getTimeSlot();
-        Slot slotTwo = personTwo.getTimeSlot();
+        TimeTable timeTableOne= personOne.getTimeTable();
+        TimeTable timeTableTwo = personTwo.getTimeTable();
 
-        TimeSlot availableTimes = new TimeSlot();
+        Activity[][] activitiesOne = timeTableOne.getTimeTable();
+        Activity[][] activitiesTwo = timeTableTwo.getTimeTable();
 
-        for(int i = 0; i < slotOne.length; i++) {
-            if (slotOne[i] == null && slotTwo[i] == null) {
-                availableTimes.add(slotOne[i]);
+        ArrayList<String> availableTimes = new ArrayList<String>();
+
+
+        for(int i = 0; i < activitiesOne.length; i++) {
+            for (int j = 0; j < activitiesOne[0].length; j++) {
+                if (activitiesOne[i][j] == null && activitiesTwo[i][j] == null) {
+                    availableTimes.add("Day is " + i + " Hour is " + j);
+                }
             }
         }
 
@@ -86,13 +85,13 @@ public class CheckAvailabilityCommand extends Command {
     }
 
 
-    @Override
+   /* @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof CheckAvailabilityCommand// instanceof handles nulls
                 && personOneIndex.equals(((CheckAvailabilityCommand) other).personOneIndex)); // state check
-    }
+    } */
 }
 
 
-}
+

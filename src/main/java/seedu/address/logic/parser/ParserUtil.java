@@ -16,11 +16,14 @@ import seedu.address.model.event.TargetAudience;
 import seedu.address.model.event.Time;
 import seedu.address.model.event.Title;
 import seedu.address.model.event.Venue;
+import seedu.address.model.person.Activity;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Day;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Module;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.StartTime;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -56,6 +59,34 @@ public class ParserUtil {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmedName);
+    }
+
+
+    public static Activity parseActivity(String activity) throws ParseException {
+        requireNonNull(activity);
+        String trimmedActivity = activity.trim();
+        if (!Activity.isValidActivity(trimmedActivity)) {
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        }
+        return new Activity(activity);
+    }
+
+    public static Day parseDay(String day) throws ParseException {
+        requireNonNull(day);
+        String trimmedActivity = day.trim();
+        if (!Day.isValidDay(trimmedActivity)) {
+            throw new ParseException(Day.MESSAGE_CONSTRAINTS);
+        }
+        return new Day(day);
+    }
+
+    public static StartTime parseStartTime(String startTime) throws ParseException {
+        requireNonNull(startTime);
+        String trimmedActivity = startTime.trim();
+        if (!StartTime.isValidStartTime(trimmedActivity)) {
+            throw new ParseException(StartTime.MESSAGE_CONSTRAINTS);
+        }
+        return new StartTime(startTime);
     }
 
     /**
