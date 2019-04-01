@@ -17,6 +17,8 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    private final int view;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
@@ -24,6 +26,7 @@ public class CommandResult {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.view = 0;
     }
 
     /**
@@ -31,7 +34,17 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, 0);
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, int view) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = showHelp;
+        this.exit = exit;
+        this.view = view;
     }
 
     public String getFeedbackToUser() {
@@ -44,6 +57,10 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    public int getView() {
+        return view;
     }
 
     @Override
@@ -65,7 +82,7 @@ public class CommandResult {
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, showHelp, exit, view);
     }
 
 }
