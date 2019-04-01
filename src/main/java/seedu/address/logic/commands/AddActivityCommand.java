@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_DAY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
@@ -23,11 +22,12 @@ public class AddActivityCommand extends Command{
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an activity to a person's timetable. "
             + "Parameters:  INDEX (must be a positive integer) "
-            + PREFIX_NAME + "NAME "
-            + PREFIX_ACTIVITY + "ACTIVITY"
+            + PREFIX_ACTIVITY + "ACTIVITY "
+            + PREFIX_ACTIVITY_DAY + "DAY "
+            + PREFIX_ACTIVITY_TIME + "START TIME \n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_ACTIVITY + "CS2113"
-            + PREFIX_ACTIVITY_DAY + "0"
+            + PREFIX_ACTIVITY + "CS2113 "
+            + PREFIX_ACTIVITY_DAY + "0 "
             + PREFIX_ACTIVITY_TIME + "13";
 
 

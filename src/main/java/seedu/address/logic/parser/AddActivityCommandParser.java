@@ -30,10 +30,10 @@ public class AddActivityCommandParser {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_ACTIVITY, PREFIX_ACTIVITY_DAY, PREFIX_ACTIVITY_TIME);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_ACTIVITY, PREFIX_ACTIVITY_DAY, PREFIX_ACTIVITY_TIME)
+        /*if (!arePrefixesPresent(argMultimap, PREFIX_ACTIVITY, PREFIX_ACTIVITY_DAY, PREFIX_ACTIVITY_TIME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddActivityCommand.MESSAGE_USAGE));
-        }
+        }*/
 
 
         try {

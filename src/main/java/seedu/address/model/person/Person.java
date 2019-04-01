@@ -37,7 +37,7 @@ public class Person {
         this.address = address;
         this.module = module;
         this.tags.addAll(tags);
-        this.timeTable = timeTable;
+        this.timeTable = new TimeTable();
     }
 
     public Person(Name name, Phone phone, Email email, Address address, Module module, Set<Tag> tags) {
@@ -48,7 +48,7 @@ public class Person {
         this.address = address;
         this.module = module;
         this.tags.addAll(tags);
-        this.timeTable = null;
+        this.timeTable = new TimeTable();
     }
 
     public Name getName() {
