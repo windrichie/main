@@ -29,8 +29,7 @@ public class EventListPanel extends UiPart<Region> {
         super(FXML);
         eventListView.setItems(eventList);
         eventListView.setCellFactory(listView -> new EventListViewCell());
-                eventListView.getSelectionModel().selectedItemProperty().addListener(
-                        (observable, oldValue, newValue) -> {
+        eventListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             logger.fine("Selection in event list panel changed to : '" + newValue + "'");
             onSelectedEventChange.accept(newValue);
         });
