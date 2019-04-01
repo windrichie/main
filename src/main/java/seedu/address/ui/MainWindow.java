@@ -196,6 +196,7 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+            //@@author windrichie
             if (commandResult.getView() == 1) {
                 personListPanel.getRoot().setVisible(false);
                 eventListPanel.getRoot().setVisible(true);

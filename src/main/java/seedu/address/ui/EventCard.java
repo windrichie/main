@@ -7,6 +7,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.event.Event;
 
+//@@author windrichie
 /**
  * An UI component that displays information of a {@code Person}.
  */
