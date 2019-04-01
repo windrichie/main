@@ -16,6 +16,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.event.Event;
+import seedu.address.model.event.exceptions.EventNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
@@ -32,6 +33,8 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final SimpleObjectProperty<Person> selectedPerson = new SimpleObjectProperty<>();
+    private final FilteredList<Event> filteredEvents;
+    private final SimpleObjectProperty<Event> selectedEvent = new SimpleObjectProperty<>();
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -48,6 +51,8 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
         filteredPersons.addListener(this::ensureSelectedPersonIsValid);
         this.eventCalendar = new EventCalendar(eventCalendar);
+        filteredEvents = new FilteredList<>(eventCalendar.getEventList());
+        filteredEvents.addListener(this::ensureSelectedEventIsValid);
     }
 
     public ModelManager() {
@@ -265,12 +270,69 @@ public class ModelManager implements Model {
     @Override
     public void addEvent(Event event) {
         eventCalendar.addEvent(event);
-        //updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredEventList(PREDICATE_SHOW_ALL_EVENTS);
     }
 
     @Override
     public ReadOnlyEventCalendar getEventCalendar() {
         return eventCalendar;
+    }
+
+    @Override
+    public void updateFilteredEventList(Predicate<Event> predicate) {
+        requireNonNull(predicate);
+        filteredEvents.setPredicate(predicate);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Event} backed by the internal list of
+     * {@code eventCalendar}
+     */
+    @Override
+    public ObservableList<Event> getFilteredEventList() {
+        return filteredEvents;
+    }
+
+    /**
+     * Ensures {@code selectedEvent} is a valid event in {@code filteredEvents}.
+     */
+    private void ensureSelectedEventIsValid(ListChangeListener.Change<? extends Event> change) {
+        while (change.next()) {
+            if (selectedEvent.getValue() == null) {
+                // null is always a valid selected event, so we do not need to check that it is valid anymore.
+                return;
+            }
+
+            boolean wasSelectedEventReplaced = change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
+                    && change.getRemoved().contains(selectedEvent.getValue());
+            if (wasSelectedEventReplaced) {
+                // Update selectedEvent to its new value.
+                int index = change.getRemoved().indexOf(selectedEvent.getValue());
+                selectedEvent.setValue(change.getAddedSubList().get(index));
+                continue;
+            }
+
+            boolean wasSelectedEventRemoved = change.getRemoved().stream()
+                    .anyMatch(removedEvent -> selectedEvent.getValue().isSameEvent(removedEvent));
+            if (wasSelectedEventRemoved) {
+                // Select the event that came before it in the list,
+                // or clear the selection if there is no such event.
+                selectedEvent.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1) : null);
+            }
+        }
+    }
+
+    @Override
+    public ReadOnlyProperty<Event> selectedEventProperty() {
+        return selectedEvent;
+    }
+
+    @Override
+    public void setSelectedEvent(Event event) {
+        if (event != null && !filteredEvents.contains(event)) {
+            throw new EventNotFoundException();
+        }
+        selectedEvent.setValue(event);
     }
 
 }

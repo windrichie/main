@@ -62,39 +62,77 @@ Adds a new module into the scheduler database.
 Format: add m/MODULE_CODE c/CREDITS t/DAY,TIMESTART-TIMEEND
 Example: add m/CS2113 c/4 t/Wednesday,12-14 t/Tuesday,11-12
 
-
 [TIP]
 A person can have any number of tags (including 0)
 
 
-=== Generating a learning schedule: 'generate' `[coming in v2.0]`
+=== Adding an event to the event calendar : `addevent`
+Adds an event to the event calendar.
+Format: addevent ett/TITLE ed/DATE etm/TIME ev/VENUE \[eta/AUDIENCE] \[edc/DRESSCODE] \[eds/DESCRIPTION]
 
-Generates a learning schedule based on the modules in the database. A calendar week view will appear in the GUI as seen above in Section 2.
-User would be able to generate a timetable based on how long he/she can focus in 1 period.
-Format: generate -fp FOCUS_PERIOD
+[TIP]
+Target audience, dress code and description are not compulsory. Event can still be added to the calendar without these attributes.
 
-==== Viewing learning schedule for a specific day: 'dayview'
+Examples:
+* addevent ett/UBS - Unlock Your Potential with us ed/01/04/2019 etm/15:00-16:00 ev/UBS Office eta/All Year 1 female students edc/Business Formal eds/Unlock Your Potential with us.
+* addevent ett/Career Festival ed/05/06/2019 etm/10:00-12:00 ev/MPSH
+
+=== Listing all events : `listevent`
+Shows a list of all events in the event calendar and show it in the left pane of the application.
+Format: listevent
+
+=== Generating a learning schedule: 'interleave' `[coming in v2.0]`
+
+Generates a learning schedule based on the modules in the storage. A calendar week view will appear in the GUI as seen above in Section 2.
+User would be able to generate a timetable based on the concept of interleaving.
+During one of my interactions with Mr Fung from ALSET, he mentioned that students should study in settings that closely resembles exam settings.
+That was what inspired this project and feature.
+Thus, the default (and minimum) focus period is 30 mins (average human attention span) with 5 mins rest and maximum is 2 hours with 2 hours rest,
+as most exams lasts 2 hours and occurring from either 9am-11am, 1pm-3pm and 5pm-7pm.
+Format: interleave
+
+====  Generate a interleaved schedule based on module codes `[coming in v?.?]`
+
+Interleave each module with 30 mins blocks. Assume each module has 3 hours self study.
+
+====  Include breaks between focus periods. `[coming in v?.?]`
+
+====  Allow 30 mins <= focus period value <= 2 hours. `[coming in v?.?]`
+
+====  Input module workloads for interleaving. `[coming in v?.?]`
+
+====  Input module codes and timetable automatically interleaved from data from CORs. `[coming in v?.?]`
+
+====  Sign in with student ID and timetable automatically interleaved from data from CORs `[coming in v?.?]`
+
+====  Use the app to collect data anonymously on students users. `[coming in v?.?]`
+
+Extract academic performance indicators anonymously from school database, then convert all these data into an analysable format for data analysis, trend finding etc.
+
+====  Implement something to help students extend their focus period to maximum setting.  `[coming in v?.?]`
+
+==== Viewing learning schedule for a specific day: `dayview` `[coming in v2.0]`
 
 Switches the calendar view from week view to day view on a specific date. Can only be done after generate is called.
 Format: dayview DD/MM/YYYY
 Example: dayview 11/02/2019
 
 
-==== Listing all schedule for a specific day: 'daylist'
+==== Listing all schedule for a specific day: `daylist` `[coming in v2.0]`
 Lists down all tasks for one particular day in a list format (and not calendar view).
 Can only be done after generate is called.Format: daylist DD/MM/YYYY
 Example: daylist 11/02/2019
 
-==== Clearing all schedule: 'clear'
+==== Clearing all schedule: 'clear' `[coming in v2.0]`
 
 Clears the learning schedule and deletes all existing modules in the database.
 Format: clear
 
-==== Undoing previous command: 'undo'
+==== Undoing previous command: 'undo' `[coming in v2.0]`
 Restores the learning schedule to the state before the previous undoable command was executed.
 Format: undo
 
-==== Redoing previous command: 'redo'
+==== Redoing previous command: 'redo' `[coming in v2.0]`
 Reverses the most recent undo command.
 Format: redo
 
@@ -103,7 +141,7 @@ Format: redo
 Exits the Efficient Learning Scheduler.
 Format: exit
 
-=== Compare two time table: 'tablecompare'
+=== Compare two time table: 'tablecompare' `[coming in v2.0]`
 compare two time table to find the difference
 Format:tablecompare
 
@@ -146,7 +184,7 @@ The `redo` command fails as there are no `undo` commands executed previously.
 `redo` (reapplies the `clear` command) +
 // end::undoredo[]
 
-==== Clearing all entries : `clear`
+==== Clearing all entries : `clear` `[coming in v2.0]`
 
 Clears all entries from the address book. +
 Alias command: 'c' +

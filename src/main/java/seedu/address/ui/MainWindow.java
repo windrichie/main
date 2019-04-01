@@ -35,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private EventListPanel eventListPanel;
 
     @FXML
     private StackPane browserPlaceholder;
@@ -118,6 +119,11 @@ public class MainWindow extends UiPart<Stage> {
                 logic::setSelectedPerson);
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
+        eventListPanel = new EventListPanel(logic.getFilteredEventList(), logic.selectedEventProperty(),
+                logic::setSelectedEvent);
+        eventListPanel.getRoot().setVisible(false);
+        personListPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
+
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -189,6 +195,17 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            //@@author windrichie
+            if (commandResult.getView() == 1) {
+                personListPanel.getRoot().setVisible(false);
+                eventListPanel.getRoot().setVisible(true);
+            }
+
+            if (commandResult.getView() == 0) {
+                eventListPanel.getRoot().setVisible(false);
+                personListPanel.getRoot().setVisible(true);
             }
 
             return commandResult;

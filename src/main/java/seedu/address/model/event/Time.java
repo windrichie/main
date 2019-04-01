@@ -11,9 +11,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Time {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Time should be in HH:MM format, ranging from 00:00 to 23:59";
+            "Start time and end time should be in HH:MM format, ranging from 00:00 to 23:59";
     public static final String MESSAGE_END_TIME_MISSING =
             "There should be start time and end time, in HH:MM-HH:MM format.";
+    // regex below limits the time to be HH:MM format
     public static final String VALIDATION_REGEX = "^([0-1][0-9]|[2][0-3]):([0-5][0-9])$";
     public final String startTime;
     public final String endTime;
