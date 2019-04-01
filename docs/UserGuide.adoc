@@ -79,7 +79,7 @@ Examples:
 
 === Listing all events : `listevent`
 Shows a list of all events in the event calendar and show it in the left pane of the application.
-Format: listevent 
+Format: listevent
 
 === Generating a learning schedule: 'interleave' `[coming in v2.0]`
 
