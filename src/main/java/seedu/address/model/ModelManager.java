@@ -291,5 +291,11 @@ public class ModelManager implements Model {
         return filteredEvents;
     }
 
+    //=========== Selected person ===========================================================================
+
+    public void interleave() {
+        Interleaver.extractSelfStudyHours();
+
+    }
 
 }

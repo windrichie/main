@@ -22,7 +22,7 @@ public class InterleaveCommand extends Command {
             throw new CommandException(MESSAGE_FAILURE);
         }*/
 
-        //model.interleave();
+        model.interleave();
         //model.update;
         return new CommandResult(MESSAGE_SUCCESS);
     }
