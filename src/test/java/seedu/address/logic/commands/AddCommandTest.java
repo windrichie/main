@@ -244,6 +244,16 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public ReadOnlyProperty<Event> selectedEventProperty() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setSelectedEvent(Event event) {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**
