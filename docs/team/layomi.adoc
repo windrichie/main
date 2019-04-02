@@ -1,4 +1,4 @@
-= Windrich - Project Portfolio
+= Layomi - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
