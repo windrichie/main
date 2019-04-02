@@ -81,6 +81,7 @@ Examples:
 Shows a list of all events in the event calendar and show it in the left pane of the application.
 Format: listevent
 
+//tag::interleave[]
 === Generating a learning schedule: 'interleave' `[coming in v2.0]`
 
 Generates a learning schedule based on the modules in the storage. A calendar week view will appear in the GUI as seen above in Section 2.
@@ -110,6 +111,7 @@ Interleave each module with 30 mins blocks. Assume each module has 3 hours self 
 Extract academic performance indicators anonymously from school database, then convert all these data into an analysable format for data analysis, trend finding etc.
 
 ====  Implement something to help students extend their focus period to maximum setting.  `[coming in v?.?]`
+//end::interleave[]
 
 ==== Viewing learning schedule for a specific day: `dayview` `[coming in v2.0]`
 

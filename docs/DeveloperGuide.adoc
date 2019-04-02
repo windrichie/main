@@ -233,7 +233,7 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-//tag::generate[]
+//tag::interleave[]
 === Generate interleaved schedule
 ==== Future implementation
 
@@ -284,6 +284,7 @@ We are using java.util.logging package for logging. The LogsCenter class is used
 
 ==== Configuration
 Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: config.json).
+//end::interleave[]
 
 //tag::checkAvailability[]
 === Check Availability between Students Feature

@@ -293,6 +293,12 @@ public class ModelManager implements Model {
         return filteredEvents;
     }
 
+    //=========== Selected person ===========================================================================
+
+    public void interleave() {
+        //Interleaver.extractSelfStudyHours();
+    }
+
     /**
      * Ensures {@code selectedEvent} is a valid event in {@code filteredEvents}.
      */
@@ -333,6 +339,7 @@ public class ModelManager implements Model {
             throw new EventNotFoundException();
         }
         selectedEvent.setValue(event);
+
     }
 
 }
