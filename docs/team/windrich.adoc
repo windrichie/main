@@ -33,22 +33,15 @@ Users can also keep track of the events in NUS such as recruitment talks or care
 ** Project management:
 *** Managed release `v1.3` on GitHub
 ** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
 ** Documentation:
 *** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
 ** Community:
 *** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
-*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
-*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
 ** Tools:
 *** Integrated a Github plugin (Netlify) to the project [https://www.netlify.com/[Link]]
 
-_{you can add/remove categories in the list above}_
 
 == Contributions to the User Guide
-
 
 |===
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
