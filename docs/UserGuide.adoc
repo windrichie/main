@@ -138,6 +138,10 @@ Format: undo
 Reverses the most recent undo command.
 Format: redo
 
+==== adding an activity to a persons Timetable: 'addActivity' `[coming in v2.0]`
+
+adds an activity to a persons time table.
+Format: addActivity
 
 ==== Exiting the program: 'exit'
 Exits the Efficient Learning Scheduler.
