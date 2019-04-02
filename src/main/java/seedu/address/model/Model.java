@@ -170,7 +170,7 @@ public interface Model {
     ObservableList<Event> getFilteredEventList();
 
     /** Generate a timetable based on the concept of interleaving */
-    //void interleave();
+    void interleave();
 
     /**
      * Selected event in the filtered event list.
