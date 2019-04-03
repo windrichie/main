@@ -180,6 +180,9 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered event list */
     ObservableList<Event> getFilteredEventList();
 
+    /** Generate a timetable based on the concept of interleaving */
+    void interleave();
+
     /**
      * Selected event in the filtered event list.
      * null if no event is selected.

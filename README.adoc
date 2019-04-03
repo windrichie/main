@@ -16,7 +16,7 @@ image::images/Ui.png[width="600"]
 endif::[]
 
 * This is a desktop Efficient Learning Scheduler application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface).
-* It is a Java application targeting NUS School of COmputing students who are interested to learn how to learn.
+* It is a Java application targeting NUS School of Computing students who are interested to learn how to learn.
 * Our efficient learning scheduler implements ALSET's proven learning strategy such as spacing.
 * We believe that with our application at your expense, you will be able to develop a good and efficient learning habit that will help you achieve your academic or career goals.
 * With our application you can:
