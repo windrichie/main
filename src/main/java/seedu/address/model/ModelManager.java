@@ -296,7 +296,8 @@ public class ModelManager implements Model {
     //=========== Selected person ===========================================================================
 
     public void interleave() {
-        //Interleaver.extractSelfStudyHours();
+        //TODO: user need input person name
+        //extract modules from selectedPerson() then interleave them;
     }
 
     /**
