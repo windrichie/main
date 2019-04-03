@@ -16,14 +16,14 @@ import seedu.address.model.event.TargetAudience;
 import seedu.address.model.event.Time;
 import seedu.address.model.event.Title;
 import seedu.address.model.event.Venue;
-import seedu.address.model.person.Activity;
+import seedu.address.model.person.TimeTable.Activity;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Day;
+import seedu.address.model.person.TimeTable.Day;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Module;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.StartTime;
+import seedu.address.model.person.TimeTable.StartTime;
 import seedu.address.model.tag.Tag;
 
 /**

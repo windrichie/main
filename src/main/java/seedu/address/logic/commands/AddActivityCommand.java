@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_DAY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_TIME;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.core.Messages;
@@ -13,8 +14,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Activity;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.TimeTable.Activity;
 
 public class AddActivityCommand extends Command{
 
@@ -31,7 +32,7 @@ public class AddActivityCommand extends Command{
             + PREFIX_ACTIVITY_TIME + "13";
 
 
-    public static final String MESSAGE_ADD_ACTIVITY_SUCCESS = "A new activity has been added to %1$s 's time table";
+    public static final String MESSAGE_ADD_ACTIVITY_SUCCESS = "A new activity has been added to %1$s's time table";
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity has already been added";
 
     private final Activity toAdd;
@@ -65,11 +66,13 @@ public class AddActivityCommand extends Command{
 
         Person editedPerson = personWithNewTimeTable(personToAddActivity, toAdd, day, startTime);
 
+        System.out.println(Arrays.deepToString(editedPerson.getTimeTable().getTimeTable()));
+
         model.setPerson(personToAddActivity, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
 
-        return new CommandResult(String.format(MESSAGE_ADD_ACTIVITY_SUCCESS, editedPerson));
+        return new CommandResult(String.format(MESSAGE_ADD_ACTIVITY_SUCCESS, editedPerson.getName()));
     }
 
     private static Person personWithNewTimeTable(Person personToEdit, Activity toAdd, int day, int startTime) {

@@ -10,9 +10,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Activity;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.TimeTable;
+import seedu.address.model.person.TimeTable.TimeTable;
 
 public class CheckAvailabilityCommand extends Command {
 
@@ -67,8 +66,8 @@ public class CheckAvailabilityCommand extends Command {
         TimeTable timeTableOne= personOne.getTimeTable();
         TimeTable timeTableTwo = personTwo.getTimeTable();
 
-        Activity[][] activitiesOne = timeTableOne.getTimeTable();
-        Activity[][] activitiesTwo = timeTableTwo.getTimeTable();
+        String[][] activitiesOne = timeTableOne.getTimeTable();
+        String[][] activitiesTwo = timeTableTwo.getTimeTable();
 
         ArrayList<String> availableTimes = new ArrayList<String>();
 

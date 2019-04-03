@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.person.TimeTable.TimeTable;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -37,7 +38,7 @@ public class Person {
         this.address = address;
         this.module = module;
         this.tags.addAll(tags);
-        this.timeTable = new TimeTable();
+        this.timeTable = timeTable;
     }
 
     public Person(Name name, Phone phone, Email email, Address address, Module module, Set<Tag> tags) {
@@ -71,9 +72,7 @@ public class Person {
         return module;
     }
 
-    public TimeTable getTimeTable() {
-        return timeTable;
-    }
+    public TimeTable getTimeTable() { return timeTable; }
 
 
     /**

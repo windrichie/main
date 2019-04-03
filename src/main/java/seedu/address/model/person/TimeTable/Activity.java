@@ -1,8 +1,11 @@
-package seedu.address.model.person;
+package seedu.address.model.person.TimeTable;
 
 import seedu.address.model.event.Event;
+import seedu.address.model.person.Module;
 
 public class Activity {
+
+    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
     private final Module module;
     private final Event event;
@@ -27,25 +30,19 @@ public class Activity {
         this.module = null;
     }
 
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
-
-    /*public Activity(StudyTime study){
-        this.study = study;
-    }*/
 
     public Module getModule(){ return module; }
 
     public Event getEvent(){ return event; }
 
-    //public StudyTime getStudyTime(){ return study; }
     public static boolean isValidActivity(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
-    /*@Override
-    public String toString() {
-        return value;
-    }*/
+    public String getActivityName(){
+        return activity;
+    }
+
 
     /*@Override
     public boolean equals(Object other) {

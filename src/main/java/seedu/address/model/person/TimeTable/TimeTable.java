@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.person.TimeTable;
 
 /**
  * Represents a Timetable in the address book.
@@ -7,29 +7,21 @@ package seedu.address.model.person;
 
 public class TimeTable {
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
-
-
-
     private final int NUM_DAYS = 7;
     private final int NUM_HOURS = 24;
-    private Activity[][] timeTable;
+    private String[][] timeTable;
 
-    public TimeTable(){
-       this.timeTable = new Activity[NUM_DAYS][NUM_HOURS];
+    public TimeTable() {
+        this.timeTable = new String[NUM_DAYS][NUM_HOURS];
     }
 
-    public Activity[][] getTimeTable(){
+    public String[][] getTimeTable() {
         return this.timeTable;
     }
 
-    public void add (Activity activity, int day, int hour){
-        if(timeTable[day][hour] == null) {
-            timeTable[day][hour] = activity;
+    public void add(Activity activity, int day, int hour) {
+        if (timeTable[day][hour] == null) {
+            timeTable[day][hour] = activity.getActivityName();
         }
     }
-
-
-
 }
