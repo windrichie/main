@@ -34,7 +34,6 @@ public class JsonSerializableAddressBookTest {
         dataFromFile.toModelType();
     }
     */
-    
     /*----
     @Test
     public void toModelType_duplicatePersons_throwsIllegalValueException() throws Exception {
