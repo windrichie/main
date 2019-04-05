@@ -40,7 +40,8 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("module") String module, @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("timeTable") String[][] timeTable, @JsonProperty("modules") List<String> modules) {
+            @JsonProperty("module") String module, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+            @JsonProperty("timeTable") String[][] timeTable, @JsonProperty("modules") List<String> modules) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -52,8 +53,8 @@ class JsonAdaptedPerson {
 
         this.modules.addAll(modules);
 
-        for(int i = 0; i<7; i++){
-            for(int j = 0; j < 24; j++){
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 24; j++) {
                 this.timeTable[i][j] = timeTable[i][j];
             }
         }

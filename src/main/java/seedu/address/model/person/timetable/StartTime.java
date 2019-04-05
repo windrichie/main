@@ -3,6 +3,9 @@ package seedu.address.model.person.timetable;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents an activity's starttime in the timeTable.
+ */
 public class StartTime {
 
     public static final String MESSAGE_CONSTRAINTS =
@@ -35,9 +38,7 @@ public class StartTime {
     }
 
     @Override
-    public String toString() {
-        return startTime;
-    }
+    public String toString() { return startTime; }
 
     public int getStartTime() { return Integer.parseInt(startTime); }
 
