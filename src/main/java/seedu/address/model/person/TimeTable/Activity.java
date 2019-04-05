@@ -1,7 +1,7 @@
 package seedu.address.model.person.TimeTable;
 
 import seedu.address.model.event.Event;
-import seedu.address.model.person.Module;
+import seedu.address.model.person.Modules.Module;
 
 public class Activity {
 
@@ -18,11 +18,11 @@ public class Activity {
         this.event = null;
     }
 
-    public Activity(Module module){
+   /* public Activity(Module module){
         this.module = module;
         this.activity = null;
         this.event = null;
-    }
+    }*/
 
     public Activity(Event event){
         this.event = event;

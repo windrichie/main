@@ -20,7 +20,7 @@ import seedu.address.model.person.TimeTable.Activity;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.TimeTable.Day;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.Module;
+import seedu.address.model.person.Modules.Module;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.TimeTable.StartTime;
@@ -148,6 +148,18 @@ public class ParserUtil {
             throw new ParseException(Module.MESSAGE_CONSTRAINTS);
         }
         return new Module(trimmedModule);
+    }
+
+    /**
+     * Parses {@code Collection<String> modules} into a {@code Set<Modules>}.
+     */
+    public static Set<Module> parseModules(Collection<String> modules) throws ParseException {
+        requireNonNull(modules);
+        final Set<Module> moduleSet = new HashSet<>();
+        for (String module : modules) {
+            moduleSet.add(parseModule(module));
+        }
+        return moduleSet;
     }
 
     /**

@@ -1,14 +1,16 @@
-package seedu.address.model.person;
+package seedu.address.model.person.Modules;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import seedu.address.model.person.TimeTable.Activity;
 
 /**
  * New Module class
  */
 
 
-public class Module {
+public class Module extends Activity {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Module should contain a 2-4 letter department code followed by a four digit course code";
@@ -21,6 +23,7 @@ public class Module {
      * @param module A valid phone number.
      */
     public Module(String module) {
+        super(module);
         requireNonNull(module);
         checkArgument(isValidModule(module), MESSAGE_CONSTRAINTS);
         value = module;

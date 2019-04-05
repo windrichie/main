@@ -36,6 +36,7 @@ public class AddActivityCommand extends Command{
     public static final String MESSAGE_DUPLICATE_ACTIVITY = "This activity has already been added";
 
     private final Activity toAdd;
+    //private final Module modAdd;
     private final Index index;
     private final int day;
     private final int startTime;
@@ -66,7 +67,7 @@ public class AddActivityCommand extends Command{
 
         Person editedPerson = personWithNewTimeTable(personToAddActivity, toAdd, day, startTime);
 
-        System.out.println(Arrays.deepToString(editedPerson.getTimeTable().getTimeTable()));
+        System.out.println(Arrays.deepToString(editedPerson.getTimeTable().getTimeTableArray()));
 
         model.setPerson(personToAddActivity, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -78,8 +79,9 @@ public class AddActivityCommand extends Command{
     private static Person personWithNewTimeTable(Person personToEdit, Activity toAdd, int day, int startTime) {
         assert personToEdit != null;
         personToEdit.getTimeTable().add(toAdd, day, startTime);
+        personToEdit.getModules().add(toAdd.getActivityName());
 
-        return new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(), personToEdit.getAddress(), personToEdit.getModule(), personToEdit.getTags(), personToEdit.getTimeTable());
+        return new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(), personToEdit.getAddress(), personToEdit.getModule(), personToEdit.getTags(), personToEdit.getModules(), personToEdit.getTimeTable());
     }
 
 

@@ -45,10 +45,10 @@ public class AddActivityCommandParser {
         Activity activity = ParserUtil.parseActivity(argMultimap.getValue(PREFIX_ACTIVITY).get());
         Day day = ParserUtil.parseDay(argMultimap.getValue(PREFIX_ACTIVITY_DAY).get());
         StartTime startTime = ParserUtil.parseStartTime(argMultimap.getValue(PREFIX_ACTIVITY_TIME).get());
+        //Set<Module> moduleList = ParserUtil.parseModules(argMultimap.getAllValues(PREFIX_MODULE));
 
 
         return new AddActivityCommand(index, activity, day.getDay(), startTime.getStartTime());
-
     }
 
     /**

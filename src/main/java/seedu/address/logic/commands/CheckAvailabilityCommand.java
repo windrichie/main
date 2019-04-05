@@ -66,8 +66,8 @@ public class CheckAvailabilityCommand extends Command {
         TimeTable timeTableOne= personOne.getTimeTable();
         TimeTable timeTableTwo = personTwo.getTimeTable();
 
-        String[][] activitiesOne = timeTableOne.getTimeTable();
-        String[][] activitiesTwo = timeTableTwo.getTimeTable();
+        String[][] activitiesOne = timeTableOne.getTimeTableArray();
+        String[][] activitiesTwo = timeTableTwo.getTimeTableArray();
 
         ArrayList<String> availableTimes = new ArrayList<String>();
 
