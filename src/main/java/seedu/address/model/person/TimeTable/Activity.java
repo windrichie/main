@@ -15,7 +15,7 @@ public class Activity {
     private final String activity;
     //private final StudyTime study;
 
-    public Activity(String activity){
+    public Activity(String activity) {
         this.activity = activity;
         this.module = null;
         this.event = null;
@@ -27,22 +27,22 @@ public class Activity {
         this.event = null;
     }*/
 
-    public Activity(Event event){
+    public Activity(Event event) {
         this.event = event;
         this.activity = null;
         this.module = null;
     }
 
 
-    public Module getModule(){ return module; }
+    public Module getModule() { return module; }
 
-    public Event getEvent(){ return event; }
+    public Event getEvent() { return event; }
 
     public static boolean isValidActivity(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
-    public String getActivityName(){
+    public String getActivityName() {
         return activity;
     }
 
