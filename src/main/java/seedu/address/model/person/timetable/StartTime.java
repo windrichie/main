@@ -38,9 +38,13 @@ public class StartTime {
     }
 
     @Override
-    public String toString() { return startTime; }
+    public String toString() {
+        return startTime; 
+    }
 
-    public int getStartTime() { return Integer.parseInt(startTime); }
+    public int getStartTime() {
+        return Integer.parseInt(startTime); 
+    }
 
     @Override
     public boolean equals(Object other) {
