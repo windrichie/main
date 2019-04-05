@@ -16,7 +16,7 @@ public class ModuleList {
     public ArrayList<String> getModuleList() {
         return this.modules;
     }
-    
+
     /**
      * adds a module to the Module list of a person.
      */
