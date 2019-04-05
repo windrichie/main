@@ -1,7 +1,7 @@
-package seedu.address.model.person.TimeTable;
+package seedu.address.model.person.timetable;
 
 import seedu.address.model.event.Event;
-import seedu.address.model.person.Modules.Module;
+import seedu.address.model.person.modulelist.Module;
 
 public class Activity {
 

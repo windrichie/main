@@ -11,7 +11,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.TimeTable.TimeTable;
+import seedu.address.model.person.timetable.TimeTable;
 
 /**
  * Checks the availability between 2 people in the application.
@@ -29,7 +29,7 @@ public class CheckAvailabilityCommand extends Command {
 
 
     public static final String MESSAGE_SUCCESS = "The available times are : $s";
-    public static final String MESSAGE_NO_TIMES_AVAILABLE = "There are no meeting times available between
+    public static final String MESSAGE_NO_TIMES_AVAILABLE = "There are no meeting times available between"
             + " these two people";
 
     private final Index personOneIndex;

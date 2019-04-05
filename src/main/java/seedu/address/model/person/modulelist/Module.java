@@ -1,9 +1,9 @@
-package seedu.address.model.person.Modules;
+package seedu.address.model.person.modulelist;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import seedu.address.model.person.TimeTable.Activity;
+import seedu.address.model.person.timetable.Activity;
 
 /**
  * New Module class

@@ -1,4 +1,4 @@
-package seedu.address.model.person.TimeTable;
+package seedu.address.model.person.timetable;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;

@@ -20,10 +20,10 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.Modules.Module;
-import seedu.address.model.person.TimeTable.Activity;
-import seedu.address.model.person.TimeTable.Day;
-import seedu.address.model.person.TimeTable.StartTime;
+import seedu.address.model.person.modulelist.Module;
+import seedu.address.model.person.timetable.Activity;
+import seedu.address.model.person.timetable.Day;
+import seedu.address.model.person.timetable.StartTime;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -168,7 +168,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code Collection<String> modules} into a {@code Set<Modules>}.
+     * Parses {@code Collection<String> modules} into a {@code Set<modulelist>}.
      */
     public static Set<Module> parseModules(Collection<String> modules) throws ParseException {
         requireNonNull(modules);

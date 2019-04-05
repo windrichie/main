@@ -1,4 +1,4 @@
-package seedu.address.model.person.Modules;
+package seedu.address.model.person.modulelist;
 
 import java.util.ArrayList;
 

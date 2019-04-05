@@ -10,9 +10,9 @@ import java.util.stream.Stream;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddActivityCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.TimeTable.Activity;
-import seedu.address.model.person.TimeTable.Day;
-import seedu.address.model.person.TimeTable.StartTime;
+import seedu.address.model.person.timetable.Activity;
+import seedu.address.model.person.timetable.Day;
+import seedu.address.model.person.timetable.StartTime;
 
 
 /**

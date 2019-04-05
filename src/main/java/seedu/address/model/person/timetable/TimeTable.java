@@ -1,4 +1,4 @@
-package seedu.address.model.person.TimeTable;
+package seedu.address.model.person.timetable;
 
 /**
  * Represents a Timetable in the address book.
