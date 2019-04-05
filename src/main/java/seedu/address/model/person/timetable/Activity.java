@@ -21,12 +21,6 @@ public class Activity {
         this.event = null;
     }
 
-   /* public Activity(Module module){
-        this.module = module;
-        this.activity = null;
-        this.event = null;
-    }*/
-
     public Activity(Event event) {
         this.event = event;
         this.activity = null;
@@ -34,7 +28,9 @@ public class Activity {
     }
 
 
-    public Module getModule() { return module; }
+    public Module getModule() {
+        return module; 
+    }
 
     public Event getEvent() {
         return event;
