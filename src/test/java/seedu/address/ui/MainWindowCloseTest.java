@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import org.junit.Before;
+
 import org.junit.Rule;
 
 import org.junit.rules.TemporaryFolder;
