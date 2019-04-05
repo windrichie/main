@@ -80,9 +80,13 @@ public class Person {
         return module;
     }
 
-    public TimeTable getTimeTable() { return timeTable; }
+    public TimeTable getTimeTable() {
+        return timeTable;
+    }
 
-    public ModuleList getModules() { return moduleList; }
+    public ModuleList getModules() {
+        return moduleList; 
+    }
 
 
     /**
