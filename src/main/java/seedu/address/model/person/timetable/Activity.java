@@ -29,7 +29,7 @@ public class Activity {
 
 
     public Module getModule() {
-        return module; 
+        return module;
     }
 
     public Event getEvent() {
