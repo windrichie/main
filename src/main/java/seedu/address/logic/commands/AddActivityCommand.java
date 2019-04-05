@@ -18,8 +18,8 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.TimeTable.Activity;
 
 /**
-* ?
-*/
+ * Adds an activity an existing persons Timetable.
+ */
 public class AddActivityCommand extends Command {
 
     public static final String COMMAND_WORD = "addActivity";
@@ -87,7 +87,9 @@ public class AddActivityCommand extends Command {
         personToEdit.getTimeTable().add(toAdd, day, startTime);
         personToEdit.getModules().add(toAdd.getActivityName());
 
-        return new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(), personToEdit.getAddress(), personToEdit.getModule(), personToEdit.getTags(), personToEdit.getModules(), personToEdit.getTimeTable());
+        return new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
+                          personToEdit.getAddress(), personToEdit.getModule(), personToEdit.getTags(),
+                          personToEdit.getModules(), personToEdit.getTimeTable());
     }
 
 
