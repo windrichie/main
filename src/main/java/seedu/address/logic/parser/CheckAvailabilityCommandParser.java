@@ -6,6 +6,10 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CheckAvailabilityCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+
+/**
+ * Parses input arguments and creates a new CheckAvailabilityCommand object
+ */
 public class CheckAvailabilityCommandParser implements Parser<CheckAvailabilityCommand> {
 
 
