@@ -14,12 +14,16 @@ import seedu.address.model.person.TimeTable.Activity;
 import seedu.address.model.person.TimeTable.Day;
 import seedu.address.model.person.TimeTable.StartTime;
 
+
+/**
+ * Parses input arguments and creates a new AddActivity object
+ */
 public class AddActivityCommandParser {
 
 
     /**
-     * Parses the given {@code String} of arguments in the context of the EditCommand
-     * and returns an EditCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the AddActivityCommand
+     * and returns an AddActivityCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */
@@ -29,13 +33,10 @@ public class AddActivityCommandParser {
 
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_ACTIVITY, PREFIX_ACTIVITY_DAY, PREFIX_ACTIVITY_TIME);
-
         /*if (!arePrefixesPresent(argMultimap, PREFIX_ACTIVITY, PREFIX_ACTIVITY_DAY, PREFIX_ACTIVITY_TIME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddActivityCommand.MESSAGE_USAGE));
         }*/
-
-
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
