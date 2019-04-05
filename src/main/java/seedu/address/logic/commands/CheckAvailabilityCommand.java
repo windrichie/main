@@ -13,11 +13,15 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.TimeTable.TimeTable;
 
+/**
+ * Checks the availability between 2 people in the application.
+ */
 public class CheckAvailabilityCommand extends Command {
 
     public static final String COMMAND_WORD = "checkAvail";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Checks the available meeting times between 2 students. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Checks the available meeting times"
+            + " between 2 students."
             + "Parameters: "
             + ": Checks the availability of the people indentified by the indexes in the list.\n"
             + "Parameters: INDEX1 INDEX2(Both indexes must be positive integers)\n"
@@ -25,7 +29,8 @@ public class CheckAvailabilityCommand extends Command {
 
 
     public static final String MESSAGE_SUCCESS = "The available times are : $s";
-    public static final String MESSAGE_NO_TIMES_AVAILABLE = "There are no meeting times available between these two people";
+    public static final String MESSAGE_NO_TIMES_AVAILABLE = "There are no meeting times available between
+            + " these two people";
 
     private final Index personOneIndex;
     private final Index personTwoIndex;
@@ -45,7 +50,8 @@ public class CheckAvailabilityCommand extends Command {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
-        if ((personOneIndex.getZeroBased()  >= lastShownList.size()) || (personTwoIndex.getZeroBased()  >= lastShownList.size())) {
+        if ((personOneIndex.getZeroBased() >= lastShownList.size()) ||
+           (personTwoIndex.getZeroBased() >= lastShownList.size())) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
@@ -63,7 +69,7 @@ public class CheckAvailabilityCommand extends Command {
      */
     private static ArrayList<String> getAvailabilities(Person personOne, Person personTwo) {
 
-        TimeTable timeTableOne= personOne.getTimeTable();
+        TimeTable timeTableOne = personOne.getTimeTable();
         TimeTable timeTableTwo = personTwo.getTimeTable();
 
         String[][] activitiesOne = timeTableOne.getTimeTableArray();
@@ -72,7 +78,7 @@ public class CheckAvailabilityCommand extends Command {
         ArrayList<String> availableTimes = new ArrayList<String>();
 
 
-        for(int i = 0; i < activitiesOne.length; i++) {
+        for (int i = 0; i < activitiesOne.length; i++) {
             for (int j = 0; j < activitiesOne[0].length; j++) {
                 if (activitiesOne[i][j] == null && activitiesTwo[i][j] == null) {
                     availableTimes.add("Day is " + i + " Hour is " + j);
@@ -83,13 +89,6 @@ public class CheckAvailabilityCommand extends Command {
         return availableTimes;
     }
 
-
-   /* @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof CheckAvailabilityCommand// instanceof handles nulls
-                && personOneIndex.equals(((CheckAvailabilityCommand) other).personOneIndex)); // state check
-    } */
 }
 
 
