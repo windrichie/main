@@ -3,10 +3,14 @@ package seedu.address.ui;
 import guitests.guihandles.StageHandle;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+
 import org.junit.Before;
 import org.junit.Rule;
+
 import org.junit.rules.TemporaryFolder;
+
 import org.testfx.api.FxToolkit;
+
 import seedu.address.logic.LogicManager;
 import seedu.address.model.ModelManager;
 import seedu.address.storage.JsonAddressBookStorage;
