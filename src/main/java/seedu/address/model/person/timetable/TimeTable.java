@@ -18,7 +18,7 @@ public class TimeTable {
     public String[][] getTimeTableArray() {
         return this.timeTable;
     }
-    
+
     /**
      * adds a an activity to a persons timetable.
      */
