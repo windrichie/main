@@ -43,7 +43,7 @@ public class Person {
         this.moduleList =  new ModuleList();
     }
 
-    public Person(Name name, Phone phone, Email email, Address address, 
+    public Person(Name name, Phone phone, Email email, Address address,
                   Module module, Set<Tag> tags, ModuleList moduleList, TimeTable timeTable) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
