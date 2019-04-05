@@ -37,7 +37,7 @@ public class Activity {
     public Module getModule() { return module; }
 
     public Event getEvent() {
-        return event; 
+        return event;
     }
 
     public static boolean isValidActivity(String test) {
