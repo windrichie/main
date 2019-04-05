@@ -16,13 +16,13 @@ import seedu.address.model.event.TargetAudience;
 import seedu.address.model.event.Time;
 import seedu.address.model.event.Title;
 import seedu.address.model.event.Venue;
-import seedu.address.model.person.TimeTable.Activity;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.TimeTable.Day;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.Modules.Module;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Modules.Module;
+import seedu.address.model.person.TimeTable.Activity;
+import seedu.address.model.person.TimeTable.Day;
 import seedu.address.model.person.TimeTable.StartTime;
 import seedu.address.model.tag.Tag;
 
@@ -61,7 +61,12 @@ public class ParserUtil {
         return new Name(trimmedName);
     }
 
-
+    /**
+     * Parses a {@code String activity} into a {@code Activity}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code activity} is invalid.
+     */
     public static Activity parseActivity(String activity) throws ParseException {
         requireNonNull(activity);
         String trimmedActivity = activity.trim();
@@ -71,6 +76,12 @@ public class ParserUtil {
         return new Activity(activity);
     }
 
+    /**
+     * Parses a {@code String day} into a {@code Day}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code day} is invalid.
+     */
     public static Day parseDay(String day) throws ParseException {
         requireNonNull(day);
         String trimmedActivity = day.trim();
@@ -80,6 +91,12 @@ public class ParserUtil {
         return new Day(day);
     }
 
+    /**
+     * Parses a {@code String startTime} into a {@code StartTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code startTime} is invalid.
+     */
     public static StartTime parseStartTime(String startTime) throws ParseException {
         requireNonNull(startTime);
         String trimmedActivity = startTime.trim();
