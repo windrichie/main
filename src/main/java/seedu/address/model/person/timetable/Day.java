@@ -45,7 +45,7 @@ public class Day {
     }
 
     public int getDay() {
-        return Integer.parseInt(day); 
+        return Integer.parseInt(day);
     }
 
     @Override
