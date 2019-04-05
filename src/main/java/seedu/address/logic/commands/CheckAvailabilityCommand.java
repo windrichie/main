@@ -29,7 +29,7 @@ public class CheckAvailabilityCommand extends Command {
 
 
     public static final String MESSAGE_SUCCESS = "The available times are : $s";
-    public static final String MESSAGE_NO_TIMES_AVAILABLE = "There are no meeting times available between
+    public static final String MESSAGE_NO_TIMES_AVAILABLE = "There are no meeting times available between"
             + " these two people";
 
     private final Index personOneIndex;
