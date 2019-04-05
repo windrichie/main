@@ -3,6 +3,9 @@ package seedu.address.model.person.TimeTable;
 import seedu.address.model.event.Event;
 import seedu.address.model.person.Modules.Module;
 
+/**
+ * Represents an activity in the Learning Scheduler.
+ */
 public class Activity {
 
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
