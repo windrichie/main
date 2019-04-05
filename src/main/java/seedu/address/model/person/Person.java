@@ -30,7 +30,8 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
-    public Person(Name name, Phone phone, Email email, Address address, Module module, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Module module,
+                  Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -42,7 +43,8 @@ public class Person {
         this.moduleList =  new ModuleList();
     }
 
-    public Person(Name name, Phone phone, Email email, Address address, Module module, Set<Tag> tags, ModuleList moduleList, TimeTable timeTable) {
+    public Person(Name name, Phone phone, Email email, Address address, 
+                  Module module, Set<Tag> tags, ModuleList moduleList, TimeTable timeTable) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
