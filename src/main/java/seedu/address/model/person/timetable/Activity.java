@@ -36,7 +36,9 @@ public class Activity {
 
     public Module getModule() { return module; }
 
-    public Event getEvent() { return event; }
+    public Event getEvent() {
+        return event; 
+    }
 
     public static boolean isValidActivity(String test) {
         return test.matches(VALIDATION_REGEX);
