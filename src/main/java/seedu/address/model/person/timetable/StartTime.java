@@ -39,11 +39,11 @@ public class StartTime {
 
     @Override
     public String toString() {
-        return startTime; 
+        return startTime;
     }
 
     public int getStartTime() {
-        return Integer.parseInt(startTime); 
+        return Integer.parseInt(startTime);
     }
 
     @Override
