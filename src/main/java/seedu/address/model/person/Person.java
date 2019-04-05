@@ -85,7 +85,7 @@ public class Person {
     }
 
     public ModuleList getModules() {
-        return moduleList; 
+        return moduleList;
     }
 
 
