@@ -1,21 +1,23 @@
 package seedu.address.ui;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Collections;
+
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
+import org.testfx.api.FxToolkit;
+
+import guitests.guihandles.HelpWindowHandle;
 import guitests.guihandles.StageHandle;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
-import org.junit.Before;
-
-import org.junit.Rule;
-
-import org.junit.rules.TemporaryFolder;
-
-import org.testfx.api.FxToolkit;
-
 import seedu.address.logic.LogicManager;
 import seedu.address.model.ModelManager;
 import seedu.address.storage.JsonAddressBookStorage;
-import seedu.address.storage.JsonEventCalendarStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 
