@@ -40,7 +40,7 @@ public class Person {
         this.module = module;
         this.tags.addAll(tags);
         this.timeTable = new TimeTable();
-        this.moduleList =  new ModuleList();
+        this.moduleList = new ModuleList();
     }
 
     public Person(Name name, Phone phone, Email email, Address address,
