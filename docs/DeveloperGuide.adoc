@@ -333,7 +333,7 @@ image::CheckAvailability.png[width="800"]
 
 ===== Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: `config.json`).
 
-//tag::checkAvailabilityEvents[]
+// tag::checkAvailabilityEvents[]
 === Check Availability for Events feature
 
 ==== Current Implementation
@@ -363,6 +363,7 @@ image::CheckAvailEActivityDiagram.png[width="800"]
 * **Alternative 2:** check availability for the whole week
 ** Pros: user can check availability for the whole week (more than 1 event at one time)
 ** Cons: checking mechanism is longer and need to change the view of the result display (implementation is harder)
+// end::checkAvailabilityEvents[]
 
 == Documentation
 

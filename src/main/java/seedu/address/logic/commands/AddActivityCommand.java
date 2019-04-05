@@ -17,7 +17,10 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.TimeTable.Activity;
 
-public class AddActivityCommand extends Command{
+/**
+* ?
+*/
+public class AddActivityCommand extends Command {
 
     public static final String COMMAND_WORD = "addActivity";
 
@@ -55,7 +58,7 @@ public class AddActivityCommand extends Command{
     }
 
     @Override
-    public CommandResult execute(Model model, CommandHistory history) throws CommandException{
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
@@ -76,6 +79,9 @@ public class AddActivityCommand extends Command{
         return new CommandResult(String.format(MESSAGE_ADD_ACTIVITY_SUCCESS, editedPerson.getName()));
     }
 
+    /**
+     * ?
+     */
     private static Person personWithNewTimeTable(Person personToEdit, Activity toAdd, int day, int startTime) {
         assert personToEdit != null;
         personToEdit.getTimeTable().add(toAdd, day, startTime);
