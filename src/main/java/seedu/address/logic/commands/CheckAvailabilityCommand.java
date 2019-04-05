@@ -49,8 +49,7 @@ public class CheckAvailabilityCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
-        
-        
+
         if ((personOneIndex.getZeroBased() >= lastShownList.size())
             || (personTwoIndex.getZeroBased() >= lastShownList.size())) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
