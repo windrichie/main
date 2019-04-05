@@ -3,7 +3,9 @@ package seedu.address.model.person.timetable;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-
+/**
+ * Represents a day in a Person's timetable.
+ */
 public class Day {
 
 
@@ -42,7 +44,9 @@ public class Day {
         return day;
     }
 
-    public int getDay() { return Integer.parseInt(day); }
+    public int getDay() {
+        return Integer.parseInt(day); 
+    }
 
     @Override
     public boolean equals(Object other) {
