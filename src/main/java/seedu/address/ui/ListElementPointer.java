@@ -17,6 +17,11 @@ public class ListElementPointer {
     private int index;
 
     /**
+     *
+     *
+     *
+     *
+     *
      * Constructs {@code ListElementPointer} which is backed by a defensive copy of {@code list}.
      * The cursor points to the last element in {@code list}.
      */

@@ -65,7 +65,7 @@ Example: add m/CS2113 c/4 t/Wednesday,12-14 t/Tuesday,11-12
 [TIP]
 A person can have any number of tags (including 0)
 
-
+// tag::eventcommand[]
 === Adding an event to the event calendar : `addevent`
 Adds an event to the event calendar.
 Format: addevent ett/TITLE ed/DATE etm/TIME ev/VENUE \[eta/AUDIENCE] \[edc/DRESSCODE] \[eds/DESCRIPTION]
@@ -80,6 +80,7 @@ Examples:
 === Listing all events : `listevent`
 Shows a list of all events in the event calendar and show it in the left pane of the application.
 Format: listevent
+// end::eventcommand[]
 
 //tag::interleave[]
 === Generating a learning schedule: 'interleave' `[coming in v2.0]`
@@ -138,6 +139,10 @@ Format: undo
 Reverses the most recent undo command.
 Format: redo
 
+==== adding an activity to a persons Timetable: 'addActivity' `[coming in v2.0]`
+
+adds an activity to a persons time table.
+Format: addActivity
 
 ==== Exiting the program: 'exit'
 Exits the Efficient Learning Scheduler.
