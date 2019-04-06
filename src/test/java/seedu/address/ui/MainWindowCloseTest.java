@@ -62,10 +62,6 @@ public class MainWindowCloseTest extends GuiUnitTest {
     /*
     @Test
     public void close_externalRequest_e
-
-    x
-
-
     itAppRequestEventPosted() {
         mainWindowHandle.clickOnMenuHelpButton();
         assertTrue(HelpWindowHandle.isWindowPresent());
