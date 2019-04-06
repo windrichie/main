@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.person.modulelist.Module;
+import seedu.address.model.person.modulelist.ModuleList;
+import seedu.address.model.person.timetable.TimeTable;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -20,15 +23,15 @@ public class Person {
     private final Phone phone;
     private final Email email;
     private final Module module;
+    private final TimeTable timeTable;
+    private final ModuleList moduleList;
 
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
-    /**
-     * Every field must be present and not null.
-     */
-    public Person(Name name, Phone phone, Email email, Address address, Module module, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Module module,
+                  Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -36,7 +39,26 @@ public class Person {
         this.address = address;
         this.module = module;
         this.tags.addAll(tags);
+        this.timeTable = new TimeTable();
+        this.moduleList = new ModuleList();
     }
+
+    public Person(Name name, Phone phone, Email email, Address address,
+                  Module module, Set<Tag> tags, ModuleList moduleList, TimeTable timeTable) {
+        requireAllNonNull(name, phone, email, address, tags);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.module = module;
+        this.tags.addAll(tags);
+        this.timeTable = timeTable;
+        this.moduleList = moduleList;
+
+    }
+
+
+
 
     public Name getName() {
         return name;
@@ -58,6 +80,15 @@ public class Person {
         return module;
     }
 
+    public TimeTable getTimeTable() {
+        return timeTable;
+    }
+
+    public ModuleList getModules() {
+        return moduleList;
+    }
+
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -65,6 +96,7 @@ public class Person {
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
     }
+
 
     /**
      * Returns true if both persons of the same name have at least one other identity field that is the same.
