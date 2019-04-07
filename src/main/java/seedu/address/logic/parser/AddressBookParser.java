@@ -63,7 +63,10 @@ public class AddressBookParser {
             return new AddActivityCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
+            return new EditCommandParser(EditCommand.COMMAND_WORD).parse(arguments);
+
+        case InterleaveCommand.COMMAND_WORD:
+            return new EditCommandParser(InterleaveCommand.COMMAND_WORD).parse(arguments);
 
         case SelectCommand.COMMAND_WORD:
             return new SelectCommandParser().parse(arguments);
@@ -106,9 +109,6 @@ public class AddressBookParser {
 
         case AddEventCommand.COMMAND_WORD:
             return new AddEventCommandParser().parse(arguments);
-
-        case InterleaveCommand.COMMAND_WORD:
-            return new InterleaveCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
