@@ -54,7 +54,7 @@ public class AddActivityCommand extends Command {
         this.toAdd = activity;
         this.index = index;
         this.day = day;
-        this.startTime = startTime;
+        this.startTime = startTime; 
     }
 
     @Override
