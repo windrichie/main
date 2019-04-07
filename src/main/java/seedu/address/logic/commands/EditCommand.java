@@ -87,6 +87,7 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
+        editedPerson.setInterleaved(false);
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
@@ -106,6 +107,10 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Module updatedModule = editPersonDescriptor.getModule().orElse(personToEdit.getModule());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+
+        if (editPersonDescriptor.getInterleaved()) {
+            //create new person with interleaved timetable here
+        }
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedModule, updatedTags);
     }
@@ -139,6 +144,7 @@ public class EditCommand extends Command {
         private Address address;
         private Module module;
         private Set<Tag> tags;
+        private boolean toBeInterleaved;
 
         public EditPersonDescriptor() {}
 
@@ -153,13 +159,22 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setModule(toCopy.module);
             setTags(toCopy.tags);
+            setInterleaved(toCopy.toBeInterleaved);
+
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, toBeInterleaved);
+        }
+        public void setInterleaved(boolean toBeInterleaved) {
+            this.toBeInterleaved = toBeInterleaved;
+        }
+
+        public boolean getInterleaved() {
+            return toBeInterleaved;
         }
 
         public void setName(Name name) {

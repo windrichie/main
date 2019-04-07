@@ -25,6 +25,7 @@ public class Person {
     private final Module module;
     private final TimeTable timeTable;
     private final ModuleList moduleList;
+    private boolean toBeInterleaved;
 
     // Data fields
     private final Address address;
@@ -41,6 +42,7 @@ public class Person {
         this.tags.addAll(tags);
         this.timeTable = new TimeTable();
         this.moduleList = new ModuleList();
+        this.toBeInterleaved = false;
     }
 
     public Person(Name name, Phone phone, Email email, Address address,
@@ -54,6 +56,7 @@ public class Person {
         this.tags.addAll(tags);
         this.timeTable = timeTable;
         this.moduleList = moduleList;
+        this.toBeInterleaved = false;
 
     }
 
@@ -98,6 +101,13 @@ public class Person {
     }
 
 
+    public boolean getInterleaved() {
+        return toBeInterleaved;
+    }
+
+    public void setInterleaved(boolean toBeInterleaved) {
+        this.toBeInterleaved = toBeInterleaved;
+    }
     /**
      * Returns true if both persons of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
@@ -109,7 +119,8 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName())
-                && (otherPerson.getPhone().equals(getPhone()) || otherPerson.getEmail().equals(getEmail()));
+                && (otherPerson.getPhone().equals(getPhone()) || otherPerson.getEmail().equals(getEmail()))
+                && otherPerson.getInterleaved();
     }
 
     /**
