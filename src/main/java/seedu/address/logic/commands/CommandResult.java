@@ -31,7 +31,7 @@ public class CommandResult {
 
     /**
      * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
-     * and other fields set to their default value.
+     * and other fields set to their default moduleCode.
      */
     public CommandResult(String feedbackToUser) {
         this(feedbackToUser, false, false, 0);

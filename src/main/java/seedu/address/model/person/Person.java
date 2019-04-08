@@ -22,7 +22,6 @@ public class Person {
     private final Name name;
     private final Phone phone;
     private final Email email;
-    private final Module module;
     private final TimeTable timeTable;
     private final ModuleList moduleList;
     private boolean toBeInterleaved;
@@ -38,10 +37,10 @@ public class Person {
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.module = module;
         this.tags.addAll(tags);
         this.timeTable = new TimeTable();
         this.moduleList = new ModuleList();
+        this.moduleList.add(module);
         this.toBeInterleaved = false;
     }
 
@@ -52,7 +51,6 @@ public class Person {
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.module = module;
         this.tags.addAll(tags);
         this.timeTable = timeTable;
         this.moduleList = moduleList;
@@ -77,10 +75,6 @@ public class Person {
 
     public Address getAddress() {
         return address;
-    }
-
-    public Module getModule() {
-        return module;
     }
 
     public TimeTable getTimeTable() {
@@ -142,14 +136,14 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getModule().equals(getModule())
+                && otherPerson.getModules().equals(this.getModules())
                 && otherPerson.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, module);
+        return Objects.hash(name, phone, email, address, tags, moduleList);
     }
 
     @Override
@@ -162,8 +156,8 @@ public class Person {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
-                .append(" Module: ")
-                .append(getModule())
+                .append(" Modules: ")
+                .append(getModules())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

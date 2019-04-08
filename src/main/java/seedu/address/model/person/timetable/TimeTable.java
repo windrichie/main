@@ -7,12 +7,12 @@ package seedu.address.model.person.timetable;
 
 public class TimeTable {
 
-    private static final int NUM_DAYS = 7;
-    private static final int NUM_HOURS = 24;
+    public static final int NUM_DAYS = 7;
+    public static final int NUM_30MINS_BLOCKS = 24 * 2;
     private String[][] timeTable;
 
     public TimeTable() {
-        this.timeTable = new String[NUM_DAYS][NUM_HOURS];
+        this.timeTable = new String[NUM_DAYS][NUM_30MINS_BLOCKS];
     }
 
     public String[][] getTimeTableArray() {
@@ -22,7 +22,7 @@ public class TimeTable {
     /**
      * adds a an activity to a persons timetable.
      */
-    public void add(Activity activity, int day, int hour) {
+    public void add(Activity activity, int day, int hour) { //change to 30 mins blocks
         if (timeTable[day][hour] == null) {
             timeTable[day][hour] = activity.getActivityName();
         }

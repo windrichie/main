@@ -20,6 +20,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Interleaver;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -27,6 +28,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.modulelist.Module;
+import seedu.address.model.person.timetable.TimeTable;
 import seedu.address.model.tag.Tag;
 
 
@@ -93,7 +95,6 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        editedPerson.setInterleaved(false);
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
@@ -113,12 +114,16 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Module updatedModule = editPersonDescriptor.getModule().orElse(personToEdit.getModule());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        TimeTable updatedTable;
 
         if (editPersonDescriptor.getInterleaved()) {
             //create new person with interleaved timetable here
+            updatedTable = Interleaver.interleave(personToEdit);
+        } else {
+            updatedTable = editPersonDescriptor.getTimetable().orElse(personToEdit.getTimeTable());
         }
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedModule, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedModule, updatedTags, updatedTable);
     }
 
     @Override
@@ -140,8 +145,8 @@ public class EditCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit the person with. Each non-empty field moduleCode will replace the
+     * corresponding field moduleCode of the person.
      */
     public static class EditPersonDescriptor {
         private Name name;
@@ -151,6 +156,7 @@ public class EditCommand extends Command {
         private Module module;
         private Set<Tag> tags;
         private boolean toBeInterleaved;
+        private TimeTable timeTable;
 
         public EditPersonDescriptor() {}
 
@@ -166,7 +172,14 @@ public class EditCommand extends Command {
             setModule(toCopy.module);
             setTags(toCopy.tags);
             setInterleaved(toCopy.toBeInterleaved);
+            setTimetable(toCopy.timeTable);
 
+        }
+
+        public void setTimetable(TimeTable timeTable) { this.timeTable = timeTable; }
+
+        public Optional<TimeTable> getTimetable() {
+            return Optional.ofNullable(timeTable);
         }
 
         /**
