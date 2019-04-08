@@ -45,25 +45,33 @@ public class EditCommandParser implements Parser<EditCommand> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble()); //only this is needed for interleaving
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
+            if (this.commandType.equals(EditCommand.EDIT_COMMAND)) {
+                throw new ParseException(String.format(
+                        MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.EDIT_MESSAGE_USAGE), pe);
+            } else { //if (this.commandType.equals(EditCommand.INTERLEAVE_COMMAND))
+                throw new ParseException(String.format(
+                        MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.INTERLEAVE_MESSAGE_USAGE), pe);
+            }
         }
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
+        if (this.commandType.equals(EditCommand.EDIT_COMMAND)) {
+            if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
+                editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
+            }
+            if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
+                editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
+            }
+            if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
+                editPersonDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
+            }
+            if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
+                editPersonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
+            }
+            parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
         }
-        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            editPersonDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
-        }
-        if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-            editPersonDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
-        }
-        if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-            editPersonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
-        }
-        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
 
-        if (commandType.equals(InterleaveCommand.COMMAND_WORD)) {
+        if (commandType.equals(EditCommand.INTERLEAVE_COMMAND)) {
             editPersonDescriptor.setInterleaved(true);
         }
 
