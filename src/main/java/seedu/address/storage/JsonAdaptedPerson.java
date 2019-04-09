@@ -12,11 +12,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
-import seedu.address.model.person.Module;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.modulelist.Module;
 import seedu.address.model.tag.Tag;
+
+
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -30,7 +32,9 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final String module;
+    private String[][] timeTable = new String[7][24];
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private ArrayList<String> modules = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -38,7 +42,8 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("module") String module, @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+            @JsonProperty("module") String module, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+            @JsonProperty("timeTable") String[][] timeTable, @JsonProperty("modules") List<String> modules) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -46,6 +51,14 @@ class JsonAdaptedPerson {
         this.module = module;
         if (tagged != null) {
             this.tagged.addAll(tagged);
+        }
+
+        this.modules.addAll(modules);
+
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 24; j++) {
+                this.timeTable[i][j] = timeTable[i][j];
+            }
         }
     }
 
@@ -58,9 +71,11 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         module = source.getModule().value;
+        timeTable = source.getTimeTable().getTimeTableArray();
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        modules = source.getModules().getModuleList();
     }
 
     /**
@@ -114,6 +129,7 @@ class JsonAdaptedPerson {
         final Module modelModule = new Module(module);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
+
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelModule, modelTags);
     }
 
