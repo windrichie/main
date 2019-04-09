@@ -34,10 +34,15 @@ public class Interleaver {
             }
             blocksOfModules.add(moduleBlocks);
         }
+        i = blocksOfModules.iterator();
         while (!blocksOfModules.isEmpty()) {
             for (int a = 0; a < TimeTable.NUM_DAYS; a++) { // iterate timetable for free slots
-                for () { // starting from 0800
-                    //if empty
+                for (int b = 0; b < TimeTable.NUM_30MINS_BLOCKS; b++) { // starting from 0800
+                    String timeSlot = person.getTimeTable().getTimeTableArray()[a][b];
+                    if ( timeSlot == null) {
+                        timeSlot = (String) (((Stack) (i.next())).pop());
+                    }
+
 
                 }
             }
