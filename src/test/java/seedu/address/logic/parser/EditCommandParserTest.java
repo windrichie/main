@@ -48,9 +48,9 @@ public class EditCommandParserTest {
     private static final String TAG_EMPTY = " " + PREFIX_TAG;
 
     private static final String MESSAGE_INVALID_FORMAT =
-            String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.EDIT_MESSAGE_USAGE);
 
-    private EditCommandParser parser = new EditCommandParser();
+    private EditCommandParser parser = new EditCommandParser(EditCommand.EDIT_COMMAND);
 
     @Test
     public void parse_missingParts_failure() {

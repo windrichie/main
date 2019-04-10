@@ -27,7 +27,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.modulelist.Module;
+import seedu.address.model.person.modulelist.ModuleList;
 import seedu.address.model.person.timetable.TimeTable;
 import seedu.address.model.tag.Tag;
 
@@ -55,7 +55,8 @@ public class EditCommand extends Command {
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
 
-    public static final String INTERLEAVE_MESSAGE_USAGE = INTERLEAVE_COMMAND + ": Interleaves the timetable of the person identified "
+    public static final String INTERLEAVE_MESSAGE_USAGE = INTERLEAVE_COMMAND
+            + ": Interleaves the timetable of the person identified "
             + "by the index number used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "Example: " + INTERLEAVE_COMMAND + " 1 ";
@@ -112,18 +113,18 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Module updatedModule = editPersonDescriptor.getModule().orElse(personToEdit.getModule());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        ModuleList updatedList = editPersonDescriptor.getModuleList().orElse(personToEdit.getModules());
         TimeTable updatedTable;
 
         if (editPersonDescriptor.getInterleaved()) {
-            //create new person with interleaved timetable here
             updatedTable = Interleaver.interleave(personToEdit);
         } else {
             updatedTable = editPersonDescriptor.getTimetable().orElse(personToEdit.getTimeTable());
         }
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedModule, updatedTags, updatedTable);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
+                updatedList, updatedTable);
     }
 
     @Override
@@ -153,10 +154,10 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Address address;
-        private Module module;
         private Set<Tag> tags;
-        private boolean toBeInterleaved;
         private TimeTable timeTable;
+        private ModuleList moduleList;
+        private boolean toBeInterleaved;
 
         public EditPersonDescriptor() {}
 
@@ -169,14 +170,15 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
-            setModule(toCopy.module);
+            setModuleList(toCopy.moduleList);
             setTags(toCopy.tags);
             setInterleaved(toCopy.toBeInterleaved);
             setTimetable(toCopy.timeTable);
 
         }
 
-        public void setTimetable(TimeTable timeTable) { this.timeTable = timeTable; }
+        public void setTimetable(TimeTable timeTable) {
+            this.timeTable = timeTable; }
 
         public Optional<TimeTable> getTimetable() {
             return Optional.ofNullable(timeTable);
@@ -220,20 +222,20 @@ public class EditCommand extends Command {
             return Optional.ofNullable(email);
         }
 
-        public void setModule(Module module) {
-            this.module = module;
-        }
-
-        public Optional<Module> getModule() {
-            return Optional.ofNullable(module);
-        }
-
         public void setAddress(Address address) {
             this.address = address;
         }
 
         public Optional<Address> getAddress() {
             return Optional.ofNullable(address);
+        }
+
+        public void setModuleList(ModuleList moduleList) {
+            this.moduleList = moduleList;
+        }
+
+        public Optional<ModuleList> getModuleList() {
+            return Optional.ofNullable(moduleList);
         }
 
         /**

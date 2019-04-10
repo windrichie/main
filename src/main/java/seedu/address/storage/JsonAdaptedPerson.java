@@ -2,6 +2,7 @@ package seedu.address.storage;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -16,6 +17,8 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.modulelist.Module;
+import seedu.address.model.person.modulelist.ModuleList;
+import seedu.address.model.person.timetable.TimeTable;
 import seedu.address.model.tag.Tag;
 
 
@@ -31,8 +34,7 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
-    private final String module;
-    private String[][] timeTable = new String[7][24];
+    private String[][] timeTable = new String[TimeTable.NUM_DAYS][TimeTable.NUM_30MINS_BLOCKS];
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private ArrayList<String> modules = new ArrayList<>();
 
@@ -41,27 +43,21 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("module") String module, @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
-            @JsonProperty("timeTable") String[][] timeTable, @JsonProperty("modules") List<String> modules) {
+                             @JsonProperty("email") String email, @JsonProperty("address") String address,
+                             @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+                             @JsonProperty("timeTable") String[][] timeTable,
+                             @JsonProperty("modules") List<String> modules) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.module = module;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
-
         this.modules.addAll(modules);
+        System.arraycopy(timeTable, 0, this.timeTable, 0, timeTable.length);
 
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 24; j++) {
-                this.timeTable[i][j] = timeTable[i][j];
-            }
-        }
     }
-
     /**
      * Converts a given {@code Person} into this class for Jackson use.
      */
@@ -70,12 +66,15 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        module = source.getModule().moduleCode;
         timeTable = source.getTimeTable().getTimeTableArray();
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
-        modules = source.getModules().getModuleList();
+        Iterator i = source.getModules().getModuleList().iterator();
+        while (i.hasNext()) {
+            modules.add((String) (i.next()));
+        }
+
     }
 
     /**
@@ -120,17 +119,31 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
         }
         final Address modelAddress = new Address(address);
-        if (module == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Module.class.getSimpleName()));
+        if (modules == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ModuleList.class.getSimpleName()));
         }
-        if (!Module.isValidModule(module)) {
-            throw new IllegalValueException(Module.MESSAGE_CONSTRAINTS);
-        }
-        final Module modelModule = new Module(module);
+
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelModule, modelTags);
+        ModuleList tempList = new ModuleList();
+        for (String m:modules
+             ) {
+            if (!Module.isValidModule(m)) {
+                throw new IllegalValueException(Module.MESSAGE_CONSTRAINTS);
+            }
+            else {
+                tempList.add(new Module(m));
+            }
+        }
+        final ModuleList modelModuleList = tempList;
+
+        TimeTable tempTimeTable = new TimeTable();
+        System.arraycopy(timeTable, 0, tempTimeTable.getTimeTableArray(), 0, TimeTable.NUM_DAYS);
+        final TimeTable modelTimetable = tempTimeTable;
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelModuleList, modelTimetable);
     }
 
 }

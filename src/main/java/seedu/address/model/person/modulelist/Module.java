@@ -12,9 +12,9 @@ import seedu.address.model.person.timetable.Activity;
 
 public class Module extends Activity {
 
-    private static final String MESSAGE_CONSTRAINTS =
+    public static final String MESSAGE_CONSTRAINTS =
             "Module should contain a 2-4 letter department code followed by a four digit course code";
-    private static final String VALIDATION_REGEX = "\\w{2,4}\\d{4}";
+    public static final String VALIDATION_REGEX = "\\w{2,4}\\d{4}";
     private final String moduleCode;
     private int selfStudyHours;
 
