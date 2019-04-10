@@ -15,6 +15,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.modulelist.Module;
 import seedu.address.model.person.timetable.Activity;
 
 /**
@@ -54,7 +55,7 @@ public class AddActivityCommand extends Command {
         this.toAdd = activity;
         this.index = index;
         this.day = day;
-        this.startTime = startTime; 
+        this.startTime = startTime;
     }
 
     @Override
@@ -85,10 +86,10 @@ public class AddActivityCommand extends Command {
     private static Person personWithNewTimeTable(Person personToEdit, Activity toAdd, int day, int startTime) {
         assert personToEdit != null;
         personToEdit.getTimeTable().add(toAdd, day, startTime);
-        personToEdit.getModules().add(toAdd.getActivityName());
+        personToEdit.getModules().add(new Module(toAdd.getActivityName()));
 
         return new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                          personToEdit.getAddress(), personToEdit.getModule(), personToEdit.getTags(),
+                          personToEdit.getAddress(), personToEdit.getTags(),
                           personToEdit.getModules(), personToEdit.getTimeTable());
     }
 

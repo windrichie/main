@@ -1,6 +1,5 @@
 package seedu.address.model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Stack;
@@ -23,14 +22,12 @@ public class Interleaver {
     public static TimeTable interleave(Person person) {
         ArrayList<Module> modules = person.getModules().getModuleList();
         ArrayList<Stack> blocksOfModules = new ArrayList<>();
-        int totalStudyHoursPerWeek = 0;
         Iterator i = modules.iterator();
         while (i.hasNext()) {
             Module currentMod = (Module) (i.next());
             Stack<String> moduleBlocks = new Stack<>();
             for (int k = 0; k < (currentMod.getSelfStudyHours() / FOCUS_PERIOD); k++) {
                 moduleBlocks.push(currentMod.getActivityName());
-                totalStudyHoursPerWeek++;
             }
             blocksOfModules.add(moduleBlocks);
         }
@@ -38,19 +35,14 @@ public class Interleaver {
         while (!blocksOfModules.isEmpty()) {
             for (int a = 0; a < TimeTable.NUM_DAYS; a++) { // iterate timetable for free slots
                 for (int b = 0; b < TimeTable.NUM_30MINS_BLOCKS; b++) { // starting from 0800
-                    String timeSlot = person.getTimeTable().getTimeTableArray()[a][b];
-                    if ( timeSlot == null) {
-                        timeSlot = (String) (((Stack) (i.next())).pop());
+                    if (person.getTimeTable().getTimeTableArray()[a][b] == null) {
+                        person.getTimeTable().getTimeTableArray()[a][b] = (String) (((Stack) (i.next())).pop());
+                        break;
                     }
-
-
                 }
             }
-            //access a stack
         }
-
-        //for each block, insert them into free time slots.
-        return null;
+        return person.getTimeTable();
     }
 
     //dont need generate method anymore?
