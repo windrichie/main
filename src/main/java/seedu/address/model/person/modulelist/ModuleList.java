@@ -13,6 +13,14 @@ public class ModuleList {
         this.modules = new ArrayList<>();
     }
 
+    public ModuleList(String[] modList) {
+        this.modules = new ArrayList<>();
+        for (String i:modList
+             ) {
+            this.modules.add(new Module(i));
+        }
+    }
+
     public ArrayList<Module> getModuleList() {
         return this.modules;
     }

@@ -18,11 +18,11 @@ public class TimeTable {
     public String[][] getTimeTableArray() {
         return this.timeTable;
     }
-
     /**
      * adds a an activity to a persons timetable.
      */
     public void add(Activity activity, int day, int hour) { //change to 30 mins blocks
+        //todo argument validation
         if (timeTable[day][hour] == null) {
             timeTable[day][hour] = activity.getActivityName();
         }

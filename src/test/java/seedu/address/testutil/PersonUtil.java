@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.Iterator;
 import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
@@ -35,7 +36,11 @@ public class PersonUtil {
         sb.append(PREFIX_PHONE + person.getPhone().value + " ");
         sb.append(PREFIX_EMAIL + person.getEmail().value + " ");
         sb.append(PREFIX_ADDRESS + person.getAddress().value + " ");
-        sb.append(PREFIX_MODULE + person.getModule().moduleCode + " ");
+        sb.append(PREFIX_MODULE);
+        Iterator i = person.getModules().getModuleList().iterator();
+        while (i.hasNext()) {
+            sb.append(i + " ");
+        }
         person.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );

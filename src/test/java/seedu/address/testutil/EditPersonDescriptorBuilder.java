@@ -11,6 +11,9 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.modulelist.Module;
+import seedu.address.model.person.modulelist.ModuleList;
+import seedu.address.model.person.timetable.Activity;
+import seedu.address.model.person.timetable.TimeTable;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -37,8 +40,10 @@ public class EditPersonDescriptorBuilder {
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
         descriptor.setAddress(person.getAddress());
-        descriptor.setModule(person.getModule());
         descriptor.setTags(person.getTags());
+        descriptor.setTimetable(person.getTimeTable());
+        descriptor.setModuleList(person.getModules());
+        descriptor.setInterleaved(person.getInterleaved());
     }
 
     /**
@@ -46,6 +51,24 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withName(String name) {
         descriptor.setName(new Name(name));
+        return this;
+    }
+
+    /**
+     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
+     * that we are building.
+     */
+    public EditPersonDescriptorBuilder withTags(String... tags) {
+        Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
+        descriptor.setTags(tagSet);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withAddress(String address) {
+        descriptor.setAddress(new Address(address));
         return this;
     }
 
@@ -65,29 +88,31 @@ public class EditPersonDescriptorBuilder {
         return this;
     }
 
+
+
     /**
-     * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Timetable} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new Address(address));
+    public EditPersonDescriptorBuilder withTimetable(int day, int time, String activity) {
+        TimeTable temp = new TimeTable();
+        temp.add(new Activity(activity), day, time);
+        descriptor.setTimetable(temp);
         return this;
     }
 
     /**
-     * Sets the {@code Module} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code ModuleList} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withModule(String module) {
-        descriptor.setModule(new Module(module));
+    public EditPersonDescriptorBuilder withModuleList(String... modules) {
+        descriptor.setModuleList(new ModuleList(modules));
         return this;
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
-     * that we are building.
+     * Sets the {@code toBeInterleaved} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withTags(String... tags) {
-        Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
-        descriptor.setTags(tagSet);
+    public EditPersonDescriptorBuilder withInterleaved(boolean value) {
+        descriptor.setInterleaved(value);
         return this;
     }
 

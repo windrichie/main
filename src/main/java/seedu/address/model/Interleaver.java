@@ -6,6 +6,7 @@ import java.util.Stack;
 
 import seedu.address.model.person.Person;
 import seedu.address.model.person.modulelist.Module;
+import seedu.address.model.person.timetable.Activity;
 import seedu.address.model.person.timetable.TimeTable;
 
 /**
@@ -36,7 +37,7 @@ public class Interleaver {
             for (int a = 0; a < TimeTable.NUM_DAYS; a++) { // iterate timetable for free slots
                 for (int b = 0; b < TimeTable.NUM_30MINS_BLOCKS; b++) { // starting from 0800
                     if (person.getTimeTable().getTimeTableArray()[a][b] == null) {
-                        person.getTimeTable().getTimeTableArray()[a][b] = (String) (((Stack) (i.next())).pop());
+                        person.getTimeTable().add(new Activity((String) (((Stack) (i.next())).pop())), a, b);
                         break;
                     }
                 }
