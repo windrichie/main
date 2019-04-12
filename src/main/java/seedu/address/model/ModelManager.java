@@ -51,7 +51,7 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
         filteredPersons.addListener(this::ensureSelectedPersonIsValid);
         this.eventCalendar = new EventCalendar(eventCalendar);
-        filteredEvents = new FilteredList<>(eventCalendar.getEventList());
+        filteredEvents = new FilteredList<>(this.eventCalendar.getEventList());
         filteredEvents.addListener(this::ensureSelectedEventIsValid);
     }
 
