@@ -10,7 +10,8 @@ import java.util.Optional;
  * Stores mapping of prefixes to their respective arguments.
  * Each key may be associated with multiple argument values.
  * Values for a given key are stored in a list, and the insertion ordering is maintained.
- * Keys are unique, but the list of argument values may contain duplicate argument values, i.e. the same argument moduleCode
+ * Keys are unique, but the list of argument values may contain duplicate argument values,
+ * i.e. the same argument moduleCode
  * can be inserted multiple times for the same prefix.
  */
 public class ArgumentMultimap {
@@ -20,7 +21,8 @@ public class ArgumentMultimap {
 
     /**
      * Associates the specified argument moduleCode with {@code prefix} key in this map.
-     * If the map previously contained a mapping for the key, the new moduleCode is appended to the list of existing values.
+     * If the map previously contained a mapping for the key,
+     * the new moduleCode is appended to the list of existing values.
      *
      * @param prefix   Prefix key with which the specified argument moduleCode is to be associated
      * @param argValue Argument moduleCode to be associated with the specified prefix key
