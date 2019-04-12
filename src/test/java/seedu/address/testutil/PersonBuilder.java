@@ -110,7 +110,6 @@ public class PersonBuilder {
     public PersonBuilder withTimetable(int day, int time, String activity) {
         this.timeTable = new TimeTable();
         this.timeTable.add(new Activity(activity), day, time);
-
         return this;
     }
 

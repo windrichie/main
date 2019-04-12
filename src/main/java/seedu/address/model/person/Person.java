@@ -22,13 +22,13 @@ public class Person {
     private final Name name;
     private final Phone phone;
     private final Email email;
-    private final TimeTable timeTable;
-    private final ModuleList moduleList;
-    private boolean toBeInterleaved;
 
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final TimeTable timeTable;
+    private final ModuleList moduleList;
+    private boolean toBeInterleaved;
 
     public Person(Name name, Phone phone, Email email, Address address, Module module,
                   Set<Tag> tags) {
@@ -113,8 +113,7 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName())
-                && (otherPerson.getPhone().equals(getPhone()) || otherPerson.getEmail().equals(getEmail()))
-                && otherPerson.getInterleaved();
+                && (otherPerson.getPhone().equals(getPhone()) || otherPerson.getEmail().equals(getEmail()));
     }
 
     /**

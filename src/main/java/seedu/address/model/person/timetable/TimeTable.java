@@ -8,7 +8,7 @@ package seedu.address.model.person.timetable;
 public class TimeTable {
 
     public static final int NUM_DAYS = 7;
-    public static final int NUM_30MINS_BLOCKS = 24 * 2;
+    public static final int NUM_30MINS_BLOCKS = 48; //24 hours * 2 30mins block per hour
     private String[][] timeTable;
 
     public TimeTable() {
