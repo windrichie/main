@@ -132,8 +132,7 @@ class JsonAdaptedPerson {
              ) {
             if (!Module.isValidModule(m)) {
                 throw new IllegalValueException(Module.MESSAGE_CONSTRAINTS);
-            }
-            else {
+            } else {
                 tempList.add(new Module(m));
             }
         }
