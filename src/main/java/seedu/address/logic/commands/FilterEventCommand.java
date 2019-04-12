@@ -32,7 +32,7 @@ public class FilterEventCommand extends Command {
         model.updateFilteredEventList(predicate);
         return new CommandResult(
                 String.format(Messages.MESSAGE_EVENTS_LISTED_OVERVIEW, model.getFilteredEventList().size()),
-                false, false, 2);
+                false, false, 1);
     }
 
     @Override
