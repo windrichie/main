@@ -295,11 +295,6 @@ public class ModelManager implements Model {
 
     //=========== Selected person ===========================================================================
 
-    public void interleave() {
-        //TODO: user need input person name
-        //extract modules from selectedPerson() then interleave them;
-    }
-
     /**
      * Ensures {@code selectedEvent} is a valid event in {@code filteredEvents}.
      */
