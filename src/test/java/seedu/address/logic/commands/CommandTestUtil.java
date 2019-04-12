@@ -2,9 +2,12 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_DAY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -35,11 +38,17 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_BOB = "bob@example.com";
     public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
-    public static final String VALID_MODULE_AMY = "CS2113";
-    public static final String VALID_MODULE_BOB = "CS2113";
+    public static final String VALID_ACTIVITY_AMY = "Drop CS2113";
+    public static final String VALID_ACTIVITY_BOB = "SU CS2113";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_TAG_UNUSED = "unused"; // do not use this tag when creating a person
+    public static final int VALID_DAY_AMY = 0;
+    public static final int VALID_DAY_BOB = 1;
+    public static final int VALID_TIME_AMY = 1;
+    public static final int VALID_TIME_BOB = 1;
+    public static final String[] VALID_MODULES_AMY = {"CS2113", "CS1337"};
+    public static final String[] VALID_MODULES_BOB = {"CS1231", "CS3230"};
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -49,8 +58,15 @@ public class CommandTestUtil {
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
     public static final String ADDRESS_DESC_AMY = " " + PREFIX_ADDRESS + VALID_ADDRESS_AMY;
     public static final String ADDRESS_DESC_BOB = " " + PREFIX_ADDRESS + VALID_ADDRESS_BOB;
-    public static final String MODULE_DESC_AMY = " " + PREFIX_MODULE + VALID_MODULE_AMY;
-    public static final String MODULE_DESC_BOB = " " + PREFIX_MODULE + VALID_MODULE_BOB;
+    public static final String ACTIVITY_DESC_AMY = " " + PREFIX_ACTIVITY + VALID_ACTIVITY_AMY;
+    public static final String ACTIVITY_DESC_BOB = " " + PREFIX_ACTIVITY + VALID_ACTIVITY_BOB;
+    public static final String DAY_DESC_AMY = " " + PREFIX_ACTIVITY_DAY + VALID_DAY_AMY;
+    public static final String DAY_DESC_BOB = " " + PREFIX_ACTIVITY_DAY + VALID_DAY_BOB;
+    public static final String TIME_DESC_AMY = " " + PREFIX_ACTIVITY_TIME + VALID_TIME_AMY;
+    public static final String TIME_DESC_BOB = " " + PREFIX_ACTIVITY_TIME + VALID_TIME_BOB;
+    public static final String MODS_DESC_AMY;
+    public static final String MODS_DESC_BOB;
+
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
@@ -59,7 +75,7 @@ public class CommandTestUtil {
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
-    public static final String INVALID_MODULE_DESC = " " + PREFIX_MODULE + "csdd*"; // '*' not allowed in tags
+    public static final String INVALID_MODULE_DESC = " " + PREFIX_MODULES + "csdd*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -74,6 +90,16 @@ public class CommandTestUtil {
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+        String modArgs = "";
+        for (String s:VALID_MODULES_AMY
+             ) {
+            modArgs += " " + PREFIX_MODULES + s; }
+        MODS_DESC_AMY = modArgs;
+        modArgs = "";
+        for (String s:VALID_MODULES_BOB
+        ) {
+            modArgs += " " + PREFIX_MODULES + s; }
+        MODS_DESC_BOB = modArgs;
     }
 
     /**
