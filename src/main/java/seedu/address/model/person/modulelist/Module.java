@@ -15,6 +15,7 @@ public class Module extends Activity {
     public static final String MESSAGE_CONSTRAINTS =
             "Module should contain a 2-4 letter department code followed by a four digit course code";
     public static final String VALIDATION_REGEX = "\\w{2,4}\\d{4}";
+
     private final String moduleCode;
     private int selfStudyHours;
 
@@ -37,6 +38,10 @@ public class Module extends Activity {
 
     public void setSelfStudyHours(int selfStudyHours) {
         this.selfStudyHours = selfStudyHours;
+    }
+
+    public String getModuleCode() {
+        return moduleCode;
     }
 
     /**
