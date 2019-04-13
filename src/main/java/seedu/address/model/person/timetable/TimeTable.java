@@ -15,6 +15,10 @@ public class TimeTable {
         this.timeTable = new String[NUM_DAYS][NUM_HOURS];
     }
 
+    public TimeTable(String[][] timeTable) {
+        this.timeTable = timeTable;
+    }
+
     public String[][] getTimeTableArray() {
         return this.timeTable;
     }

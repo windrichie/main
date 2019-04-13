@@ -15,10 +15,12 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FilterEventCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.InterleaveCommand;
+import seedu.address.logic.commands.ListActivityCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListEventCommand;
 import seedu.address.logic.commands.RedoCommand;
@@ -109,6 +111,12 @@ public class AddressBookParser {
 
         case InterleaveCommand.COMMAND_WORD:
             return new InterleaveCommand();
+
+        case FilterEventCommand.COMMAND_WORD:
+            return new FilterEventCommandParser().parse(arguments);
+
+        case ListActivityCommand.COMMAND_WORD:
+            return new ListActivityCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

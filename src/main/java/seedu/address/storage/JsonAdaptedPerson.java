@@ -16,6 +16,8 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.modulelist.Module;
+import seedu.address.model.person.modulelist.ModuleList;
+import seedu.address.model.person.timetable.TimeTable;
 import seedu.address.model.tag.Tag;
 
 
@@ -130,7 +132,12 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelModule, modelTags);
+        final ModuleList moduleList = new ModuleList(modules);
+
+        final TimeTable timeTable = new TimeTable(this.timeTable);
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelModule, modelTags,
+                moduleList, timeTable);
     }
 
 }
