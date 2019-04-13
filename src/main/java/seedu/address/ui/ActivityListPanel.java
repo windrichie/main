@@ -45,7 +45,8 @@ public class ActivityListPanel extends UiPart<Region> {
         System.out.println(observableActivityList.size());
         activityListView.setItems(observableActivityList);
         activityListView.setCellFactory(listView -> new ActivityListViewCell());
-        //timetableListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        // timetableListView.getSelectionModel().selectedItemProperty()
+                // .addListener((observable, oldValue, newValue) -> {
             //logger.fine("Selection in event list panel changed to : '" + newValue + "'");
             //onSelectedEventChange.accept(newValue);
         //});

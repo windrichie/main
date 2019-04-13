@@ -97,7 +97,7 @@ public class AddressBookParser {
             return new FilterEventCommandParser().parse(arguments);
 
         case ListActivityCommand.COMMAND_WORD:
-            return new ListActivityCommand();
+            return new ListActivityCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
