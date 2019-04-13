@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -36,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private EventListPanel eventListPanel;
+    private ArrayList<ActivityListPanel> activityListPanel = new ArrayList<>();
 
     @FXML
     private StackPane browserPlaceholder;
@@ -124,6 +126,12 @@ public class MainWindow extends UiPart<Stage> {
         eventListPanel.getRoot().setVisible(false);
         personListPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
 
+        for (int index = 0; index < logic.getFilteredPersonList().size(); index++) {
+            activityListPanel.add(new ActivityListPanel(logic.getTimeTable(index)));
+            activityListPanel.get(index).getRoot().setVisible(false);
+            personListPanelPlaceholder.getChildren().add(activityListPanel.get(index).getRoot());
+        }
+
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -198,14 +206,31 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             //@@author windrichie
+            if (commandResult.getView() == 0) {
+                eventListPanel.getRoot().setVisible(false);
+                for (ActivityListPanel list : activityListPanel) {
+                    list.getRoot().setVisible(false);
+                }
+                personListPanel.getRoot().setVisible(true);
+            }
+
             if (commandResult.getView() == 1) {
                 personListPanel.getRoot().setVisible(false);
+                for (ActivityListPanel list : activityListPanel) {
+                    list.getRoot().setVisible(false);
+                }
                 eventListPanel.getRoot().setVisible(true);
             }
 
-            if (commandResult.getView() == 0) {
+            if (commandResult.getView() == 2) {
                 eventListPanel.getRoot().setVisible(false);
-                personListPanel.getRoot().setVisible(true);
+                personListPanel.getRoot().setVisible(false);
+                for (ActivityListPanel list : activityListPanel) {
+                    list.getRoot().setVisible(false);
+                }
+                if (commandResult.getPersonIndex() > -1) {
+                    activityListPanel.get(commandResult.getPersonIndex()).getRoot().setVisible(true);
+                }
             }
 
             return commandResult;

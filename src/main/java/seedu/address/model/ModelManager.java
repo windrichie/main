@@ -19,6 +19,7 @@ import seedu.address.model.event.Event;
 import seedu.address.model.event.exceptions.EventNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.timetable.TimeTable;
 import seedu.address.model.tag.Tag;
 
 
@@ -37,7 +38,7 @@ public class ModelManager implements Model {
     private final SimpleObjectProperty<Event> selectedEvent = new SimpleObjectProperty<>();
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given addressBook, eventCalendar and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
                         ReadOnlyEventCalendar eventCalendar) {
@@ -51,7 +52,7 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
         filteredPersons.addListener(this::ensureSelectedPersonIsValid);
         this.eventCalendar = new EventCalendar(eventCalendar);
-        filteredEvents = new FilteredList<>(eventCalendar.getEventList());
+        filteredEvents = new FilteredList<>(this.eventCalendar.getEventList());
         filteredEvents.addListener(this::ensureSelectedEventIsValid);
     }
 
@@ -160,6 +161,17 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    /**
+     *
+     * Returns TimeTable object from a person with @param index in filteredPersons list
+     */
+    @Override
+    public TimeTable getTimeTable(int index) {
+        Person person = filteredPersons.get(index);
+        // System.out.println(person.getName() + " timetable fetched.");
+        return person.getTimeTable();
     }
 
     //=========== Undo/Redo =================================================================================

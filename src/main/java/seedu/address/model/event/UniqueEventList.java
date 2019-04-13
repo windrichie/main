@@ -8,6 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import seedu.address.model.event.exceptions.DuplicateEventException;
 import seedu.address.model.event.exceptions.EventNotFoundException;
 
@@ -26,7 +27,7 @@ import seedu.address.model.event.exceptions.EventNotFoundException;
 public class UniqueEventList implements Iterable<Event> {
 
     private final ObservableList<Event> internalList = FXCollections.observableArrayList();
-    private final ObservableList<Event> internalUnmodifiableList =
+    private ObservableList<Event> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
@@ -102,7 +103,17 @@ public class UniqueEventList implements Iterable<Event> {
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<Event> asUnmodifiableObservableList() {
-        return internalUnmodifiableList;
+        // return sortedlist as unmodifiable observable list
+        return FXCollections.unmodifiableObservableList(sortObservableList());
+    }
+
+    /**
+     *
+     * Returns a sorted list as a {@code ObservableList}.
+     */
+    public ObservableList<Event> sortObservableList() {
+        SortedList<Event> sortedList = new SortedList<>(internalList, new EventTimeComparator());
+        return sortedList;
     }
 
     @Override
