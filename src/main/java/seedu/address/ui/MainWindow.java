@@ -230,7 +230,9 @@ public class MainWindow extends UiPart<Stage> {
                 for (ActivityListPanel list : activityListPanel) {
                     list.getRoot().setVisible(false);
                 }
-                activityListPanel.get(commandResult.getPersonIndex()).getRoot().setVisible(true);
+                if (commandResult.getPersonIndex() > -1) {
+                    activityListPanel.get(commandResult.getPersonIndex()).getRoot().setVisible(true);
+                }
             }
 
             return commandResult;
