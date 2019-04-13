@@ -1,5 +1,10 @@
 package seedu.address.model.event;
 
+import javax.print.DocFlavor;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
@@ -22,6 +27,9 @@ public class Date {
 
     public final String fulldate;
 
+    public static final String[] DAY_MAPPING = {"Monday", "Tuesday", "Wednesday", "Thursday",
+            "Friday", "Saturday", "Sunday"};
+
     /**
      * Constructs a {@code Date}.
      *
@@ -43,6 +51,35 @@ public class Date {
     @Override
     public String toString() {
         return fulldate;
+    }
+
+    public java.util.Date getDateFormat() {
+        SimpleDateFormat dateParser = new SimpleDateFormat("dd/MM/yyyy");
+        java.util.Date date;
+        try {
+            date = dateParser.parse(fulldate);
+        } catch (ParseException e) {
+            return null;
+        }
+
+        return date;
+    }
+
+    public String getDayString() {
+        return DAY_MAPPING[getDayInt()];
+    }
+
+    public int getDayInt() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(getDateFormat());
+        int dayInt = c.get(Calendar.DAY_OF_WEEK); // Sunday = 1
+        if (dayInt == 1) {
+            dayInt = 6;
+        } else {
+            dayInt = dayInt - 2;
+        }
+
+        return dayInt;
     }
 
     @Override
