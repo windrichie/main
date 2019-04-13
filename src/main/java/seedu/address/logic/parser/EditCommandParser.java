@@ -2,8 +2,12 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_DAY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -38,7 +42,8 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
+                        PREFIX_ACTIVITY_DAY, PREFIX_ACTIVITY_TIME, PREFIX_ACTIVITY, PREFIX_MODULES, PREFIX_TAG);
 
         Index index;
 
@@ -69,6 +74,16 @@ public class EditCommandParser implements Parser<EditCommand> {
                 editPersonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
             }
             parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
+            if (argMultimap.getValue(PREFIX_MODULES).isPresent()) {
+                editPersonDescriptor.setModuleList(ParserUtil.parseModules(argMultimap.getAllValues(PREFIX_MODULES)));
+            }
+            if (argMultimap.getValue(PREFIX_ACTIVITY_DAY).isPresent()
+                    && argMultimap.getValue(PREFIX_ACTIVITY_TIME).isPresent()
+                    && argMultimap.getValue(PREFIX_ACTIVITY).isPresent() ) {
+                editPersonDescriptor.setTimetable(ParserUtil.parseTimetable(
+                        argMultimap.getValue(PREFIX_ACTIVITY_DAY).get(),
+                        argMultimap.getValue(PREFIX_ACTIVITY_TIME).get(), argMultimap.getValue(PREFIX_ACTIVITY).get()));
+            }
         }
 
         if (commandType.equals(EditCommand.INTERLEAVE_COMMAND)) {
