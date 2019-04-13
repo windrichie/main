@@ -142,7 +142,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, moduleList);
+        return Objects.hash(name, phone, email, address, tags, timeTable, moduleList, toBeInterleaved);
     }
 
     @Override
@@ -157,6 +157,10 @@ public class Person {
                 .append(getAddress())
                 .append(" Modules: ")
                 .append(getModules())
+                .append(" Timetable: ")
+                .append(getTimeTable())
+                .append(" Interleave: ")
+                .append(getInterleaved())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

@@ -1,6 +1,7 @@
 package seedu.address.model.person.modulelist;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Represents a list of modules a person is taking.
@@ -31,5 +32,16 @@ public class ModuleList {
     public void add(Module mod) {
         //Create exception for multiple modules of the same type.
         modules.add(mod);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        Iterator i = this.modules.iterator();
+        while (i.hasNext()) {
+            builder.append((Module) (i.next()))
+                    .append(" ");
+        }
+        return builder.toString();
     }
 }

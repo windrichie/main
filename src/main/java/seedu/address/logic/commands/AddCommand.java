@@ -48,7 +48,6 @@ public class AddCommand extends Command {
     public AddCommand(Person person) {
         requireNonNull(person);
         toAdd = person;
-        System.out.println(person.toString());
     }
 
     @Override
