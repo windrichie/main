@@ -93,12 +93,13 @@ public class CommandTestUtil {
         String modArgs = "";
         for (String s:VALID_MODULES_AMY
              ) {
-            modArgs += " " + PREFIX_MODULES + s; }
+            modArgs = modArgs + " " + PREFIX_MODULES + s; }
         MODS_DESC_AMY = modArgs;
         modArgs = "";
         for (String s:VALID_MODULES_BOB
         ) {
-            modArgs += " " + PREFIX_MODULES + s; }
+            modArgs += " " + PREFIX_MODULES + s;
+        }
         MODS_DESC_BOB = modArgs;
     }
 
