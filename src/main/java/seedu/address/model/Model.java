@@ -106,7 +106,7 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
-    public TimeTable getTimeTable(int index);
+    TimeTable getTimeTable(int index);
 
     /**
      * Returns true if the model has previous address book states to restore.
