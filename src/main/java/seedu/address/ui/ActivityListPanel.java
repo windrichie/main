@@ -1,5 +1,8 @@
 package seedu.address.ui;
 
+import java.util.ArrayList;
+import java.util.logging.Logger;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,9 +12,6 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.timetable.Activity;
 import seedu.address.model.person.timetable.TimeTable;
-
-import java.util.ArrayList;
-import java.util.logging.Logger;
 
 //@@author windrichie
 
@@ -32,8 +32,6 @@ public class ActivityListPanel extends UiPart<Region> {
         ArrayList<Activity> activityList = new ArrayList<>();
         for (int row = 0; row < activityArray.length; row++) {
             for (int col = 0; col < activityArray[row].length; col++) {
-                // System.out.println("Checking for non null activities r,c = " + row + col +
-                        // ", value = " + activityArray[row][col]);
                 if (activityArray[row][col] != null) {
                     System.out.println("Adding activities to list: " + activityArray[row][col]);
                     activityList.add(new Activity(activityArray[row][col], row, col));
@@ -45,28 +43,6 @@ public class ActivityListPanel extends UiPart<Region> {
         System.out.println(observableActivityList.size());
         activityListView.setItems(observableActivityList);
         activityListView.setCellFactory(listView -> new ActivityListViewCell());
-        // timetableListView.getSelectionModel().selectedItemProperty()
-                // .addListener((observable, oldValue, newValue) -> {
-            //logger.fine("Selection in event list panel changed to : '" + newValue + "'");
-            //onSelectedEventChange.accept(newValue);
-        //});
-        //        selectedEvent.addListener((observable, oldValue, newValue) -> {
-        //            logger.fine("Selected event changed to: " + newValue);
-        //
-        //            // Don't modify selection if we are already selecting the selected event,
-        //            // otherwise we would have an infinite loop.
-        //            if (Objects.equals(eventListView.getSelectionModel().getSelectedItem(), newValue)) {
-        //                return;
-        //            }
-        //
-        //            if (newValue == null) {
-        //                eventListView.getSelectionModel().clearSelection();
-        //            } else {
-        //                int index = eventListView.getItems().indexOf(newValue);
-        //                eventListView.scrollTo(index);
-        //                eventListView.getSelectionModel().clearAndSelect(index);
-        //            }
-        //        });
     }
 
     /**

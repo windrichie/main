@@ -1,9 +1,5 @@
 package seedu.address.model.event;
 
-import seedu.address.commons.util.StringUtil;
-import seedu.address.model.person.Person;
-
-import java.util.List;
 import java.util.function.Predicate;
 
 /**

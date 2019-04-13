@@ -107,6 +107,10 @@ public class UniqueEventList implements Iterable<Event> {
         return FXCollections.unmodifiableObservableList(sortObservableList());
     }
 
+    /**
+     *
+     * Returns a sorted list as a {@code ObservableList}.
+     */
     public ObservableList<Event> sortObservableList() {
         SortedList<Event> sortedList = new SortedList<>(internalList, new EventTimeComparator());
         return sortedList;

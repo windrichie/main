@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.Date;
 
 /**
- * Compares starting time of 2 events used to sort in ascending order.
+ * Compares starting time of two {@code Event} used to sort in ascending order.
  */
 public class EventTimeComparator implements Comparator<Event> {
     public int compare(Event event, Event event1) {
@@ -17,7 +17,8 @@ public class EventTimeComparator implements Comparator<Event> {
         String sDate1 = event1.getDate().toString();
 
         SimpleDateFormat dateParser = new SimpleDateFormat("dd/MM/yyyy");
-        Date date, date1;
+        Date date;
+        Date date1;
 
         try {
             date = dateParser.parse(sDate);
@@ -33,8 +34,12 @@ public class EventTimeComparator implements Comparator<Event> {
                 return Integer.valueOf(starttime[1]) - Integer.valueOf(starttime1[1]);
             }
         } else {
-            if (date.before(date1)) return -1;
-            else return 1;
+            if (date.before(date1)) {
+                return -1;
+            }
+            else {
+                return 1;
+            }
         }
 
 

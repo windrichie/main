@@ -1,10 +1,9 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.ListActivityCommand;
-import seedu.address.logic.commands.SelectCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
+import seedu.address.logic.commands.ListActivityCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Parses input arguments and creates a new ListActivityCommand object

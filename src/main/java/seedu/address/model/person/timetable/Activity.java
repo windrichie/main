@@ -9,8 +9,8 @@ import seedu.address.model.person.modulelist.Module;
 public class Activity {
 
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
-    public static final String[] dayMapping = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
-            "Saturday", "Sunday"};
+    public static final String[] DAY_MAPPING = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+        "Saturday", "Sunday"};
 
     private final Module module;
     private final Event event;
@@ -39,7 +39,7 @@ public class Activity {
         this.activity = activity;
         this.module = null;
         this.event = null;
-        this.day = dayMapping[day];
+        this.day = DAY_MAPPING[day];
         this.time = Integer.toString(time) + ":00 - " + Integer.toString(time + 1) + ":00";
     }
 
