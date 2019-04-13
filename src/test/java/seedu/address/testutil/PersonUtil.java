@@ -1,11 +1,16 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_DAY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.model.person.timetable.TimeTable.NUM_30MINS_BLOCKS;
+import static seedu.address.model.person.timetable.TimeTable.NUM_DAYS;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -32,18 +37,27 @@ public class PersonUtil {
      */
     public static String getPersonDetails(Person person) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_NAME + person.getName().fullName + " ");
-        sb.append(PREFIX_PHONE + person.getPhone().value + " ");
-        sb.append(PREFIX_EMAIL + person.getEmail().value + " ");
-        sb.append(PREFIX_ADDRESS + person.getAddress().value + " ");
-        sb.append(PREFIX_MODULES);
-        Iterator i = person.getModules().getModuleList().iterator();
-        while (i.hasNext()) {
-            sb.append(i + " ");
-        }
+        sb.append(PREFIX_NAME).append(person.getName().fullName).append(" ");
+        sb.append(PREFIX_PHONE).append(person.getPhone().value).append(" ");
+        sb.append(PREFIX_EMAIL).append(person.getEmail().value).append(" ");
+        sb.append(PREFIX_ADDRESS).append(person.getAddress().value).append(" ");
         person.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
+        Iterator i = person.getModules().getModuleList().iterator();
+        while (i.hasNext()) {
+            sb.append(PREFIX_MODULES).append(i.next()).append(" ");
+        }
+        for (int x = 0; x < NUM_DAYS; x++) {
+            for (int y = 0; y < NUM_30MINS_BLOCKS; y++) {
+                if (person.getTimeTable().getTimeTableArray()[x][y] != null) {
+                    sb.append(PREFIX_ACTIVITY_DAY).append(x).append(" ")
+                            .append(PREFIX_ACTIVITY_TIME).append(y).append(" ")
+                            .append(PREFIX_ACTIVITY)
+                            .append(person.getTimeTable().getTimeTableArray()[x][y]).append(" ");
+                }
+            }
+        }
         return sb.toString();
     }
 

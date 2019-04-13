@@ -39,7 +39,7 @@ public class ModuleList {
         final StringBuilder builder = new StringBuilder();
         Iterator i = this.modules.iterator();
         while (i.hasNext()) {
-            builder.append((Module) (i.next()))
+            builder.append((i.next()))
                     .append(" ");
         }
         return builder.toString();

@@ -45,7 +45,7 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
         timeTable = new TimeTable();
-        timeTable.getTimeTableArray()[DEFAULT_ACTIVITY_DAY][DEFAULT_ACTIVITY_TIME] = DEFAULT_ACTIVITY;
+        timeTable.add(new Activity(DEFAULT_ACTIVITY), DEFAULT_ACTIVITY_DAY, DEFAULT_ACTIVITY_TIME);
         moduleList = new ModuleList(DEFAULT_MODULE_LIST);
         toBeInterleaved = DEFAULT_INTERLEAVE;
     }
