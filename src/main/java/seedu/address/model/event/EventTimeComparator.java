@@ -9,6 +9,9 @@ import java.util.Date;
  * Compares starting time of two {@code Event} used to sort in ascending order.
  */
 public class EventTimeComparator implements Comparator<Event> {
+    /**
+     * Compares starting time of two {@code Event} used to sort in ascending order.
+     */
     public int compare(Event event, Event event1) {
         String[] starttime = event.getTime().startTimeToString().split(":");
         String[] starttime1 = event1.getTime().startTimeToString().split(":");
@@ -36,8 +39,7 @@ public class EventTimeComparator implements Comparator<Event> {
         } else {
             if (date.before(date1)) {
                 return -1;
-            }
-            else {
+            } else {
                 return 1;
             }
         }

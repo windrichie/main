@@ -10,7 +10,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class ListActivityCommandParser implements Parser<ListActivityCommand> {
 
-    public final String VALIDATION_REGEX = "\\d+";
+    public static final String VALIDATION_REGEX = "\\d+";
 
     /**
      * Parses the given {@code String} of arguments in the context of the SelectCommand
