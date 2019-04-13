@@ -11,6 +11,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.event.Event;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.timetable.TimeTable;
 
 /**
  * API of the Logic component
@@ -34,6 +35,9 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
+
+    /** Returns a TimeTable from a Person with a certain index */
+    public TimeTable getTimeTable(int index);
 
     /**
      * Returns an unmodifiable view of the list of commands entered by the user.

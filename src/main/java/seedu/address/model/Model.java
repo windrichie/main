@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.event.Event;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.timetable.TimeTable;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -104,6 +105,8 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    public TimeTable getTimeTable(int index);
 
     /**
      * Returns true if the model has previous address book states to restore.

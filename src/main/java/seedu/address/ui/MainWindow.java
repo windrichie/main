@@ -36,6 +36,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private EventListPanel eventListPanel;
+    private ActivityListPanel activityListPanel;
 
     @FXML
     private StackPane browserPlaceholder;
@@ -124,6 +125,10 @@ public class MainWindow extends UiPart<Stage> {
         eventListPanel.getRoot().setVisible(false);
         personListPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
 
+        activityListPanel = new ActivityListPanel(logic.getTimeTable(0));
+        activityListPanel.getRoot().setVisible(false);
+        personListPanelPlaceholder.getChildren().add(activityListPanel.getRoot());
+
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -198,14 +203,22 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             //@@author windrichie
+            if (commandResult.getView() == 0) {
+                eventListPanel.getRoot().setVisible(false);
+                activityListPanel.getRoot().setVisible(false);
+                personListPanel.getRoot().setVisible(true);
+            }
+
             if (commandResult.getView() == 1) {
                 personListPanel.getRoot().setVisible(false);
+                activityListPanel.getRoot().setVisible(false);
                 eventListPanel.getRoot().setVisible(true);
             }
 
-            if (commandResult.getView() == 0) {
+            if (commandResult.getView() == 2) {
                 eventListPanel.getRoot().setVisible(false);
-                personListPanel.getRoot().setVisible(true);
+                personListPanel.getRoot().setVisible(false);
+                activityListPanel.getRoot().setVisible(true);
             }
 
             return commandResult;
