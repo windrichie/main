@@ -86,21 +86,23 @@ public class CommandTestUtil {
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_FRIEND).build();
+                .withTags(VALID_TAG_FRIEND).withTimetable(VALID_DAY_AMY, VALID_TIME_AMY, VALID_ACTIVITY_AMY)
+                .withInterleaved(false).withModuleList(VALID_MODULES_AMY).build();
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
-        String modArgs = "";
+                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+                .withTimetable(VALID_DAY_BOB, VALID_TIME_BOB, VALID_ACTIVITY_BOB)
+                .withInterleaved(false).withModuleList(VALID_MODULES_BOB).build();
+        StringBuilder builder = new StringBuilder();
         for (String s:VALID_MODULES_AMY
              ) {
-            modArgs = modArgs + " " + PREFIX_MODULES + s; }
-        MODS_DESC_AMY = modArgs;
-        modArgs = "";
+            builder.append(" ").append(PREFIX_MODULES).append(s); }
+        MODS_DESC_AMY = builder.toString();
+        builder = new StringBuilder();
         for (String s:VALID_MODULES_BOB
         ) {
-            modArgs += " " + PREFIX_MODULES + s;
-        }
-        MODS_DESC_BOB = modArgs;
+            builder.append(" ").append(PREFIX_MODULES).append(s); }
+        MODS_DESC_BOB = builder.toString();
     }
 
     /**
