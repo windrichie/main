@@ -1,5 +1,7 @@
 package seedu.address.model.person.timetable;
 
+import seedu.address.model.event.Time;
+
 /**
  * Represents a Timetable in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -13,6 +15,10 @@ public class TimeTable {
 
     public TimeTable() {
         this.timeTable = new String[NUM_DAYS][NUM_HOURS];
+    }
+
+    public TimeTable(String[][] timeTable){
+        this.timeTable = timeTable;
     }
 
     public String[][] getTimeTableArray() {

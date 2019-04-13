@@ -1,5 +1,6 @@
 package seedu.address.model.person.modulelist;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -11,6 +12,10 @@ public class ModuleList {
 
     public ModuleList() {
         this.modules = new ArrayList<>();
+    }
+
+    public ModuleList(ArrayList<String> modules){
+        this.modules = modules;
     }
 
     public ArrayList<String> getModuleList() {

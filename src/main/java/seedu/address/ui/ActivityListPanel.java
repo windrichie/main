@@ -23,23 +23,28 @@ public class ActivityListPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(ActivityListPanel.class);
 
     @FXML
-    private ListView<Activity> timetableListView;
+    private ListView<Activity> activityListView;
 
     public ActivityListPanel(TimeTable timetable) {
         super(FXML);
+
         String[][] activityArray = timetable.getTimeTableArray();
         ArrayList<Activity> activityList = new ArrayList<>();
         for (int row = 0; row < activityArray.length; row++) {
             for (int col = 0; col < activityArray[row].length; col++) {
+                // System.out.println("Checking for non null activities r,c = " + row + col +
+                        // ", value = " + activityArray[row][col]);
                 if (activityArray[row][col] != null) {
+                    System.out.println("Adding activities to list: " + activityArray[row][col]);
                     activityList.add(new Activity(activityArray[row][col], row, col));
                 }
             }
         }
-
-        ObservableList<Activity> observableActivityList = FXCollections.observableList(activityList);
-        timetableListView.setItems(observableActivityList);
-        timetableListView.setCellFactory(listView -> new ActivityListViewCell());
+        System.out.println(activityList.size());
+        ObservableList<Activity> observableActivityList = FXCollections.observableArrayList(activityList);
+        System.out.println(observableActivityList.size());
+        activityListView.setItems(observableActivityList);
+        activityListView.setCellFactory(listView -> new ActivityListViewCell());
         //timetableListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             //logger.fine("Selection in event list panel changed to : '" + newValue + "'");
             //onSelectedEventChange.accept(newValue);

@@ -170,6 +170,7 @@ public class ModelManager implements Model {
     @Override
     public TimeTable getTimeTable(int index) {
         Person person = filteredPersons.get(index);
+        // System.out.println(person.getName() + " timetable fetched.");
         return person.getTimeTable();
     }
 
