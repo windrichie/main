@@ -15,7 +15,9 @@ public class Module extends Activity {
     public static final String MESSAGE_CONSTRAINTS =
             "Module should contain a 2-4 letter department code followed by a four digit course code";
     public static final String VALIDATION_REGEX = "\\w{2,4}\\d{4}";
-    public final String value;
+
+    private final String moduleCode;
+    private int selfStudyHours;
 
     /**
      * Constructs a {@code Module}.
@@ -26,7 +28,20 @@ public class Module extends Activity {
         super(module);
         requireNonNull(module);
         checkArgument(isValidModule(module), MESSAGE_CONSTRAINTS);
-        value = module;
+        this.moduleCode = module;
+        this.selfStudyHours = 3;
+    }
+
+    public int getSelfStudyHours() {
+        return selfStudyHours;
+    }
+
+    public void setSelfStudyHours(int selfStudyHours) {
+        this.selfStudyHours = selfStudyHours;
+    }
+
+    public String getModuleCode() {
+        return moduleCode;
     }
 
     /**
@@ -38,19 +53,19 @@ public class Module extends Activity {
 
     @Override
     public String toString() {
-        return value;
+        return moduleCode;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Module // instanceof handles nulls
-                && value.equals(((Module) other).value)); // state check
+                && moduleCode.equals(((Module) other).moduleCode)); // state check
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return moduleCode.hashCode();
     }
 
 }

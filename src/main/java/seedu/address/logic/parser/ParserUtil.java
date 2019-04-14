@@ -21,9 +21,11 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.modulelist.Module;
+import seedu.address.model.person.modulelist.ModuleList;
 import seedu.address.model.person.timetable.Activity;
 import seedu.address.model.person.timetable.Day;
 import seedu.address.model.person.timetable.StartTime;
+import seedu.address.model.person.timetable.TimeTable;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -170,9 +172,9 @@ public class ParserUtil {
     /**
      * Parses {@code Collection<String> modules} into a {@code Set<modulelist>}.
      */
-    public static Set<Module> parseModules(Collection<String> modules) throws ParseException {
+    public static ModuleList parseModules(Collection<String> modules) throws ParseException {
         requireNonNull(modules);
-        final Set<Module> moduleSet = new HashSet<>();
+        final ModuleList moduleSet = new ModuleList();
         for (String module : modules) {
             moduleSet.add(parseModule(module));
         }
@@ -204,6 +206,21 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses {@code String day}, {@code String time}, {@code String activity}
+     * into a {@code TimeTable}.
+     *
+     * @throws ParseException if the given parameters is invalid.
+     */
+    public static TimeTable parseTimetable(String day, String time, String activity) throws ParseException {
+        requireNonNull(day);
+        requireNonNull(time);
+        requireNonNull(activity);
+        final TimeTable table = new TimeTable();
+        table.add(new Activity(activity), Integer.parseInt(day), Integer.parseInt(time));
+        return table;
     }
 
     //@@author windrichie
@@ -318,5 +335,4 @@ public class ParserUtil {
         }
         return new Description(trimmedDescription);
     }
-
 }

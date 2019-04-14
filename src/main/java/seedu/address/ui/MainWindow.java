@@ -82,7 +82,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Sets the accelerator of a MenuItem.
-     * @param keyCombination the KeyCombination value of the accelerator
+     * @param keyCombination the KeyCombination moduleCode of the accelerator
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
         menuItem.setAccelerator(keyCombination);
@@ -127,6 +127,7 @@ public class MainWindow extends UiPart<Stage> {
         personListPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
 
         for (int index = 0; index < logic.getFilteredPersonList().size(); index++) {
+            System.out.println("fill inner parts, creating activity list panels");
             activityListPanel.add(new ActivityListPanel(logic.getTimeTable(index)));
             activityListPanel.get(index).getRoot().setVisible(false);
             personListPanelPlaceholder.getChildren().add(activityListPanel.get(index).getRoot());
@@ -228,7 +229,12 @@ public class MainWindow extends UiPart<Stage> {
                 for (ActivityListPanel list : activityListPanel) {
                     list.getRoot().setVisible(false);
                 }
+
                 if (commandResult.getPersonIndex() > -1) {
+                    int personIndex = commandResult.getPersonIndex();
+                    ActivityListPanel updatedPanel = new ActivityListPanel(logic.getTimeTable(personIndex));
+                    activityListPanel.set(personIndex, updatedPanel);
+                    personListPanelPlaceholder.getChildren().add(activityListPanel.get(personIndex).getRoot());
                     activityListPanel.get(commandResult.getPersonIndex()).getRoot().setVisible(true);
                 }
             }

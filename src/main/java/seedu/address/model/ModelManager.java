@@ -171,6 +171,14 @@ public class ModelManager implements Model {
     public TimeTable getTimeTable(int index) {
         Person person = filteredPersons.get(index);
         // System.out.println(person.getName() + " timetable fetched.");
+        String[][] timetable = person.getTimeTable().getTimeTableArray();
+        //        for (int row = 0; row < timetable.length; row++) {
+        //            for (int col = 0; col < timetable[row].length; col++) {
+        //                if (timetable[row][col] != null) {
+        //                     System.out.println("row: " + row + " col: " + col + " val: " + timetable[row][col]);
+        //                }
+        //            }
+        //        }
         return person.getTimeTable();
     }
 
@@ -234,7 +242,7 @@ public class ModelManager implements Model {
             boolean wasSelectedPersonReplaced = change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
                     && change.getRemoved().contains(selectedPerson.getValue());
             if (wasSelectedPersonReplaced) {
-                // Update selectedPerson to its new value.
+                // Update selectedPerson to its new moduleCode.
                 int index = change.getRemoved().indexOf(selectedPerson.getValue());
                 selectedPerson.setValue(change.getAddedSubList().get(index));
                 continue;
@@ -307,10 +315,6 @@ public class ModelManager implements Model {
 
     //=========== Selected person ===========================================================================
 
-    public void interleave() {
-        //Interleaver.extractSelfStudyHours();
-    }
-
     /**
      * Ensures {@code selectedEvent} is a valid event in {@code filteredEvents}.
      */
@@ -324,7 +328,7 @@ public class ModelManager implements Model {
             boolean wasSelectedEventReplaced = change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
                     && change.getRemoved().contains(selectedEvent.getValue());
             if (wasSelectedEventReplaced) {
-                // Update selectedEvent to its new value.
+                // Update selectedEvent to its new moduleCode.
                 int index = change.getRemoved().indexOf(selectedEvent.getValue());
                 selectedEvent.setValue(change.getAddedSubList().get(index));
                 continue;

@@ -251,11 +251,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public void interleave() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ReadOnlyProperty<Event> selectedEventProperty() {
             throw new AssertionError("This method should not be called.");
         }

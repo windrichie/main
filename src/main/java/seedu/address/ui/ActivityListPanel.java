@@ -33,14 +33,14 @@ public class ActivityListPanel extends UiPart<Region> {
         for (int row = 0; row < activityArray.length; row++) {
             for (int col = 0; col < activityArray[row].length; col++) {
                 if (activityArray[row][col] != null) {
-                    System.out.println("Adding activities to list: " + activityArray[row][col]);
+                    // System.out.println("Adding activities to list: " + activityArray[row][col]);
                     activityList.add(new Activity(activityArray[row][col], row, col));
                 }
             }
         }
         System.out.println(activityList.size());
         ObservableList<Activity> observableActivityList = FXCollections.observableArrayList(activityList);
-        System.out.println(observableActivityList.size());
+        // System.out.println(observableActivityList.size());
         activityListView.setItems(observableActivityList);
         activityListView.setCellFactory(listView -> new ActivityListViewCell());
     }
