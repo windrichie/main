@@ -97,7 +97,7 @@ Returns any person having names `Betsy`, `Tim`, or `John`
 // tag::addactivitycommand[]
 === Adding a module: `addActivity`
 
-Adds a new activity into a person's timetable. The activity can be a module or an event. + 
+Adds a new activity into a person's timetable. The activity can be a module or an event. +
 Format: `addActivity PERSON_INDEX act/ACTIVITY_NAME day/DAY_INT time/TIME_INT` +
 Example: `addActivity 1 act/CS2113 day/2 time/12`
 // end::addactivitycommand[]
