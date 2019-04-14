@@ -41,7 +41,7 @@ Responsibilities: Data
 
 === Windrich
 image::windrichie.png[width="150", align="left"]
-{empty}[http://github.com/windrichie[github]] [<<windrich#, portfolio>>]
+{empty}[http://github.com/windrichie[github]] [<<windrichie#, portfolio>>]
 
 Role: Developer +
 Responsibilities: Dev Ops + Threading
