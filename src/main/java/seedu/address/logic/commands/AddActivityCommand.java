@@ -77,7 +77,8 @@ public class AddActivityCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.commitAddressBook();
 
-        return new CommandResult(String.format(MESSAGE_ADD_ACTIVITY_SUCCESS, editedPerson.getName()));
+        return new CommandResult(String.format(MESSAGE_ADD_ACTIVITY_SUCCESS, editedPerson.getName()), false,
+                false, 2, index.getZeroBased());
     }
 
     /**
