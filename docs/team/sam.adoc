@@ -1,9 +1,9 @@
-= John Doe - Project Portfolio
+= Samuel Ong - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== PROJECT: AddressBook - Level 4
+== PROJECT: Efficient Learning Scheduler
 
 ---
 
@@ -27,14 +27,12 @@ We believe that with our application at your expense, you will be able to develo
 
 ** Project management:
 *** Managed releases `v1.2.1` on GitHub
-** Community:
+** Community (Coming soon):
 *** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
 *** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
 *** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
 ** Tools:
 *** Integrated a new Github plugin (Travis) to the team repo
-
-_{you can add/remove categories in the list above}_
 
 == Contributions to the User Guide
 
@@ -54,9 +52,3 @@ include::../UserGuide.adoc[tag=interleave]
 
 include::../DeveloperGuide.adoc[tag=interleave]
 
-
-== PROJECT: PowerPointLabs
-
----
-
-_{Optionally, you may include other projects in your portfolio.}_

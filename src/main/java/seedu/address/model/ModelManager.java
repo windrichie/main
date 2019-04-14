@@ -242,7 +242,7 @@ public class ModelManager implements Model {
             boolean wasSelectedPersonReplaced = change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
                     && change.getRemoved().contains(selectedPerson.getValue());
             if (wasSelectedPersonReplaced) {
-                // Update selectedPerson to its new value.
+                // Update selectedPerson to its new moduleCode.
                 int index = change.getRemoved().indexOf(selectedPerson.getValue());
                 selectedPerson.setValue(change.getAddedSubList().get(index));
                 continue;
@@ -315,10 +315,6 @@ public class ModelManager implements Model {
 
     //=========== Selected person ===========================================================================
 
-    public void interleave() {
-        //Interleaver.extractSelfStudyHours();
-    }
-
     /**
      * Ensures {@code selectedEvent} is a valid event in {@code filteredEvents}.
      */
@@ -332,7 +328,7 @@ public class ModelManager implements Model {
             boolean wasSelectedEventReplaced = change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
                     && change.getRemoved().contains(selectedEvent.getValue());
             if (wasSelectedEventReplaced) {
-                // Update selectedEvent to its new value.
+                // Update selectedEvent to its new moduleCode.
                 int index = change.getRemoved().indexOf(selectedEvent.getValue());
                 selectedEvent.setValue(change.getAddedSubList().get(index));
                 continue;

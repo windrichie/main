@@ -20,7 +20,6 @@ import seedu.address.logic.commands.FilterEventCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
-import seedu.address.logic.commands.InterleaveCommand;
 import seedu.address.logic.commands.ListActivityCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListEventCommand;
@@ -65,8 +64,11 @@ public class AddressBookParser {
         case AddActivityCommand.COMMAND_WORD:
             return new AddActivityCommandParser().parse(arguments);
 
-        case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
+        case EditCommand.EDIT_COMMAND:
+            return new EditCommandParser(EditCommand.EDIT_COMMAND).parse(arguments);
+
+        case EditCommand.INTERLEAVE_COMMAND:
+            return new EditCommandParser(EditCommand.INTERLEAVE_COMMAND).parse(arguments);
 
         case SelectCommand.COMMAND_WORD:
             return new SelectCommandParser().parse(arguments);
@@ -109,9 +111,6 @@ public class AddressBookParser {
 
         case AddEventCommand.COMMAND_WORD:
             return new AddEventCommandParser().parse(arguments);
-
-        case InterleaveCommand.COMMAND_WORD:
-            return new InterleaveCommand();
 
         case FilterEventCommand.COMMAND_WORD:
             return new FilterEventCommandParser().parse(arguments);

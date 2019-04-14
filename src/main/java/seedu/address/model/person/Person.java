@@ -22,13 +22,13 @@ public class Person {
     private final Name name;
     private final Phone phone;
     private final Email email;
-    private final Module module;
-    private final TimeTable timeTable;
-    private final ModuleList moduleList;
 
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final TimeTable timeTable;
+    private final ModuleList moduleList;
+    private boolean toBeInterleaved;
 
     public Person(Name name, Phone phone, Email email, Address address, Module module,
                   Set<Tag> tags) {
@@ -37,23 +37,24 @@ public class Person {
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.module = module;
         this.tags.addAll(tags);
         this.timeTable = new TimeTable();
         this.moduleList = new ModuleList();
+        this.moduleList.add(module);
+        this.toBeInterleaved = false;
     }
 
     public Person(Name name, Phone phone, Email email, Address address,
-                  Module module, Set<Tag> tags, ModuleList moduleList, TimeTable timeTable) {
+                  Set<Tag> tags, ModuleList moduleList, TimeTable timeTable) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.module = module;
         this.tags.addAll(tags);
         this.timeTable = timeTable;
         this.moduleList = moduleList;
+        this.toBeInterleaved = false;
 
     }
 
@@ -76,10 +77,6 @@ public class Person {
         return address;
     }
 
-    public Module getModule() {
-        return module;
-    }
-
     public TimeTable getTimeTable() {
         return timeTable;
     }
@@ -98,6 +95,13 @@ public class Person {
     }
 
 
+    public boolean getInterleaved() {
+        return toBeInterleaved;
+    }
+
+    public void setInterleaved(boolean toBeInterleaved) {
+        this.toBeInterleaved = toBeInterleaved;
+    }
     /**
      * Returns true if both persons of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
@@ -131,14 +135,13 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getModule().equals(getModule())
                 && otherPerson.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, module);
+        return Objects.hash(name, phone, email, address, tags, timeTable, moduleList, toBeInterleaved);
     }
 
     @Override
@@ -151,8 +154,12 @@ public class Person {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
-                .append(" Module: ")
-                .append(getModule())
+                .append(" Modules: ")
+                .append(getModules())
+                .append(" Timetable: ")
+                .append(getTimeTable())
+                .append(" Interleave: ")
+                .append(getInterleaved())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
