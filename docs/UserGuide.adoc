@@ -97,23 +97,23 @@ Returns any person having names `Betsy`, `Tim`, or `John`
 // tag::addactivitycommand[]
 === Adding a module: `addActivity`
 
-Adds a new activity into a person's timetable. The activity can be a module or an event. 
-Format: addActivity PERSON_INDEX act/ACTIVITY_NAME day/DAY_INT time/TIME_INT
+Adds a new activity into a person's timetable. The activity can be a module or an event. + 
+Format: addActivity PERSON_INDEX act/ACTIVITY_NAME day/DAY_INT time/TIME_INT +
 Example: addActivity 1 act/CS2113 day/2 time/12
 // end::addactivitycommand[]
 
 // tag::listactivitycommand[]
 === Listing all activities for a person : `listactivity`
 
-Shows a list of all activities in the timetable of a specific person in the left panel of the application UI. The command is followed by an index of a person in the current person list to choose which person's timetable to be shown.
-Format: listactivity PERSON_INDEX
+Shows a list of all activities in the timetable of a specific person in the left panel of the application UI. The command is followed by an index of a person in the current person list to choose which person's timetable to be shown. +
+Format: listactivity PERSON_INDEX +
 Example: listactivity 1
 // end::listactivitycommand[]
 
 // tag::eventcommand[]
 === Adding an event to the event calendar : `addevent`
 
-Adds an event to the event calendar.
+Adds an event to the event calendar. +
 Format: addevent ett/TITLE ed/DATE etm/TIME ev/VENUE \[eta/AUDIENCE] \[edc/DRESSCODE] \[eds/DESCRIPTION]
 
 [TIP]
@@ -126,7 +126,7 @@ Examples:
 
 === Listing all events : `listevent`
 
-Shows a list of all events in the event calendar in the left panel of the application UI.
+Shows a list of all events in the event calendar in the left panel of the application UI. +
 Format: listevent
 
 === Filter events on a given date : `filterevent`
@@ -136,18 +136,18 @@ Shows a list of all events that are happening on a given date in the left panel 
 [TIP]
 The date in the input has to follow the DD/MM/YYYY format. If not, an error message will be shown.
 
-Format: filterevent DATE
+Format: filterevent DATE +
 Example: filterevent 15/04/2019
 
 === Check availability of a person to attend an event : `checkAvailEvent`
 
-Checks if a person can attend an event, i.e. checks if there is an activity in the person's timetable that clashes with the event. The choice of person and choice of event are done using the indexes of the person and event in the last shown list (left panel of the application UI).
+Checks if a person can attend an event, i.e. checks if there is an activity in the person's timetable that clashes with the event. The choice of person and choice of event are done using the indexes of the person and event in the last shown list (left panel of the application UI). +
 The results of this command will be shown in the Results Display part of the application UI (right below the Command Box).
 
 [TIP]
 The indexes must be lower than the size of the person and event list. If not, an error message will be shown.
 
-Format: checkAvailEvent person/PERSON_INDEX event/EVENT_INDEX
+Format: checkAvailEvent person/PERSON_INDEX event/EVENT_INDEX +
 Example: checkAvailEvent person/1 event/1
 // end::eventcommand[]
 
