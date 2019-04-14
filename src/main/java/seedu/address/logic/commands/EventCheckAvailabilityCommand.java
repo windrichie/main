@@ -83,7 +83,6 @@ public class EventCheckAvailabilityCommand extends Command {
         }
 
     }
-    
     /**
     * Checks for clash
     */
