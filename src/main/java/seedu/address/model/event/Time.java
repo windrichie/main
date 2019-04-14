@@ -53,6 +53,13 @@ public class Time {
         return startTime + "-" + endTime;
     }
 
+    public int getDuration() {
+        String startHour = startTime.split(":")[0];
+        String endHour = endTime.split(":")[0];
+
+        return Integer.valueOf(endHour) - Integer.valueOf(startHour);
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

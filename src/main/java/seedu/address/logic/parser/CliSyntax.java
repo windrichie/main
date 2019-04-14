@@ -24,4 +24,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_TITLE = new Prefix("ett/");
     public static final Prefix PREFIX_VENUE = new Prefix("ev/");
 
+    public static final Prefix PREFIX_PERSON = new Prefix("person/");
+    public static final Prefix PREFIX_EVENT = new Prefix("event/");
+
 }

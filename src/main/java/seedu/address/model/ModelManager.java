@@ -171,6 +171,14 @@ public class ModelManager implements Model {
     public TimeTable getTimeTable(int index) {
         Person person = filteredPersons.get(index);
         // System.out.println(person.getName() + " timetable fetched.");
+        String[][] timetable = person.getTimeTable().getTimeTableArray();
+        //        for (int row = 0; row < timetable.length; row++) {
+        //            for (int col = 0; col < timetable[row].length; col++) {
+        //                if (timetable[row][col] != null) {
+        //                     System.out.println("row: " + row + " col: " + col + " val: " + timetable[row][col]);
+        //                }
+        //            }
+        //        }
         return person.getTimeTable();
     }
 
