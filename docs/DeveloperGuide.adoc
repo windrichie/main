@@ -377,7 +377,7 @@ Given below is an example usage scenario and how the listing activity mechanism 
 
 * **Step 1.** User opens the application and finds his/her index in the list of persons in the application.
 * **Step 2.** User executes the `listactivity PERSON_INDEX` command.
-* **Step 3.** Using the person index, extract person and get the person's `Timetable` array from the Model component. 
+* **Step 3.** Using the person index, extract person and get the person's `Timetable` array from the Model component.
 * **Step 4.** Iterate through the 2D `Timetable` array and check for each of the time slot.
 * **Step 5.** If there is an activity scheduled in each of the time slot, add it to the activityList.
 * **Step 6.** For each of the activity in the activityList, creates an ActivityCard in the UI component and shows it in the left panel of the application UI.
