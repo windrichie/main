@@ -31,4 +31,19 @@ public class TimeTable {
             timeTable[day][hour] = activity.getActivityName();
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        for (int x = 0; x < NUM_DAYS; x++) {
+            for (int y = 0; y < NUM_30MINS_BLOCKS; y++) {
+                if (timeTable[x][y] != null) {
+                    builder.append("[").append(x).append("]")
+                            .append("[").append(y).append("]")
+                            .append("=").append(timeTable[x][y]).append(" ");
+                }
+            }
+        }
+        return builder.toString();
+    }
 }

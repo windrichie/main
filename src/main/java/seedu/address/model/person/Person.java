@@ -135,7 +135,6 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getModules().equals(this.getModules())
                 && otherPerson.getTags().equals(getTags());
     }
 

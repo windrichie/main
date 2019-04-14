@@ -36,7 +36,7 @@ class JsonAdaptedPerson {
     private final String address;
     private String[][] timeTable = new String[TimeTable.NUM_DAYS][TimeTable.NUM_30MINS_BLOCKS];
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
-    private ArrayList<Module> modules = new ArrayList<>();
+    private ArrayList<String> modules = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -54,10 +54,10 @@ class JsonAdaptedPerson {
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
-        ArrayList<Module> temp = new ArrayList<>();
+        ArrayList<String> temp = new ArrayList<>();
         Iterator iterator = modules.iterator();
         while (iterator.hasNext()) {
-            temp.add(new Module((String) (iterator.next())));
+            temp.add((String) (iterator.next()));
         }
         this.modules = temp;
         System.arraycopy(timeTable, 0, this.timeTable, 0, timeTable.length);
@@ -77,7 +77,7 @@ class JsonAdaptedPerson {
                 .collect(Collectors.toList()));
         Iterator i = source.getModules().getModuleList().iterator();
         while (i.hasNext()) {
-            modules.add((Module) (i.next()));
+            modules.add(((Module) (i.next())).getModuleCode());
         }
 
     }
@@ -133,12 +133,12 @@ class JsonAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         ModuleList tempList = new ModuleList();
-        for (Module m:modules
+        for (String m:modules
              ) {
-            if (!Module.isValidModule(m.getModuleCode())) {
+            if (!Module.isValidModule(m)) {
                 throw new IllegalValueException(Module.MESSAGE_CONSTRAINTS);
             } else {
-                tempList.add(m);
+                tempList.add(new Module(m));
             }
         }
         final ModuleList modelModuleList = tempList;
