@@ -43,7 +43,6 @@ public class PersonUtil {
         while (i.hasNext()) {
             sb.append(PREFIX_MODULES).append(i.next()).append(" ");
         }
-        
         return sb.toString();
     }
 
