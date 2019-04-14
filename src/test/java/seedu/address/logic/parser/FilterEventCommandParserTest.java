@@ -20,7 +20,7 @@ public class FilterEventCommandParserTest {
     }
 
     @Test
-    public void parse_validArgs_returnsFindCommand() {
+    public void parse_validArgs_returnsFilterEventCommand() {
         // no leading and trailing whitespaces
         FilterEventCommand expectedFindCommand =
                 new FilterEventCommand(new DateEqualsPredicate("01/04/2019"));
