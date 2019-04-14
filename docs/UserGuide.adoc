@@ -65,7 +65,7 @@ Example: add m/CS2113 c/4 t/Wednesday,12-14 t/Tuesday,11-12
 [TIP]
 A person can have any number of tags (including 0)
 
-// tag::eventcommand[]
+// tag::eventcommand[] //
 === Adding an event to the event calendar : `addevent`
 Adds an event to the event calendar.
 Format: addevent ett/TITLE ed/DATE etm/TIME ev/VENUE \[eta/AUDIENCE] \[edc/DRESSCODE] \[eds/DESCRIPTION]
@@ -143,6 +143,7 @@ Format: redo
 
 adds an activity to a persons time table.
 Format: addActivity
+
 
 ==== Exiting the program: 'exit'
 Exits the Efficient Learning Scheduler.
