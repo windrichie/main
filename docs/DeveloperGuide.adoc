@@ -1,4 +1,4 @@
-﻿= Efficient Learning Scheduler- Developer Guide
+= Efficient Learning Scheduler - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -339,12 +339,12 @@ This is executed by getting the time and date of the event that user is interest
 
 Given below is an example usage scenario and how the availability checking mechanism behaves at each step:
 
-* **Step 1.** User opens the application and views the upcoming events in NUS for the week of 18th March. UI will show a calendar view of the NUS events
-* **Step 2.** User chooses an event that he/she is interested in. User executes the `checkAvailE` command
-* **Step 3.** The time and date of the event is stored in an `eventTimeDate` object.
-* **Step 4.** Get the user’s `Schedule` from the json storage file.
-* **Step 5.** Using the `eventTimeDate` object, check if there is any event scheduled during the event timing.
-* **Step 6.** Print the availability (whether user can attend the event) into the Command Box.
+* **Step 1.** User opens the application and views the upcoming events in NUS for the week of 18th March.
+* **Step 2.** User chooses an event that he/she is interested in. User executes the `checkAvailEvent` command
+* **Step 3.** The time and date of the event is stored in a `Time` and a `Date` object.
+* **Step 4.** Get the user’s `Timetable` array from the Model component of the application.
+* **Step 5.** Using the `Time` and `Date` object, get the corresponding day and time and check if there is any activity scheduled during the event timing in the user's timetable.
+* **Step 6.** Print the availability (whether the user can attend the event) into the Command Box.
 
 The following activity diagram summarizes what happens when a user executes the command:
 
@@ -360,6 +360,38 @@ image::CheckAvailEActivityDiagram.png[width="800"]
 ** Pros: user can check availability for the whole week (more than 1 event at one time)
 ** Cons: checking mechanism is longer and need to change the view of the result display (implementation is harder)
 // end::checkAvailabilityEvents[]
+
+// tag::listActivityDevGuide[]
+=== List Activity feature
+
+==== Current Implementation
+
+This is a feature to list the activities of a person within the current week.
+This is executed by getting the index of the person from the input command. Using this index, the corresponding person's timetable will be extracted. For every time slot in the timetable, if there is an activity scheduled, show it in the left pane of the application UI.
+
+Given below is an example usage scenario and how the listing activity mechanism works at each step:
+
+* **Step 1.** User opens the application and finds his/her index in the list of persons in the application.
+* **Step 2.** User executes the `listactivity PERSON_INDEX` command.
+* **Step 3.** Using the person index, extract person and get the person's `Timetable` array from the Model component.
+* **Step 4.** Iterate through the 2D `Timetable` array and check for each of the time slot.
+* **Step 5.** If there is an activity scheduled in each of the time slot, add it to the activityList.
+* **Step 6.** For each of the activity in the activityList, creates an ActivityCard in the UI component and shows it in the left panel of the application UI.
+
+The following activity diagram summarizes what happens when a user executes the command:
+
+image::ListActivityDiagram.png[width="800"]
+
+==== Design considerations:
+
+* **Alternative 1 (current choice):** create one ActivityListPanel (UI component) for each person in the database
+** Pros: easy to implement and easy to access
+** Cons: might take up more memory space because of the ActivityListPanel List in the UI component (MainWindow)
+
+* **Alternative 2:** create one ActivityListPanel and contains the activities of every person in the database
+** Pros: takes up less memory
+** Cons: harder to implement, need to filter the activities by a specific person every time ListActivity command is called.
+// end::listActivityDevGuide[]
 
 == Documentation
 
@@ -994,8 +1026,6 @@ These instructions only provide a starting point for testers to work on; testers
 .. Re-launch the app by double-clicking the jar file. +
    Expected: The most recent window size and location is retained.
 
-_{ more test cases ... }_
-
 // tag::addActivityCommand[]
 === Add an activity to a person.
 
@@ -1008,7 +1038,18 @@ _{ more test cases ... }_
    Expected: No activity is added to anyone. Error details shown in the status message.
 .. Other incorrect addActivity commands to try: `addActivity`, `addActivity x` (where x is larger than the list size) _{give more}_ +
    Expected: Similar to previous.
-
 // end::addActivityCommand[]
 
+// tag::addEventTestCase[]
+=== Adding an event
 
+. Adding an event to the event calendar
+
+.. Test case: `addevent ett/UBS - Unlock Your Potential with us ed/01/04/2019 etm/15:00-16:00 ev/UBS Office`
+   Expected: the event will be successfully added even though there are some missing input arguments, because the rest of the arguments are optional.
+.. Test case: `addevent ett/UBS - Unlock Your Potential with us ed/01/04/2019 etm/15:00-16:00 eta/All Year 1 female students edc/Business Formal eds/Unlock Your Potential with us.`
+   Expected: the event will not be successfully added because the `ev/` argument which is compulsory is missing.
+.. Test case: `addevent ett/UBS - Unlock Your Potential with us ed/29/02/2019 etm/15:00-16:00 ev/UBS Office`
+   Expected: the error message will be shown indicating wrong date (there is no 29th February in 2019).
+.. Other incorrect addevent commands to try: starting time without end time, impossible time (HH more than 24 and MM more than 60)
+   Expected: the error message will be shown indicating wrong time.
