@@ -86,7 +86,7 @@ public class AddActivityCommand extends Command {
      */
     private static Person personWithNewTimeTable(Person personToEdit, Activity toAdd, int day, int startTime) {
         assert personToEdit != null;
-        personToEdit.getTimeTable().add(toAdd, day, startTime);
+        personToEdit.getTimeTable().add(toAdd, day, startTime * 2);
         if (Module.isValidModule(toAdd.getActivityName())) {
             personToEdit.getModules().add(new Module(toAdd.getActivityName()));
         }

@@ -87,10 +87,12 @@ public class EventCheckAvailabilityCommand extends Command {
     public boolean checkForClash (Person targetPerson, Event targetEvent) {
         String[][] timetable = targetPerson.getTimeTable().getTimeTableArray();
         int eventDay = targetEvent.getDate().getDayInt();
+        System.out.println(timetable[1].length);
 
         for (int i = 0; i < targetEvent.getTime().getDuration(); i++) {
             int currTime = Integer.valueOf(targetEvent.getTime().startTime.split(":")[0]) + i;
-            if (timetable[eventDay][currTime] != null) {
+            System.out.println("currTime in array index: " + currTime * 2);
+            if (timetable[eventDay][currTime * 2] != null | timetable[eventDay][currTime * 2 + 1] != null) {
                 return true;
             }
         }
