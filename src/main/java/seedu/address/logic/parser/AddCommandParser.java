@@ -1,9 +1,6 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_DAY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ACTIVITY_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODULES;
@@ -53,9 +50,6 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Module module = ParserUtil.parseModule(argMultimap.getValue(PREFIX_MODULES).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        // ModuleList modules = ParserUtil.parseModules(argMultimap.getAllValues(PREFIX_MODULES));
-        // TimeTable timeTable = ParserUtil.parseTimetable(argMultimap.getValue(PREFIX_ACTIVITY_DAY).get(),
-                // argMultimap.getValue(PREFIX_ACTIVITY_TIME).get(), argMultimap.getValue(PREFIX_ACTIVITY).get());
 
         Person person = new Person(name, phone, email, address, module, tagList);
 
