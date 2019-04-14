@@ -83,7 +83,10 @@ public class EventCheckAvailabilityCommand extends Command {
         }
 
     }
-
+    
+    /**
+    * Checks for clash
+    */
     public boolean checkForClash (Person targetPerson, Event targetEvent) {
         String[][] timetable = targetPerson.getTimeTable().getTimeTableArray();
         int eventDay = targetEvent.getDate().getDayInt();
