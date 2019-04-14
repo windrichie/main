@@ -57,8 +57,12 @@ public class EventCheckAvailabilityCommand extends Command {
         List<Person> personList = model.getFilteredPersonList();
         List<Event> eventList = model.getFilteredEventList();
 
-        if (personIndex.getOneBased() >= personList.size() | eventIndex.getOneBased() >= eventList.size()) {
+        if (personIndex.getOneBased() > personList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
+        if (eventIndex.getOneBased() > eventList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_EVENT_DISPLAYED_INDEX);
         }
 
         Person targetPerson = personList.get(personIndex.getZeroBased());
