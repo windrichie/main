@@ -58,3 +58,4 @@ include::../UserGuide.adoc[tag=listactivitycommand]
 
 include::../DeveloperGuide.adoc[tag=checkAvailabilityEvents]
 include::../DeveloperGuide.adoc[listActivityDevGuide]
+include::../DeveloperGuide.adoc[addEventTestCase]
