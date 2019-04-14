@@ -48,16 +48,16 @@ public class PersonUtil {
         while (i.hasNext()) {
             sb.append(PREFIX_MODULES).append(i.next()).append(" ");
         }
-        for (int x = 0; x < NUM_DAYS; x++) {
-            for (int y = 0; y < NUM_30MINS_BLOCKS; y++) {
-                if (person.getTimeTable().getTimeTableArray()[x][y] != null) {
-                    sb.append(PREFIX_ACTIVITY_DAY).append(x).append(" ")
-                            .append(PREFIX_ACTIVITY_TIME).append(y).append(" ")
-                            .append(PREFIX_ACTIVITY)
-                            .append(person.getTimeTable().getTimeTableArray()[x][y]).append(" ");
-                }
-            }
-        }
+//        for (int x = 0; x < NUM_DAYS; x++) {
+//            for (int y = 0; y < NUM_30MINS_BLOCKS; y++) {
+//                if (person.getTimeTable().getTimeTableArray()[x][y] != null) {
+//                    sb.append(PREFIX_ACTIVITY_DAY).append(x).append(" ")
+//                            .append(PREFIX_ACTIVITY_TIME).append(y).append(" ")
+//                            .append(PREFIX_ACTIVITY)
+//                            .append(person.getTimeTable().getTimeTableArray()[x][y]).append(" ");
+//                }
+//            }
+//        }
         return sb.toString();
     }
 
