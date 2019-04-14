@@ -1,18 +1,15 @@
 package seedu.address.logic.parser;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.AddActivityCommand;
-import seedu.address.logic.commands.CheckAvailabilityCommand;
-import seedu.address.logic.commands.EventCheckAvailabilityCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.timetable.Activity;
-import seedu.address.model.person.timetable.Day;
-import seedu.address.model.person.timetable.StartTime;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EVENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PERSON;
 
 import java.util.stream.Stream;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.CheckAvailabilityCommand;
+import seedu.address.logic.commands.EventCheckAvailabilityCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 
 /**
@@ -38,12 +35,6 @@ public class EventCheckAvailabilityCommandParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     CheckAvailabilityCommand.MESSAGE_USAGE));
         }
-//        try {
-//            index = ParserUtil.parseIndex(argMultimap.getPreamble());
-//        } catch (ParseException pe) {
-//            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-//                    EventCheckAvailabilityCommand.MESSAGE_USAGE));
-//        }
 
         Index personIndex = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_PERSON).get());
         Index eventIndex = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_EVENT).get());

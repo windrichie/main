@@ -12,7 +12,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.event.Event;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.timetable.Activity;
 
 /**
  * Checks if an event clashes with a person's timetable.
@@ -21,7 +20,8 @@ public class EventCheckAvailabilityCommand extends Command {
 
     public static final String COMMAND_WORD = "checkAvailEvent";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Checks if an event clashes with a person's timetable. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Checks if an event clashes with a person's timetable. "
             + "Parameters:  "
             + PREFIX_PERSON + "PERSON_INDEX "
             + PREFIX_EVENT + "EVENT_INDEX\n"
@@ -29,8 +29,9 @@ public class EventCheckAvailabilityCommand extends Command {
             + PREFIX_PERSON + "1 "
             + PREFIX_EVENT + "1 ";
 
-    public static final String MESSAGE_NO_CLASH = "%1$s can attend this event titled %2$s on %3$s at %4$s!";
-    public static final String MESSAGE_CLASH = "%1$s has an activity during this event titled %2$s on %3$s at %4$s!";
+    public static final String MESSAGE_NO_CLASH = "%1$s can attend this event titled \"%2$s\" on %3$s at %4$s!";
+    public static final String MESSAGE_CLASH = "%1$s has an activity during this event titled \"%2$s\" "
+            + "on %3$s at %4$s!";
 
     //private final Module modAdd;
     private final Index personIndex;
@@ -64,7 +65,7 @@ public class EventCheckAvailabilityCommand extends Command {
         int eventDay = targetEvent.getDate().getDayInt();
 
         String[][] timetable = targetPerson.getTimeTable().getTimeTableArray();
-        for (int i=0; i < targetEvent.getTime().getDuration(); i++) {
+        for (int i = 0; i < targetEvent.getTime().getDuration(); i++) {
             int currTime = Integer.valueOf(targetEvent.getTime().startTime.split(":")[0]) + i;
             if (timetable[eventDay][currTime] != null) {
                 this.isClash = true;
@@ -74,12 +75,12 @@ public class EventCheckAvailabilityCommand extends Command {
         if (this.isClash) {
             return new CommandResult(String.format(MESSAGE_CLASH, targetPerson.getName(),
                     targetEvent.getTitle().toString(), targetEvent.getDate().getDayString(),
-                    targetEvent.getTime().startEndTimeToString()),false, false,2,
+                    targetEvent.getTime().startEndTimeToString()), false, false, 2,
                     personIndex.getZeroBased());
         } else {
             return new CommandResult(String.format(MESSAGE_NO_CLASH, targetPerson.getName(),
                     targetEvent.getTitle().toString(), targetEvent.getDate().getDayString(),
-                    targetEvent.getTime().startEndTimeToString()), false, false,2,
+                    targetEvent.getTime().startEndTimeToString()), false, false, 2,
                     personIndex.getZeroBased());
         }
 

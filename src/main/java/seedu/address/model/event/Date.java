@@ -1,12 +1,11 @@
 package seedu.address.model.event;
 
-import javax.print.DocFlavor;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
 //@@author windrichie
 /**
@@ -25,10 +24,10 @@ public class Date {
             + "(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))"
             + "$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
 
-    public final String fulldate;
+    private static final String[] DAY_MAPPING = {"Monday", "Tuesday", "Wednesday", "Thursday",
+        "Friday", "Saturday", "Sunday"};
 
-    public static final String[] DAY_MAPPING = {"Monday", "Tuesday", "Wednesday", "Thursday",
-            "Friday", "Saturday", "Sunday"};
+    private final String fulldate;
 
     /**
      * Constructs a {@code Date}.
