@@ -1053,5 +1053,3 @@ These instructions only provide a starting point for testers to work on; testers
    Expected: the error message will be shown indicating wrong date (there is no 29th February in 2019).
 .. Other incorrect addevent commands to try: starting time without end time, impossible time (HH more than 24 and MM more than 60)
    Expected: the error message will be shown indicating wrong time.
-// end::addEventTestCase[]
-
