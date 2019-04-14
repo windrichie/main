@@ -14,6 +14,7 @@ import seedu.address.model.Model;
 import seedu.address.model.event.Event;
 import seedu.address.model.person.Person;
 
+//@@author windrichie
 /**
  * Checks if an event clashes with a person's timetable.
  */
