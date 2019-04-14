@@ -15,6 +15,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.modulelist.Module;
 import seedu.address.model.person.timetable.Activity;
 
 /**
@@ -60,7 +61,7 @@ public class AddActivityCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Person> lastShownList = model.getFilteredPersonList(); //Filter doesnt mean anything
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -85,10 +86,10 @@ public class AddActivityCommand extends Command {
     private static Person personWithNewTimeTable(Person personToEdit, Activity toAdd, int day, int startTime) {
         assert personToEdit != null;
         personToEdit.getTimeTable().add(toAdd, day, startTime);
-        personToEdit.getModules().add(toAdd.getActivityName());
+        personToEdit.getModules().add(new Module(toAdd.getActivityName()));
 
         return new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                          personToEdit.getAddress(), personToEdit.getModule(), personToEdit.getTags(),
+                          personToEdit.getAddress(), personToEdit.getTags(),
                           personToEdit.getModules(), personToEdit.getTimeTable());
     }
 

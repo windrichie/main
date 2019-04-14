@@ -8,7 +8,9 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.modulelist.Module;
+import seedu.address.model.person.modulelist.ModuleList;
+import seedu.address.model.person.timetable.Activity;
+import seedu.address.model.person.timetable.TimeTable;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -21,22 +23,31 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final String DEFAULT_MODULE = "CS2113";
+    public static final String DEFAULT_ACTIVITY = "S/U CS2113";
+    public static final int DEFAULT_ACTIVITY_DAY = 0;
+    public static final int DEFAULT_ACTIVITY_TIME = 24;
+    public static final String[] DEFAULT_MODULE_LIST = {"CS2113", "CS1337"};
+    public static final boolean DEFAULT_INTERLEAVE = false;
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
-    private Module module;
     private Set<Tag> tags;
+    private TimeTable timeTable;
+    private ModuleList moduleList;
+    private boolean toBeInterleaved;
 
     public PersonBuilder() {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-        module = new Module(DEFAULT_MODULE);
         tags = new HashSet<>();
+        timeTable = new TimeTable();
+        timeTable.add(new Activity(DEFAULT_ACTIVITY), DEFAULT_ACTIVITY_DAY, DEFAULT_ACTIVITY_TIME);
+        moduleList = new ModuleList(DEFAULT_MODULE_LIST);
+        toBeInterleaved = DEFAULT_INTERLEAVE;
     }
 
     /**
@@ -47,8 +58,10 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
-        module = personToCopy.getModule();
         tags = new HashSet<>(personToCopy.getTags());
+        timeTable = personToCopy.getTimeTable();
+        moduleList = personToCopy.getModules();
+        toBeInterleaved = personToCopy.getInterleaved();
     }
 
     /**
@@ -92,15 +105,32 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Module} of the {@code Person} that we are building.
+     * Sets the {@code Timetable} of the {@code Person} that we are building.
      */
-    public PersonBuilder withModule(String module) {
-        this.module = new Module(module);
+    public PersonBuilder withTimetable(int day, int time, String activity) {
+        this.timeTable = new TimeTable();
+        this.timeTable.add(new Activity(activity), day, time);
+        return this;
+    }
+
+    /**
+     * Sets the {@code ModuleList} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withModuleList(String... modules) {
+        this.moduleList = new ModuleList(modules);
+        return this;
+    }
+
+    /**
+     * Sets the {@code toBeInterleaved} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withInterleaved(boolean value) {
+        this.toBeInterleaved = value;
         return this;
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, module, tags);
+        return new Person(name, phone, email, address, tags, moduleList, timeTable);
     }
 
 }
