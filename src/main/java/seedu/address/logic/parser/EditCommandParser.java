@@ -79,7 +79,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             }
             if (argMultimap.getValue(PREFIX_ACTIVITY_DAY).isPresent()
                     && argMultimap.getValue(PREFIX_ACTIVITY_TIME).isPresent()
-                    && argMultimap.getValue(PREFIX_ACTIVITY).isPresent() ) {
+                    && argMultimap.getValue(PREFIX_ACTIVITY).isPresent()) {
                 editPersonDescriptor.setTimetable(ParserUtil.parseTimetable(
                         argMultimap.getValue(PREFIX_ACTIVITY_DAY).get(),
                         argMultimap.getValue(PREFIX_ACTIVITY_TIME).get(), argMultimap.getValue(PREFIX_ACTIVITY).get()));
