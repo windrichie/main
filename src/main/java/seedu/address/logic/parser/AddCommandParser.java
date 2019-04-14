@@ -21,6 +21,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.modulelist.Module;
 import seedu.address.model.person.modulelist.ModuleList;
 import seedu.address.model.person.timetable.TimeTable;
 import seedu.address.model.tag.Tag;
@@ -39,7 +40,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_ACTIVITY_DAY, PREFIX_ACTIVITY_TIME, PREFIX_ACTIVITY, PREFIX_MODULES, PREFIX_TAG);
+                        PREFIX_MODULES, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -50,12 +51,13 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        Module module = ParserUtil.parseModule(argMultimap.getValue(PREFIX_MODULES).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        ModuleList modules = ParserUtil.parseModules(argMultimap.getAllValues(PREFIX_MODULES));
-        TimeTable timeTable = ParserUtil.parseTimetable(argMultimap.getValue(PREFIX_ACTIVITY_DAY).get(),
-                argMultimap.getValue(PREFIX_ACTIVITY_TIME).get(), argMultimap.getValue(PREFIX_ACTIVITY).get());
+        // ModuleList modules = ParserUtil.parseModules(argMultimap.getAllValues(PREFIX_MODULES));
+        // TimeTable timeTable = ParserUtil.parseTimetable(argMultimap.getValue(PREFIX_ACTIVITY_DAY).get(),
+                // argMultimap.getValue(PREFIX_ACTIVITY_TIME).get(), argMultimap.getValue(PREFIX_ACTIVITY).get());
 
-        Person person = new Person(name, phone, email, address, tagList, modules, timeTable);
+        Person person = new Person(name, phone, email, address, module, tagList);
 
         return new AddCommand(person);
     }
